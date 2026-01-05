@@ -1,0 +1,42 @@
+{
+  "sessions": [
+    {
+      "id": "17a46733-0e9b-4a98-870c-f3ab6b1493c4",
+      "category": "CRM software",
+      "brands": [
+        "Salesforce"
+      ],
+      "competitors": [
+        "Zendesk",
+        "Pipedrive",
+        "Zoho CRM",
+        "Oracle CRM"
+      ],
+      "mode": "normal",
+      "createdAt": "2026-01-05T16:09:45.438Z",
+      "status": "queued",
+      "results": null,
+      "jobId": null
+    },
+    {
+      "id": "31104edd-ff3c-4f6a-9590-87666a1a0028",
+      "category": "CRM software",
+      "brands": [
+        "Salesforce"
+      ],
+      "competitors": [
+        "Zendesk",
+        "Pipedrive",
+        "Zoho CRM",
+        "Oracle CRM"
+      ],
+      "mode": "competitor",
+      "createdAt": "2026-01-05T16:11:29.952Z",
+      "status": "queued",
+      "results": null,
+      "jobId": null
+    }
+  ],
+  "historicalData": [],
+  "scheduledJobs": []
+}

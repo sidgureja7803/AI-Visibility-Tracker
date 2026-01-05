@@ -1,35 +1,108 @@
 const Queue = require('bull');
 const aiService = require('../services/aiService');
 
-// Create tracking queue
-// In production, use Redis. For development, Bull uses in-memory storage
-const trackingQueue = new Queue('ai-visibility-tracking', {
-  redis: {
-    port: process.env.REDIS_PORT || 6379,
-    host: process.env.REDIS_HOST || '127.0.0.1',
-  },
-  defaultJobOptions: {
-    attempts: 3,
-    backoff: {
-      type: 'exponential',
-      delay: 2000
-    },
-    removeOnComplete: false,
-    removeOnFail: false
-  }
-});
+// Create tracking queue with Redis connection error handling
+let trackingQueue = null;
+let useQueue = false;
 
-// Process jobs
-trackingQueue.process(async (job) => {
-  const { sessionId, category, brands, competitors, mode } = job.data;
+// Simple check if Redis is available before creating queue
+const checkRedisAvailability = () => {
+  return new Promise((resolve) => {
+    const net = require('net');
+    const client = net.createConnection({
+      port: process.env.REDIS_PORT || 6379,
+      host: process.env.REDIS_HOST || '127.0.0.1'
+    });
+
+    client.on('connect', () => {
+      client.end();
+      resolve(true);
+    });
+
+    client.on('error', () => {
+      client.destroy();
+      resolve(false);
+    });
+
+    // Timeout after 1 second
+    setTimeout(() => {
+      client.destroy();
+      resolve(false);
+    }, 1000);
+  });
+};
+
+// Initialize queue only if Redis is available
+const initQueue = async () => {
+  const redisAvailable = await checkRedisAvailability();
+  
+  if (redisAvailable) {
+    try {
+      trackingQueue = new Queue('ai-visibility-tracking', {
+        redis: {
+          port: process.env.REDIS_PORT || 6379,
+          host: process.env.REDIS_HOST || '127.0.0.1'
+        },
+        defaultJobOptions: {
+          attempts: 3,
+          backoff: {
+            type: 'exponential',
+            delay: 2000
+          },
+          removeOnComplete: false,
+          removeOnFail: false
+        }
+      });
+
+      useQueue = true;
+      console.log('✅ Redis connected - Queue mode enabled');
+      
+      // Set up event handlers
+      if (trackingQueue) {
+        trackingQueue.on('completed', (job, result) => {
+          console.log(`✅ Job ${job.id} completed for session ${result.sessionId}`);
+        });
+
+        trackingQueue.on('failed', (job, err) => {
+          console.error(`❌ Job ${job.id} failed:`, err.message);
+        });
+
+        trackingQueue.on('progress', (job, progress) => {
+          console.log(`📊 Job ${job.id} progress: ${progress}%`);
+        });
+        
+        // Process jobs
+        trackingQueue.process(async (job) => {
+          return processTracking(job.data, (progress) => job.progress(progress));
+        });
+      }
+      
+    } catch (error) {
+      console.log('⚠️  Redis initialization failed - Using direct execution mode');
+      trackingQueue = null;
+      useQueue = false;
+    }
+  } else {
+    console.log('⚠️  Redis not available - Using direct execution mode');
+    trackingQueue = null;
+    useQueue = false;
+  }
+};
+
+// Initialize asynchronously
+initQueue();
+
+// Core processing function (used by both queue and direct execution)
+async function processTracking(data, progressCallback) {
+  const { sessionId, category, brands, competitors, mode } = data;
   
   try {
-    // Update job progress
-    await job.progress(10);
+    // Update progress
+    if (progressCallback) await progressCallback(10);
     
     // Generate prompts
     const prompts = await aiService.generatePrompts(category, 10);
-    await job.progress(30);
+    if (progressCallback) await progressCallback(30);
     
     // Query AI for each prompt
     const promptResults = [];
@@ -47,18 +120,18 @@ trackingQueue.process(async (job) => {
       
       // Update progress
       const progress = 30 + Math.floor((i + 1) / totalPrompts * 50);
-      await job.progress(progress);
+      if (progressCallback) await progressCallback(progress);
       
       // Rate limiting
       await new Promise(resolve => setTimeout(resolve, 1000));
     }
     
-    await job.progress(90);
+    if (progressCallback) await progressCallback(90);
     
     // Calculate metrics
     const results = calculateMetrics(promptResults, brands, competitors);
     
-    await job.progress(100);
+    if (progressCallback) await progressCallback(100);
     
     return {
       sessionId,
@@ -71,10 +144,10 @@ trackingQueue.process(async (job) => {
     };
     
   } catch (error) {
-    console.error('Job processing error:', error);
+    console.error('Processing error:', error);
     throw error;
   }
-});
+}
 
 function calculateMetrics(promptResults, brands, competitors) {
   const allBrands = [...brands, ...(competitors || [])];
@@ -146,18 +219,9 @@ function calculateMetrics(promptResults, brands, competitors) {
   };
 }
 
-// Queue event handlers
-trackingQueue.on('completed', (job, result) => {
-  console.log(`✅ Job ${job.id} completed for session ${result.sessionId}`);
-});
-
-trackingQueue.on('failed', (job, err) => {
-  console.error(`❌ Job ${job.id} failed:`, err.message);
-});
-
-trackingQueue.on('progress', (job, progress) => {
-  console.log(`📊 Job ${job.id} progress: ${progress}%`);
-});
-
-module.exports = trackingQueue;
+module.exports = {
+  queue: trackingQueue,
+  processTracking,
+  isUsingQueue: () => useQueue && trackingQueue !== null
+};
 

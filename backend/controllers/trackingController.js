@@ -1,5 +1,5 @@
 const aiService = require('../services/aiService');
-const trackingQueue = require('../queue/trackingQueue');
+const { queue: trackingQueue, processTracking, isUsingQueue } = require('../queue/trackingQueue');
 const storageService = require('../services/storageService');
 
 const trackingController = {
@@ -21,31 +21,62 @@ const trackingController = {
         competitors: competitors || [],
         mode: mode || 'normal',
         createdAt: new Date().toISOString(),
-        status: 'queued',
+        status: 'processing',
         results: null,
         jobId: null
       };
 
       storageService.saveSession(session);
 
-      // Add job to queue
-      const job = await trackingQueue.add({
+      const trackingData = {
         sessionId,
         category,
         brands,
         competitors,
         mode
-      });
+      };
 
-      storageService.updateSession(sessionId, {
-        jobId: job.id,
-        status: 'processing'
-      });
+      // Use queue if Redis is available, otherwise process directly
+      if (isUsingQueue() && trackingQueue) {
+        const job = await trackingQueue.add(trackingData);
+        
+        storageService.updateSession(sessionId, {
+          jobId: job.id,
+          status: 'processing'
+        });
+      } else {
+        // Process directly in background without queue
+        processTracking(trackingData, async (progress) => {
+          storageService.updateSession(sessionId, { progress });
+        }).then((result) => {
+          storageService.updateSession(sessionId, {
+            status: 'completed',
+            results: result.results,
+            completedAt: result.completedAt
+          });
+
+          // Save to historical data
+          storageService.saveHistoricalData({
+            category: result.category,
+            brands: result.brands,
+            results: result.results
+          });
+          
+          console.log(`✅ Direct processing completed for session ${sessionId}`);
+        }).catch((error) => {
+          console.error(`❌ Direct processing failed for session ${sessionId}:`, error);
+          storageService.updateSession(sessionId, {
+            status: 'error',
+            error: error.message
+          });
+        });
+      }
 
       res.json({
         sessionId,
         message: 'Tracking started',
-        status: 'processing'
+        status: 'processing',
+        mode: isUsingQueue() ? 'queued' : 'direct'
       });
 
     } catch (error) {
@@ -63,37 +94,41 @@ const trackingController = {
         return res.status(404).json({ error: 'Session not found' });
       }
 
-      // Check job status if still processing
-      if (session.status === 'processing' && session.jobId) {
-        const job = await trackingQueue.getJob(session.jobId);
-        if (job) {
-          const state = await job.getState();
-          const progress = job.progress();
+      // Check job status if still processing via queue
+      if (session.status === 'processing' && session.jobId && isUsingQueue() && trackingQueue) {
+        try {
+          const job = await trackingQueue.getJob(session.jobId);
+          if (job) {
+            const state = await job.getState();
+            const progress = job.progress();
 
-          if (state === 'completed') {
-            const result = job.returnvalue;
-            storageService.updateSession(sessionId, {
-              status: 'completed',
-              results: result.results,
-              completedAt: result.completedAt
-            });
+            if (state === 'completed') {
+              const result = job.returnvalue;
+              storageService.updateSession(sessionId, {
+                status: 'completed',
+                results: result.results,
+                completedAt: result.completedAt
+              });
 
-            // Save to historical data
-            storageService.saveHistoricalData({
-              category: result.category,
-              brands: result.brands,
-              results: result.results
-            });
-          } else if (state === 'failed') {
-            storageService.updateSession(sessionId, {
-              status: 'error',
-              error: job.failedReason
-            });
-          } else {
-            storageService.updateSession(sessionId, {
-              progress: progress
-            });
+              // Save to historical data
+              storageService.saveHistoricalData({
+                category: result.category,
+                brands: result.brands,
+                results: result.results
+              });
+            } else if (state === 'failed') {
+              storageService.updateSession(sessionId, {
+                status: 'error',
+                error: job.failedReason
+              });
+            } else {
+              storageService.updateSession(sessionId, {
+                progress: progress
+              });
+            }
           }
+        } catch (queueError) {
+          console.log('Queue check error (non-critical):', queueError.message);
         }
       }
 

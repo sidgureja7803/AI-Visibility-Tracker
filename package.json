@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node backend/server.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "nodemon backend/server.js",
+    "server": "nodemon --ignore backend/data/ --ignore '*.json' backend/server.js",
     "client": "cd frontend && npm start",
     "install-all": "npm install && cd frontend && npm install",
     "build": "cd frontend && npm run build",

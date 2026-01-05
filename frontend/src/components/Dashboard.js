@@ -12,7 +12,7 @@ import {
 import Trends from './Trends';
 import './Dashboard.css';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001/api';
 const COLORS = ['#6366f1', '#8b5cf6', '#ec4899', '#f59e0b', '#10b981', '#3b82f6'];
 
 function Dashboard() {

@@ -63,7 +63,7 @@ function Landing() {
         <nav className="landing-nav">
           <div className="nav-logo">
             <img 
-              src="https://app.writesonic.com/static/media/logo.92827da1.svg" 
+              src="/assets/logo.png" 
               alt="WriteSonic" 
               className="writesonic-logo"
             />
@@ -261,7 +261,7 @@ function Landing() {
         <div className="footer-content">
           <div className="footer-left">
             <img 
-              src="https://app.writesonic.com/static/media/logo.92827da1.svg" 
+              src="/assets/logo.png" 
               alt="WriteSonic" 
               className="footer-logo"
             />

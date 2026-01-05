@@ -1,6 +1,7 @@
 const cron = require('node-cron');
-const trackingQueue = require('../queue/trackingQueue');
+const { queue: trackingQueue, processTracking, isUsingQueue } = require('../queue/trackingQueue');
 const storageService = require('./storageService');
+const aiService = require('./aiService');
 
 class SchedulerService {
   constructor() {
@@ -27,17 +28,32 @@ class SchedulerService {
       console.log(`⏰ Running scheduled tracking for: ${category}`);
       
       try {
-        // Add job to queue
-        const job = await trackingQueue.add({
-          sessionId: `scheduled-${Date.now()}`,
+        const sessionId = `scheduled-${Date.now()}`;
+        const trackingData = {
+          sessionId,
           category,
           brands,
           competitors,
           mode: mode || 'normal',
           scheduled: true
-        });
+        };
 
-        console.log(`✅ Scheduled job ${job.id} added to queue`);
+        if (isUsingQueue() && trackingQueue) {
+          const job = await trackingQueue.add(trackingData);
+          console.log(`✅ Scheduled job ${job.id} added to queue`);
+        } else {
+          // Process directly if queue not available
+          processTracking(trackingData).then((result) => {
+            storageService.saveHistoricalData({
+              category: result.category,
+              brands: result.brands,
+              results: result.results
+            });
+            console.log(`✅ Scheduled tracking completed directly for ${category}`);
+          }).catch((error) => {
+            console.error('Scheduled tracking error:', error);
+          });
+        }
       } catch (error) {
         console.error('Scheduler error:', error);
       }
@@ -70,14 +86,29 @@ class SchedulerService {
     const task = cron.schedule(cronExpression, async () => {
       console.log(`⏰ Running weekly tracking for: ${category}`);
       
-      await trackingQueue.add({
-        sessionId: `scheduled-weekly-${Date.now()}`,
+      const sessionId = `scheduled-weekly-${Date.now()}`;
+      const trackingData = {
+        sessionId,
         category,
         brands,
         competitors,
         mode: mode || 'normal',
         scheduled: true
-      });
+      };
+
+      if (isUsingQueue() && trackingQueue) {
+        await trackingQueue.add(trackingData);
+      } else {
+        processTracking(trackingData).then((result) => {
+          storageService.saveHistoricalData({
+            category: result.category,
+            brands: result.brands,
+            results: result.results
+          });
+        }).catch((error) => {
+          console.error('Scheduled tracking error:', error);
+        });
+      }
     });
 
     this.jobs.set(jobId, task);
@@ -109,14 +140,29 @@ class SchedulerService {
     
     scheduledJobs.forEach(job => {
       const task = cron.schedule(job.cronExpression, async () => {
-        await trackingQueue.add({
-          sessionId: `scheduled-${Date.now()}`,
+        const sessionId = `scheduled-${Date.now()}`;
+        const trackingData = {
+          sessionId,
           category: job.category,
           brands: job.brands,
           competitors: job.competitors,
           mode: job.mode || 'normal',
           scheduled: true
-        });
+        };
+
+        if (isUsingQueue() && trackingQueue) {
+          await trackingQueue.add(trackingData);
+        } else {
+          processTracking(trackingData).then((result) => {
+            storageService.saveHistoricalData({
+              category: result.category,
+              brands: result.brands,
+              results: result.results
+            });
+          }).catch((error) => {
+            console.error('Scheduled tracking error:', error);
+          });
+        }
       });
 
       this.jobs.set(job.id, task);

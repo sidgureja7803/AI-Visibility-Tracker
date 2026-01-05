@@ -77,8 +77,8 @@
 }
 
 .writesonic-logo {
-  height: 28px;
-  filter: none;
+  height: 32px;
+  object-fit: contain;
 }
 
 .nav-divider {
@@ -680,8 +680,8 @@
 }
 
 .footer-logo {
-  height: 26px;
-  filter: none;
+  height: 28px;
+  object-fit: contain;
 }
 
 .footer-text {

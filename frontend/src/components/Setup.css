@@ -308,68 +308,25 @@
   animation: spin 1s linear infinite;
 }
 
-.setup-features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2rem;
+.setup-footer {
   max-width: 1000px;
-  margin: 3rem auto;
+  margin: 0 auto 3rem;
   padding: 0 2rem;
   position: relative;
   z-index: 1;
-}
-
-.feature {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 20px;
-  padding: 2.5rem 2rem;
   text-align: center;
+}
+
+.footer-text {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  line-height: 1.8;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 1.5rem 2rem;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-.feature::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #667eea, #764ba2);
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-}
-
-.feature:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 16px 40px rgba(102, 126, 234, 0.2);
-}
-
-.feature:hover::before {
-  transform: scaleX(1);
-}
-
-.feature-icon {
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
-}
-
-.feature h3 {
-  font-size: 1.125rem;
-  font-weight: 700;
-  margin-bottom: 0.75rem;
-  color: #1f2937;
-}
-
-.feature p {
-  color: #6b7280;
-  font-size: 0.9375rem;
-  line-height: 1.6;
 }
 
 .input-group input,
@@ -441,9 +398,13 @@
     gap: 1rem;
   }
 
-  .setup-features {
-    grid-template-columns: 1fr;
+  .setup-footer {
     padding: 0 1rem;
+  }
+
+  .footer-text {
+    font-size: 0.9375rem;
+    padding: 1.25rem 1.5rem;
   }
 
   .hero-actions-top {

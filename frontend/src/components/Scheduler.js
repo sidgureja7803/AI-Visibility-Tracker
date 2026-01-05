@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Calendar, Clock, Trash2, Plus, ArrowLeft } from 'lucide-react';
 import './Scheduler.css';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001/api';
 
 function Scheduler() {
   const navigate = useNavigate();

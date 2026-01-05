@@ -4,8 +4,7 @@ import axios from 'axios';
 import { Target, TrendingUp, Users, Sparkles, Calendar, ArrowLeft } from 'lucide-react';
 import './Setup.css';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
-
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001/api';
 function Setup({ onSessionCreated }) {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -177,27 +176,11 @@ function Setup({ onSessionCreated }) {
         </form>
       </div>
 
-      <div className="setup-features">
-        <div className="feature">
-          <div className="feature-icon">📊</div>
-          <h3>AI Visibility Score</h3>
-          <p>Track how often your brand appears in AI responses</p>
-        </div>
-        <div className="feature">
-          <div className="feature-icon">🏆</div>
-          <h3>Leaderboard</h3>
-          <p>Compare your visibility against competitors</p>
-        </div>
-        <div className="feature">
-          <div className="feature-icon">💬</div>
-          <h3>Prompt Analysis</h3>
-          <p>See exactly which prompts mention your brand</p>
-        </div>
-        <div className="feature">
-          <div className="feature-icon">🔗</div>
-          <h3>Citation Tracking</h3>
-          <p>Discover which pages AI models cite</p>
-        </div>
+      <div className="setup-footer">
+        <p className="footer-text">
+          After tracking completes, you'll see detailed metrics including visibility scores, 
+          competitive analysis, prompt breakdowns, and citation tracking—all in one dashboard.
+        </p>
       </div>
     </div>
   );

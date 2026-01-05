@@ -4,7 +4,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 import { TrendingUp, Calendar } from 'lucide-react';
 import './Trends.css';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001/api';
 
 function Trends({ category, brand }) {
   const [trendData, setTrendData] = useState(null);
