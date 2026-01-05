@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
-import { Target, TrendingUp, Users, Sparkles, Calendar, ArrowLeft } from 'lucide-react';
+import { Target, TrendingUp, Users, Sparkles, Calendar, ArrowLeft, Check } from 'lucide-react';
 import './Setup.css';
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001/api';
+
 function Setup({ onSessionCreated }) {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -50,141 +51,172 @@ function Setup({ onSessionCreated }) {
 
   return (
     <div className="setup-container">
-      <div className="setup-hero">
-        <div className="hero-actions-top">
-          <Link to="/" className="btn btn-outline">
-            <ArrowLeft size={20} />
-            Back to Home
-          </Link>
-          <Link to="/scheduler" className="btn btn-outline">
-            <Calendar size={20} />
-            Scheduled Tracking
-          </Link>
+      {/* Navigation Header */}
+      <div className="setup-header-nav">
+        <div className="setup-nav-content">
+          <div className="setup-nav-left">
+            <Link to="/" className="setup-nav-logo">
+              <img 
+                src="/assets/logo.png" 
+                alt="WriteSonic" 
+                className="setup-logo-img"
+              />
+              <span className="setup-nav-divider">×</span>
+              <span className="setup-nav-title">AI Visibility Tracker</span>
+            </Link>
+          </div>
+          <div className="setup-nav-right">
+            <Link to="/" className="btn btn-ghost">
+              <ArrowLeft size={18} />
+              Back to Home
+            </Link>
+            <Link to="/scheduler" className="btn btn-outline">
+              <Calendar size={18} />
+              Scheduled Tracking
+            </Link>
+          </div>
         </div>
-        <div className="hero-icon">
-          <Sparkles size={48} />
-        </div>
-        <h1 className="hero-title">AI Visibility Tracker</h1>
-        <p className="hero-subtitle">
-          Track how AI models mention your brand across different prompts and categories
-        </p>
       </div>
 
-      <div className="setup-card">
-        <div className="setup-header">
-          <Target size={32} className="header-icon" />
-          <div>
-            <h2>Configure Your Tracking</h2>
-            <p>Set up a new tracking session to monitor brand visibility in AI responses</p>
+      {/* Main Content */}
+      <div className="setup-main">
+        {/* Hero */}
+        <div className="setup-hero">
+          <div className="setup-hero-badge">
+            <Sparkles size={14} />
+            <span>AI-Powered Brand Tracking</span>
           </div>
+          <h1 className="setup-hero-title">
+            Configure Your Tracking
+          </h1>
+          <p className="setup-hero-subtitle">
+            Set up a new tracking session to monitor how AI models mention your brand 
+            across different prompts and categories
+          </p>
         </div>
 
-        {error && (
-          <div className="error">
-            {error}
-          </div>
-        )}
+        {/* Form Card */}
+        <div className="setup-card">
+          {error && (
+            <div className="error">
+              {error}
+            </div>
+          )}
 
-        <form onSubmit={handleSubmit}>
-          <div className="input-group">
-            <label>
-              <Target size={18} style={{ display: 'inline', marginRight: '0.5rem' }} />
-              Category
-            </label>
-            <input
-              type="text"
-              value={formData.category}
-              onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-              placeholder="e.g., CRM software, project management tools"
-              required
-            />
-            <small>What category of products/services are you tracking?</small>
-          </div>
+          <form onSubmit={handleSubmit} className="setup-form">
+            <div className="input-group">
+              <label>
+                <Target size={18} />
+                Category
+              </label>
+              <input
+                type="text"
+                value={formData.category}
+                onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                placeholder="e.g., CRM software, project management tools"
+                required
+              />
+              <small>What category of products/services are you tracking?</small>
+            </div>
 
-          <div className="input-group">
-            <label>
-              <TrendingUp size={18} style={{ display: 'inline', marginRight: '0.5rem' }} />
-              Your Brands
-            </label>
-            <textarea
-              value={formData.brands}
-              onChange={(e) => setFormData({ ...formData, brands: e.target.value })}
-              placeholder="e.g., Salesforce, HubSpot, Pipedrive"
-              rows="3"
-              required
-            />
-            <small>Enter brand names separated by commas</small>
-          </div>
+            <div className="input-group">
+              <label>
+                <TrendingUp size={18} />
+                Your Brands
+              </label>
+              <textarea
+                value={formData.brands}
+                onChange={(e) => setFormData({ ...formData, brands: e.target.value })}
+                placeholder="e.g., Salesforce, HubSpot, Pipedrive"
+                rows="3"
+                required
+              />
+              <small>Enter brand names separated by commas</small>
+            </div>
 
-          <div className="input-group">
-            <label>
-              <Users size={18} style={{ display: 'inline', marginRight: '0.5rem' }} />
-              Competitor Brands (Optional)
-            </label>
-            <textarea
-              value={formData.competitors}
-              onChange={(e) => setFormData({ ...formData, competitors: e.target.value })}
-              placeholder="e.g., Zoho, Monday.com, Notion"
-              rows="3"
-            />
-            <small>Track competitors to compare visibility</small>
-          </div>
+            <div className="input-group">
+              <label>
+                <Users size={18} />
+                Competitor Brands (Optional)
+              </label>
+              <textarea
+                value={formData.competitors}
+                onChange={(e) => setFormData({ ...formData, competitors: e.target.value })}
+                placeholder="e.g., Zoho, Monday.com, Notion"
+                rows="3"
+              />
+              <small>Track competitors to compare visibility</small>
+            </div>
 
-          <div className="input-group">
-            <label>Tracking Mode</label>
-            <div className="mode-selector">
-              <div 
-                className={`mode-option ${formData.mode === 'normal' ? 'active' : ''}`}
-                onClick={() => setFormData({ ...formData, mode: 'normal' })}
-              >
-                <div className="mode-icon">🎯</div>
-                <div className="mode-info">
-                  <h4>Normal Mode</h4>
-                  <p>Standard tracking from neutral perspective</p>
+            <div className="input-group">
+              <label>Tracking Mode</label>
+              <div className="mode-selector">
+                <div 
+                  className={`mode-option ${formData.mode === 'normal' ? 'active' : ''}`}
+                  onClick={() => setFormData({ ...formData, mode: 'normal' })}
+                >
+                  <div className="mode-option-header">
+                    <span className="mode-icon">🎯</span>
+                    <span className="mode-option-title">Normal Mode</span>
+                  </div>
+                  <p className="mode-option-description">
+                    Standard tracking from neutral perspective
+                  </p>
+                  <div className="mode-check">
+                    <Check size={14} />
+                  </div>
                 </div>
-              </div>
-              <div 
-                className={`mode-option ${formData.mode === 'competitor' ? 'active' : ''}`}
-                onClick={() => setFormData({ ...formData, mode: 'competitor' })}
-              >
-                <div className="mode-icon">🎭</div>
-                <div className="mode-info">
-                  <h4>Competitor Mode</h4>
-                  <p>See results from competitor's perspective</p>
+
+                <div 
+                  className={`mode-option ${formData.mode === 'competitor' ? 'active' : ''}`}
+                  onClick={() => setFormData({ ...formData, mode: 'competitor' })}
+                >
+                  <div className="mode-option-header">
+                    <span className="mode-icon">🎭</span>
+                    <span className="mode-option-title">Competitor Mode</span>
+                  </div>
+                  <p className="mode-option-description">
+                    See results from competitor's perspective
+                  </p>
+                  <div className="mode-check">
+                    <Check size={14} />
+                  </div>
                 </div>
               </div>
             </div>
+
+            <button 
+              type="submit" 
+              className="submit-button"
+              disabled={loading}
+            >
+              {loading ? (
+                <>
+                  <div className="spinner-small"></div>
+                  Processing...
+                </>
+              ) : (
+                <>
+                  <Sparkles size={20} />
+                  Start Tracking
+                </>
+              )}
+            </button>
+          </form>
+        </div>
+
+        {/* Footer Info */}
+        <div className="setup-footer">
+          <div className="setup-footer-card">
+            <p className="setup-footer-text">
+              After tracking completes, you'll see detailed metrics including visibility scores, 
+              competitive analysis, prompt breakdowns, and citation tracking—all in one comprehensive dashboard.
+            </p>
           </div>
-
-          <button 
-            type="submit" 
-            className="btn btn-primary btn-large"
-            disabled={loading}
-          >
-            {loading ? (
-              <>
-                <div className="spinner-small"></div>
-                Processing...
-              </>
-            ) : (
-              <>
-                <Sparkles size={20} />
-                Start Tracking
-              </>
-            )}
-          </button>
-        </form>
-      </div>
-
-      <div className="setup-footer">
-        <p className="footer-text">
-          After tracking completes, you'll see detailed metrics including visibility scores, 
-          competitive analysis, prompt breakdowns, and citation tracking—all in one dashboard.
-        </p>
+        </div>
       </div>
     </div>
   );
 }
 
 export default Setup;
-

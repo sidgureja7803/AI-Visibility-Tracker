@@ -1,59 +1,178 @@
 .trends-container {
-  margin-top: 2rem;
+  margin-top: 3rem;
 }
 
-.days-selector {
+.trends-card {
+  background: white;
+  border: 1.5px solid var(--neutral-200);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.trends-header {
   display: flex;
-  gap: 0.5rem;
-}
-
-.days-selector .btn {
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-}
-
-.trends-stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 2rem;
 }
 
-.trend-stat {
-  background: var(--gray-lighter);
-  padding: 1.5rem;
-  border-radius: 12px;
-  text-align: center;
+.trends-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--neutral-900);
 }
 
-.chart-container {
-  margin-bottom: 3rem;
+.trends-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary-50);
+  border-radius: var(--radius-md);
+  color: var(--primary-500);
 }
 
-.chart-container h4 {
-  font-size: 1.125rem;
+.trends-controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.trends-period-selector {
+  display: flex;
+  gap: 0.5rem;
+  background: var(--neutral-100);
+  padding: 0.375rem;
+  border-radius: var(--radius-md);
+}
+
+.period-button {
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
   font-weight: 600;
-  color: var(--dark);
-  margin-bottom: 1.5rem;
+  color: var(--neutral-600);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  font-family: inherit;
 }
 
-.no-data {
+.period-button:hover {
+  color: var(--neutral-900);
+}
+
+.period-button.active {
+  background: white;
+  color: var(--primary-600);
+  box-shadow: var(--shadow-sm);
+}
+
+.brand-select {
+  padding: 0.625rem 1rem;
+  border: 1.5px solid var(--neutral-200);
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--neutral-700);
+  background: white;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  font-family: inherit;
+}
+
+.brand-select:focus {
+  outline: none;
+  border-color: var(--primary-500);
+  box-shadow: 0 0 0 3px var(--primary-50);
+}
+
+.trends-chart {
+  min-height: 400px;
+}
+
+.trends-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 1rem;
+}
+
+.trends-loading-text {
+  font-size: 1rem;
+  color: var(--neutral-600);
+}
+
+.trends-error {
   text-align: center;
   padding: 3rem;
-  color: var(--gray);
+  color: var(--error);
 }
 
-.no-data p {
+.trends-empty {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.trends-empty-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--neutral-100);
+  border-radius: 50%;
+  color: var(--neutral-400);
+}
+
+.trends-empty-title {
   font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--neutral-900);
+  margin-bottom: 0.5rem;
 }
 
+.trends-empty-description {
+  font-size: 0.9375rem;
+  color: var(--neutral-600);
+  line-height: 1.6;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .days-selector {
+  .trends-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .trends-controls {
+    width: 100%;
     flex-direction: column;
   }
 
-  .chart-container {
-    margin-bottom: 2rem;
+  .trends-period-selector {
+    width: 100%;
+  }
+
+  .period-button {
+    flex: 1;
+  }
+
+  .brand-select {
+    width: 100%;
+  }
+
+  .trends-card {
+    padding: 1.5rem;
   }
 }
-

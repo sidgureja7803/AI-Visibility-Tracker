@@ -1,150 +1,234 @@
 .scheduler-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
+  min-height: 100vh;
+  background: var(--neutral-50);
 }
 
-.schedule-form {
-  background: var(--gray-lighter);
-  padding: 2rem;
-  border-radius: 12px;
+/* Header */
+.scheduler-header {
+  background: white;
+  border-bottom: 1.5px solid var(--neutral-200);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.scheduler-nav {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.25rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.scheduler-nav-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--neutral-900);
+}
+
+/* Main Content */
+.scheduler-main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.scheduler-hero {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.scheduler-title {
+  font-size: 2.75rem;
+  font-weight: 800;
+  color: var(--neutral-900);
+  margin-bottom: 1rem;
+  letter-spacing: -0.03em;
+}
+
+.scheduler-subtitle {
+  font-size: 1.125rem;
+  color: var(--neutral-600);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Grid Layout */
+.scheduler-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* Form Card */
+.scheduler-form-card {
+  background: white;
+  border: 1.5px solid var(--neutral-200);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 100px;
+}
+
+.form-card-header {
   margin-bottom: 2rem;
 }
 
-.schedule-form h3 {
-  font-size: 1.25rem;
+.form-card-title {
+  font-size: 1.375rem;
   font-weight: 700;
-  color: var(--dark);
+  color: var(--neutral-900);
+  margin-bottom: 0.5rem;
+}
+
+.form-card-description {
+  font-size: 0.9375rem;
+  color: var(--neutral-600);
+  line-height: 1.6;
+}
+
+/* Jobs List */
+.scheduler-jobs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.jobs-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 1.5rem;
 }
 
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.jobs-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--neutral-900);
+}
+
+.job-card {
+  background: white;
+  border: 1.5px solid var(--neutral-200);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  transition: all var(--transition-base);
+}
+
+.job-card:hover {
+  border-color: var(--primary-200);
+  box-shadow: var(--shadow-md);
+}
+
+.job-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
   gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-.form-actions {
-  display: flex;
-  gap: 1rem;
-  justify-content: flex-end;
-  margin-top: 1.5rem;
-}
-
-.schedules-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.schedule-item {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  padding: 1.5rem;
-  border: 2px solid var(--gray-lighter);
-  border-radius: 12px;
-  transition: all 0.3s ease;
-}
-
-.schedule-item:hover {
-  border-color: var(--primary);
-  box-shadow: var(--shadow);
-}
-
-.schedule-icon {
-  width: 60px;
-  height: 60px;
-  background: var(--primary);
-  color: white;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.schedule-info {
+.job-info {
   flex: 1;
 }
 
-.schedule-info h4 {
+.job-category {
   font-size: 1.125rem;
   font-weight: 700;
-  color: var(--dark);
+  color: var(--neutral-900);
   margin-bottom: 0.5rem;
 }
 
-.schedule-info p {
-  color: var(--gray);
+.job-schedule {
   font-size: 0.875rem;
-  margin-bottom: 0.75rem;
+  color: var(--neutral-600);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.schedule-meta {
+.job-details {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
-  align-items: center;
-  font-size: 0.875rem;
-  color: var(--gray);
-}
-
-.btn-icon-danger {
-  width: 40px;
-  height: 40px;
-  border: none;
-  background: #fee2e2;
-  color: #dc2626;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.btn-icon-danger:hover {
-  background: #dc2626;
-  color: white;
-}
-
-.no-schedules {
-  text-align: center;
-  padding: 4rem 2rem;
-  color: var(--gray);
-}
-
-.no-schedules svg {
-  color: var(--gray-light);
   margin-bottom: 1rem;
 }
 
-.no-schedules p {
-  font-size: 1.125rem;
+.job-detail {
+  font-size: 0.875rem;
+  color: var(--neutral-600);
+}
+
+.job-detail strong {
+  color: var(--neutral-900);
+  font-weight: 600;
+}
+
+.job-brands {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: white;
+  border: 1.5px solid var(--neutral-200);
+  border-radius: var(--radius-xl);
+}
+
+.empty-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--neutral-100);
+  border-radius: 50%;
+  color: var(--neutral-400);
+}
+
+.empty-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--neutral-900);
   margin-bottom: 0.5rem;
 }
 
-.no-schedules .hint {
-  font-size: 0.875rem;
-  color: var(--gray);
+.empty-description {
+  font-size: 0.9375rem;
+  color: var(--neutral-600);
+  line-height: 1.6;
 }
 
-@media (max-width: 768px) {
-  .scheduler-container {
-    padding: 1rem;
-  }
-
-  .form-row {
+/* Responsive */
+@media (max-width: 1024px) {
+  .scheduler-grid {
     grid-template-columns: 1fr;
   }
 
-  .schedule-item {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .btn-icon-danger {
-    align-self: flex-end;
+  .scheduler-form-card {
+    position: static;
   }
 }
 
+@media (max-width: 768px) {
+  .scheduler-main {
+    padding: 2rem 1.5rem;
+  }
+
+  .scheduler-title {
+    font-size: 2rem;
+  }
+
+  .scheduler-nav {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+}

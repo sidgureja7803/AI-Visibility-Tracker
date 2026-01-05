@@ -143,94 +143,114 @@ function Landing() {
         </div>
 
         <div className="steps-container">
-          <div className="step-item">
+          <div className="step-card">
             <div className="step-number">1</div>
-            <div className="step-content">
-              <h3>Configure Your Tracking</h3>
-              <p>Enter your category, brands, and competitors. Choose between normal or competitor impersonation mode.</p>
-            </div>
+            <h3 className="step-title">Configure Your Tracking</h3>
+            <p className="step-description">
+              Enter your category, brands, and competitors. Choose between normal or competitor impersonation mode.
+            </p>
           </div>
 
-          <div className="step-arrow">→</div>
-
-          <div className="step-item">
+          <div className="step-card">
             <div className="step-number">2</div>
-            <div className="step-content">
-              <h3>AI Analysis</h3>
-              <p>Our system generates relevant prompts and queries GPT-4 to analyze brand mentions across responses.</p>
-            </div>
+            <h3 className="step-title">AI Analysis</h3>
+            <p className="step-description">
+              Our system generates relevant prompts and queries GPT-4 to analyze brand mentions across responses.
+            </p>
           </div>
 
-          <div className="step-arrow">→</div>
-
-          <div className="step-item">
+          <div className="step-card">
             <div className="step-number">3</div>
-            <div className="step-content">
-              <h3>Get Insights</h3>
-              <p>View comprehensive dashboards with visibility scores, leaderboards, trends, and actionable insights.</p>
-            </div>
+            <h3 className="step-title">Get Insights</h3>
+            <p className="step-description">
+              View comprehensive dashboards with visibility scores, leaderboards, trends, and actionable insights.
+            </p>
+          </div>
+
+          <div className="step-card">
+            <div className="step-number">4</div>
+            <h3 className="step-title">Take Action</h3>
+            <p className="step-description">
+              Use insights to optimize your content strategy and improve your AI visibility over time.
+            </p>
           </div>
         </div>
       </div>
 
       {/* Benefits Section */}
       <div className="benefits-section">
-        <div className="benefits-content">
-          <h2 className="section-title">Why AI Visibility Matters</h2>
-          <div className="benefits-list">
+        <div className="benefits-grid">
+          <div className="benefits-content">
+            <h2 className="section-title">Why AI Visibility Matters</h2>
             <div className="benefit-item">
-              <CheckCircle className="benefit-icon" />
+              <div className="benefit-icon">
+                <CheckCircle size={24} />
+              </div>
               <div>
-                <h4>Stay Ahead of Competition</h4>
-                <p>Know exactly how your competitors are mentioned in AI responses</p>
+                <h4 className="benefit-title">Stay Ahead of Competition</h4>
+                <p className="benefit-description">
+                  Know exactly how your competitors are mentioned in AI responses
+                </p>
               </div>
             </div>
             <div className="benefit-item">
-              <CheckCircle className="benefit-icon" />
+              <div className="benefit-icon">
+                <CheckCircle size={24} />
+              </div>
               <div>
-                <h4>Optimize Your Content</h4>
-                <p>Understand which contexts and prompts your brand appears in</p>
+                <h4 className="benefit-title">Optimize Your Content</h4>
+                <p className="benefit-description">
+                  Understand which contexts and prompts your brand appears in
+                </p>
               </div>
             </div>
             <div className="benefit-item">
-              <CheckCircle className="benefit-icon" />
+              <div className="benefit-icon">
+                <CheckCircle size={24} />
+              </div>
               <div>
-                <h4>Track Your Progress</h4>
-                <p>Monitor visibility trends over time with historical data</p>
+                <h4 className="benefit-title">Track Your Progress</h4>
+                <p className="benefit-description">
+                  Monitor visibility trends over time with historical data
+                </p>
               </div>
             </div>
             <div className="benefit-item">
-              <CheckCircle className="benefit-icon" />
+              <div className="benefit-icon">
+                <CheckCircle size={24} />
+              </div>
               <div>
-                <h4>Automate Monitoring</h4>
-                <p>Set up scheduled tracking to get regular visibility reports</p>
+                <h4 className="benefit-title">Automate Monitoring</h4>
+                <p className="benefit-description">
+                  Set up scheduled tracking to get regular visibility reports
+                </p>
               </div>
             </div>
           </div>
-        </div>
 
-        <div className="benefits-visual">
-          <div className="visual-card">
-            <div className="visual-header">
-              <TrendingUp size={24} />
-              <span>Your Brand Visibility</span>
-            </div>
-            <div className="visual-chart">
-              <div className="chart-bar" style={{ height: '60%', background: '#6366f1' }}>
-                <span className="bar-label">You</span>
+          <div className="benefits-visual">
+            <div className="visual-card">
+              <div className="visual-header">
+                <TrendingUp size={24} />
+                <span>Your Brand Visibility</span>
               </div>
-              <div className="chart-bar" style={{ height: '85%', background: '#8b5cf6' }}>
-                <span className="bar-label">Top Competitor</span>
+              <div className="visual-chart">
+                <div className="chart-bar" style={{ height: '60%', background: '#5B7BFF' }}>
+                  <span className="bar-label">You</span>
+                </div>
+                <div className="chart-bar" style={{ height: '85%', background: '#7a9aff' }}>
+                  <span className="bar-label">Leader</span>
+                </div>
+                <div className="chart-bar" style={{ height: '45%', background: '#a4bfff' }}>
+                  <span className="bar-label">Comp 2</span>
+                </div>
+                <div className="chart-bar" style={{ height: '30%', background: '#c7d9ff' }}>
+                  <span className="bar-label">Comp 3</span>
+                </div>
               </div>
-              <div className="chart-bar" style={{ height: '45%', background: '#ec4899' }}>
-                <span className="bar-label">Competitor 2</span>
+              <div className="visual-footer">
+                Track your position vs competitors
               </div>
-              <div className="chart-bar" style={{ height: '30%', background: '#f59e0b' }}>
-                <span className="bar-label">Competitor 3</span>
-              </div>
-            </div>
-            <div className="visual-footer">
-              Track your position vs competitors
             </div>
           </div>
         </div>
@@ -259,17 +279,12 @@ function Landing() {
       {/* Footer */}
       <footer className="landing-footer">
         <div className="footer-content">
-          <div className="footer-left">
-            <img 
-              src="/assets/logo.png" 
-              alt="WriteSonic" 
-              className="footer-logo"
-            />
-            <p className="footer-text">AI Visibility Tracker by WriteSonic</p>
-          </div>
-          <div className="footer-right">
-            <p className="footer-credit">Built for the WriteSonic Engineering Challenge</p>
-          </div>
+          <p className="footer-text">
+            AI Visibility Tracker • Built for the WriteSonic Engineering Challenge
+          </p>
+          <p className="footer-text">
+            © 2026 WriteSonic. All rights reserved.
+          </p>
         </div>
       </footer>
     </div>
