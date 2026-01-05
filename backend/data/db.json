@@ -1024,6 +1024,286 @@
       "progress": 100,
       "updatedAt": "2026-01-05T17:49:55.183Z",
       "completedAt": "2026-01-05T17:49:55.183Z"
+    },
+    {
+      "id": "5a2055da-37c2-45cf-820f-45308605f7ee",
+      "category": "CRM software",
+      "brands": [
+        "Salesforce"
+      ],
+      "competitors": [
+        "Zoho",
+        "Zendesk Sell",
+        "Pipedrive"
+      ],
+      "mode": "competitor",
+      "createdAt": "2026-01-05T18:01:50.117Z",
+      "status": "completed",
+      "results": {
+        "promptResults": [
+          {
+            "prompt": "From the perspective of someone who works at Zoho, Which CRM software is best suited for a small sales team of 5 people with a focus on lead management?",
+            "answer": "As an AI assistant, I can provide an unbiased perspective on CRM software options for a small sales team like yours with a focus on lead management. While I don't have a specific affiliation with Zoho, I can suggest considering Zoho CRM for your team's needs. Zoho CRM offers features that cater well to small sales teams, including lead management, contact management, sales pipeline tracking, and automation capabilities.\n\nAlternatively, you may also want to consider HubSpot CRM. HubSpot CRM is known for its user-friendly interface and robust lead management tools. It offers features such as contact management, email tracking, lead scoring, and integration with HubSpot's marketing tools.\n\nTo make an informed decision, you can sign up for free trials of both Zoho CRM and HubSpot CRM to see which platform aligns better with your team's workflow and requirements. You can explore the features, customization options, ease of use, and integrations with other tools that are important for your team's sales processes.\n\nUltimately, the best CRM software for your small sales team will depend on factors such as budget, specific requirements, ease of use, and scalability. It's essential to choose a CRM system that not only meets your current needs but also supports your team's growth in the future.",
+            "mentions": [
+              {
+                "brand": "Zoho",
+                "count": 4,
+                "contexts": [
+                  "While I don't have a specific affiliation with Zoho, I can suggest considering Zoho CRM for your team's needs",
+                  "Zoho CRM offers features that cater well to small sales teams, including lead management, contact management, sales pipeline tracking, and automation capabilities",
+                  "To make an informed decision, you can sign up for free trials of both Zoho CRM and HubSpot CRM to see which platform aligns better with your team's workflow and requirements"
+                ],
+                "citations": [
+                  "Documentation",
+                  "Official Website"
+                ],
+                "position": 196
+              }
+            ],
+            "timestamp": "2026-01-05T18:01:56.257Z",
+            "mode": "competitor"
+          },
+          {
+            "prompt": "From the perspective of someone who works at Zoho, Can you compare the pricing and integration capabilities of popular CRM software options for a medium-sized marketing team?",
+            "answer": "Certainly! As an AI assistant, I can provide an unbiased comparison of popular CRM software options for a medium-sized marketing team, including Zoho CRM.\n\n1. **Zoho CRM**:\n   - **Pricing**: Zoho CRM offers a range of pricing plans, starting from the free edition for up to 3 users, which is great for small teams. The paid plans, such as the Standard, Professional, and Enterprise editions, offer more features and are priced competitively for medium-sized teams.\n   - **Integration capabilities**: Zoho CRM integrates seamlessly with a wide range of third-party applications and tools such as Google Workspace, Mailchimp, Slack, and more. Zoho also has its suite of products like Zoho Campaigns for email marketing, Zoho SalesIQ for live chat, and Zoho Desk for customer support, which can be easily integrated with Zoho CRM for a comprehensive solution.\n\n2. **Salesforce CRM**:\n   - **Pricing**: Salesforce CRM is known for being on the higher end of the pricing spectrum, which might be a consideration for medium-sized teams. They offer various editions like Essentials, Professional, Enterprise, and Unlimited, with each providing different features and pricing tiers.\n   - **Integration capabilities**: Salesforce CRM has a vast ecosystem of third-party integrations available on the Salesforce AppExchange. It integrates well with tools like Microsoft Outlook, Mailchimp, Slack, and many more. Salesforce also offers additional products like Salesforce Marketing Cloud for marketing automation and Salesforce Service Cloud for customer service.\n\n3. **HubSpot CRM**:\n   - **Pricing**: HubSpot CRM offers a free version that includes basic CRM features, which can be beneficial for medium-sized teams looking to start with a cost-effective solution. Their paid Marketing Hub, Sales Hub, and Service Hub provide more advanced features at different pricing levels.\n   - **Integration capabilities**: HubSpot CRM integrates smoothly with various tools like Gmail, Outlook, Mailchimp, and more. HubSpot also offers a suite of marketing, sales, and service tools that can be seamlessly integrated with their CRM for a complete solution.\n\nIn conclusion, for a medium-sized marketing team, Zoho CRM could be a strong contender due to its competitive pricing, comprehensive features, and seamless integration capabilities with a variety of tools. However, it's essential to evaluate the specific needs and budget of your team to determine which CRM solution aligns best with your requirements.",
+            "mentions": [
+              {
+                "brand": "Zoho",
+                "count": 10,
+                "contexts": [
+                  "As an AI assistant, I can provide an unbiased comparison of popular CRM software options for a medium-sized marketing team, including Zoho CRM",
+                  "**Zoho CRM**:\n   - **Pricing**: Zoho CRM offers a range of pricing plans, starting from the free edition for up to 3 users, which is great for small teams",
+                  "- **Integration capabilities**: Zoho CRM integrates seamlessly with a wide range of third-party applications and tools such as Google Workspace, Mailchimp, Slack, and more"
+                ],
+                "citations": [
+                  "Documentation",
+                  "Official Website"
+                ],
+                "position": 145
+              },
+              {
+                "brand": "Salesforce",
+                "count": 7,
+                "contexts": [
+                  "**Salesforce CRM**:\n   - **Pricing**: Salesforce CRM is known for being on the higher end of the pricing spectrum, which might be a consideration for medium-sized teams",
+                  "- **Integration capabilities**: Salesforce CRM has a vast ecosystem of third-party integrations available on the Salesforce AppExchange",
+                  "Salesforce also offers additional products like Salesforce Marketing Cloud for marketing automation and Salesforce Service Cloud for customer service"
+                ],
+                "citations": [
+                  "Documentation",
+                  "Official Website"
+                ],
+                "position": 863
+              }
+            ],
+            "timestamp": "2026-01-05T18:02:04.099Z",
+            "mode": "competitor"
+          },
+          {
+            "prompt": "From the perspective of someone who works at Zoho, I'm looking for CRM software that offers seamless integration with our existing email marketing platform. Any recommendations for a team of 10?",
+            "answer": "As someone from Zoho, you may already be familiar with **Zoho CRM**, which is a robust customer relationship management software that offers seamless integration with various Zoho applications, including Zoho Campaigns for email marketing. Zoho CRM provides features like lead management, sales pipeline tracking, and customer support automation.\n\nHowever, if you are looking to explore other options that offer seamless integration with your existing email marketing platform, you may want to consider **HubSpot CRM**. HubSpot CRM is known for its user-friendly interface, robust email marketing tools, and seamless integration with HubSpot's marketing automation platform. HubSpot CRM is ideal for small teams and offers features like contact management, email tracking, and deal pipeline management.\n\nAnother option to consider is **Salesforce CRM**. Salesforce is a market leader in CRM software and offers powerful integration capabilities with various email marketing platforms. Salesforce CRM provides extensive customization options, advanced reporting features, and a wide range of third-party integrations. It is suitable for teams of all sizes and offers scalability as your business grows.\n\nIn conclusion, while Zoho CRM is a great choice for seamless integration with Zoho Campaigns, considering options like HubSpot CRM and Salesforce CRM may provide you with additional features and flexibility for your team of 10. You can further explore these options on the respective websites:\n\n- [Zoho CRM](www.zoho.com/crm)\n- [HubSpot CRM](www.hubspot.com/products/crm)\n- [Salesforce CRM](www.salesforce.com/products/sales-cloud/salesforce-crm)",
+            "mentions": [
+              {
+                "brand": "Zoho",
+                "count": 9,
+                "contexts": [
+                  "As someone from Zoho, you may already be familiar with **Zoho CRM**, which is a robust customer relationship management software that offers seamless integration with various Zoho applications, including Zoho Campaigns for email marketing",
+                  "Zoho CRM provides features like lead management, sales pipeline tracking, and customer support automation",
+                  "In conclusion, while Zoho CRM is a great choice for seamless integration with Zoho Campaigns, considering options like HubSpot CRM and Salesforce CRM may provide you with additional features and flexibility for your team of 10"
+                ],
+                "citations": [
+                  "Documentation",
+                  "Official Website"
+                ],
+                "position": 16
+              },
+              {
+                "brand": "Salesforce",
+                "count": 7,
+                "contexts": [
+                  "Another option to consider is **Salesforce CRM**",
+                  "Salesforce is a market leader in CRM software and offers powerful integration capabilities with various email marketing platforms",
+                  "Salesforce CRM provides extensive customization options, advanced reporting features, and a wide range of third-party integrations"
+                ],
+                "citations": [
+                  "Documentation",
+                  "Official Website"
+                ],
+                "position": 836
+              }
+            ],
+            "timestamp": "2026-01-05T18:02:07.343Z",
+            "mode": "competitor"
+          },
+          {
+            "prompt": "From the perspective of someone who works at Zoho, What are some user-friendly CRM software options that provide robust reporting features for a growing customer service team?",
+            "answer": "As someone from Zoho, I can recommend some user-friendly CRM software options that offer robust reporting features for a growing customer service team:\n\n1. **Zoho CRM**: Zoho CRM is a comprehensive solution that offers advanced reporting and analytics features, allowing you to track and measure key metrics related to customer service performance. With customizable dashboards, real-time reports, and AI-powered analytics, Zoho CRM can help your team make data-driven decisions to enhance customer service operations. You can also integrate Zoho CRM with other Zoho applications for a seamless workflow.\n\n2. **Salesforce CRM**: Salesforce CRM is a popular choice known for its powerful reporting capabilities. It offers a wide range of standard and customizable reports, as well as dashboards that provide insights into customer interactions, performance metrics, and more. Salesforce also offers AI-driven analytics through Einstein Analytics, enabling predictive insights and data visualization for informed decision-making.\n\n3. **HubSpot CRM**: HubSpot CRM is a user-friendly option that provides robust reporting features. With HubSpot's reporting dashboard, you can track key metrics such as customer interactions, sales performance, and customer service responses. HubSpot CRM also offers integration with HubSpot's marketing and sales tools, providing a holistic view of customer interactions across different touchpoints.\n\n4. **Freshworks CRM**: Freshworks CRM is another CRM software that offers intuitive reporting features for customer service teams. With Freshworks CRM, you can create custom reports, track customer engagements, and monitor team performance. The platform also provides AI-powered insights to help you identify trends and optimize customer service strategies.\n\nWhen choosing a CRM software for your growing customer service team, consider factors such as ease of use, scalability, integration capabilities, and pricing. I recommend exploring demos and trial versions of these CRM options to see which one best fits your team's needs and preferences.\n\nFor more information on each CRM software mentioned, you can visit the following links:\n- [Zoho CRM](https://www.zoho.com/crm/)\n- [Salesforce CRM](https://www.salesforce.com/products/sales-cloud/salesforce-crm/)\n- [HubSpot CRM](https://www.hubspot.com/products/crm)\n- [Freshworks CRM](https://www.freshworks.com/crm/)",
+            "mentions": [
+              {
+                "brand": "Zoho",
+                "count": 8,
+                "contexts": [
+                  "As someone from Zoho, I can recommend some user-friendly CRM software options that offer robust reporting features for a growing customer service team:\n\n1",
+                  "**Zoho CRM**: Zoho CRM is a comprehensive solution that offers advanced reporting and analytics features, allowing you to track and measure key metrics related to customer service performance",
+                  "With customizable dashboards, real-time reports, and AI-powered analytics, Zoho CRM can help your team make data-driven decisions to enhance customer service operations"
+                ],
+                "citations": [
+                  "https://www"
+                ],
+                "position": 16
+              },
+              {
+                "brand": "Salesforce",
+                "count": 6,
+                "contexts": [
+                  "**Salesforce CRM**: Salesforce CRM is a popular choice known for its powerful reporting capabilities",
+                  "Salesforce also offers AI-driven analytics through Einstein Analytics, enabling predictive insights and data visualization for informed decision-making",
+                  "com/crm/)\n- [Salesforce CRM](https://www"
+                ],
+                "citations": [
+                  "https://www",
+                  "https://www"
+                ],
+                "position": 611
+              }
+            ],
+            "timestamp": "2026-01-05T18:02:11.256Z",
+            "mode": "competitor"
+          },
+          {
+            "prompt": "From the perspective of someone who works at Zoho, How can I solve the challenge of finding CRM software that is customizable and scalable to support a large enterprise sales force?",
+            "answer": "When looking for CRM software that is customizable and scalable to support a large enterprise sales force, Zoho offers a robust solution that can meet your needs. As you work at Zoho, you are already familiar with the range of features and capabilities that Zoho CRM offers. Here are some specific ways in which Zoho CRM can help address your challenge:\n\n1. **Customizability**: Zoho CRM provides extensive customization options that allow you to tailor the CRM system to your specific business processes. You can create custom fields, modules, workflows, and even custom functions using Deluge scripting. This level of customization ensures that the CRM system aligns perfectly with your enterprise sales force's requirements.\n\n2. **Scalability**: Zoho CRM is highly scalable and can grow with your business. Whether you have a small team that is expanding rapidly or a large enterprise sales force, Zoho CRM can handle the increasing volume of data and users. With features like Territory Management, Forecasting, and Advanced Analytics, Zoho CRM can support the needs of a growing sales force.\n\n3. **Integration**: Zoho CRM integrates seamlessly with other Zoho applications as well as third-party software through APIs. This allows you to create a unified system by connecting CRM with other tools like Zoho Desk for customer support, Zoho Campaigns for email marketing, or any other business-critical applications your enterprise uses.\n\n4. **Automation**: Zoho CRM offers powerful automation features through workflows, macros, and Blueprint that can streamline your sales processes and reduce manual tasks. Automation is essential for large sales forces to ensure efficiency and consistency in their operations.\n\n5. **Security**: Zoho CRM prioritizes data security and compliance with features like role-based access control, encryption, audit logs, and compliance with data protection regulations like GDPR. This is crucial for large enterprises dealing with sensitive customer data.\n\nGiven your familiarity with Zoho CRM and the alignment of its features with the needs of a large enterprise sales force, I would recommend leveraging Zoho CRM for your organization. You can explore more about Zoho CRM's features and capabilities on the official website: [Zoho CRM Features](https://www.zoho.com/crm/features.html). Feel free to reach out to the Zoho CRM support team or access the resources available for Zoho users within the Zoho ecosystem for further assistance in optimizing the CRM for your enterprise sales force.",
+            "mentions": [
+              {
+                "brand": "Zoho",
+                "count": 22,
+                "contexts": [
+                  "When looking for CRM software that is customizable and scalable to support a large enterprise sales force, Zoho offers a robust solution that can meet your needs",
+                  "As you work at Zoho, you are already familiar with the range of features and capabilities that Zoho CRM offers",
+                  "Here are some specific ways in which Zoho CRM can help address your challenge:\n\n1"
+                ],
+                "citations": [
+                  "https://www"
+                ],
+                "position": 107
+              }
+            ],
+            "timestamp": "2026-01-05T18:02:15.537Z",
+            "mode": "competitor"
+          }
+        ],
+        "brandStats": {
+          "Salesforce": {
+            "totalMentions": 20,
+            "totalPrompts": 5,
+            "mentionedInPrompts": [
+              "From the perspective of someone who works at Zoho, Can you compare the pricing and integration capabilities of popular CRM software options for a medium-sized marketing team?",
+              "From the perspective of someone who works at Zoho, I'm looking for CRM software that offers seamless integration with our existing email marketing platform. Any recommendations for a team of 10?",
+              "From the perspective of someone who works at Zoho, What are some user-friendly CRM software options that provide robust reporting features for a growing customer service team?"
+            ],
+            "missingInPrompts": [
+              "From the perspective of someone who works at Zoho, Which CRM software is best suited for a small sales team of 5 people with a focus on lead management?",
+              "From the perspective of someone who works at Zoho, How can I solve the challenge of finding CRM software that is customizable and scalable to support a large enterprise sales force?"
+            ],
+            "contexts": [
+              "**Salesforce CRM**:\n   - **Pricing**: Salesforce CRM is known for being on the higher end of the pricing spectrum, which might be a consideration for medium-sized teams",
+              "- **Integration capabilities**: Salesforce CRM has a vast ecosystem of third-party integrations available on the Salesforce AppExchange",
+              "Salesforce also offers additional products like Salesforce Marketing Cloud for marketing automation and Salesforce Service Cloud for customer service",
+              "Another option to consider is **Salesforce CRM**",
+              "Salesforce is a market leader in CRM software and offers powerful integration capabilities with various email marketing platforms",
+              "Salesforce CRM provides extensive customization options, advanced reporting features, and a wide range of third-party integrations",
+              "**Salesforce CRM**: Salesforce CRM is a popular choice known for its powerful reporting capabilities",
+              "Salesforce also offers AI-driven analytics through Einstein Analytics, enabling predictive insights and data visualization for informed decision-making",
+              "com/crm/)\n- [Salesforce CRM](https://www"
+            ],
+            "citedPages": [
+              "Documentation",
+              "Official Website",
+              "https://www"
+            ],
+            "citationShare": "27.40",
+            "visibilityScore": "60.00"
+          },
+          "Zoho": {
+            "totalMentions": 53,
+            "totalPrompts": 5,
+            "mentionedInPrompts": [
+              "From the perspective of someone who works at Zoho, Which CRM software is best suited for a small sales team of 5 people with a focus on lead management?",
+              "From the perspective of someone who works at Zoho, Can you compare the pricing and integration capabilities of popular CRM software options for a medium-sized marketing team?",
+              "From the perspective of someone who works at Zoho, I'm looking for CRM software that offers seamless integration with our existing email marketing platform. Any recommendations for a team of 10?",
+              "From the perspective of someone who works at Zoho, What are some user-friendly CRM software options that provide robust reporting features for a growing customer service team?",
+              "From the perspective of someone who works at Zoho, How can I solve the challenge of finding CRM software that is customizable and scalable to support a large enterprise sales force?"
+            ],
+            "missingInPrompts": [],
+            "contexts": [
+              "While I don't have a specific affiliation with Zoho, I can suggest considering Zoho CRM for your team's needs",
+              "Zoho CRM offers features that cater well to small sales teams, including lead management, contact management, sales pipeline tracking, and automation capabilities",
+              "To make an informed decision, you can sign up for free trials of both Zoho CRM and HubSpot CRM to see which platform aligns better with your team's workflow and requirements",
+              "As an AI assistant, I can provide an unbiased comparison of popular CRM software options for a medium-sized marketing team, including Zoho CRM",
+              "**Zoho CRM**:\n   - **Pricing**: Zoho CRM offers a range of pricing plans, starting from the free edition for up to 3 users, which is great for small teams",
+              "- **Integration capabilities**: Zoho CRM integrates seamlessly with a wide range of third-party applications and tools such as Google Workspace, Mailchimp, Slack, and more",
+              "As someone from Zoho, you may already be familiar with **Zoho CRM**, which is a robust customer relationship management software that offers seamless integration with various Zoho applications, including Zoho Campaigns for email marketing",
+              "Zoho CRM provides features like lead management, sales pipeline tracking, and customer support automation",
+              "In conclusion, while Zoho CRM is a great choice for seamless integration with Zoho Campaigns, considering options like HubSpot CRM and Salesforce CRM may provide you with additional features and flexibility for your team of 10",
+              "As someone from Zoho, I can recommend some user-friendly CRM software options that offer robust reporting features for a growing customer service team:\n\n1",
+              "**Zoho CRM**: Zoho CRM is a comprehensive solution that offers advanced reporting and analytics features, allowing you to track and measure key metrics related to customer service performance",
+              "With customizable dashboards, real-time reports, and AI-powered analytics, Zoho CRM can help your team make data-driven decisions to enhance customer service operations",
+              "When looking for CRM software that is customizable and scalable to support a large enterprise sales force, Zoho offers a robust solution that can meet your needs",
+              "As you work at Zoho, you are already familiar with the range of features and capabilities that Zoho CRM offers",
+              "Here are some specific ways in which Zoho CRM can help address your challenge:\n\n1"
+            ],
+            "citedPages": [
+              "Documentation",
+              "Official Website",
+              "https://www"
+            ],
+            "citationShare": "72.60",
+            "visibilityScore": "100.00"
+          },
+          "Zendesk Sell": {
+            "totalMentions": 0,
+            "totalPrompts": 5,
+            "mentionedInPrompts": [],
+            "missingInPrompts": [
+              "From the perspective of someone who works at Zoho, Which CRM software is best suited for a small sales team of 5 people with a focus on lead management?",
+              "From the perspective of someone who works at Zoho, Can you compare the pricing and integration capabilities of popular CRM software options for a medium-sized marketing team?",
+              "From the perspective of someone who works at Zoho, I'm looking for CRM software that offers seamless integration with our existing email marketing platform. Any recommendations for a team of 10?",
+              "From the perspective of someone who works at Zoho, What are some user-friendly CRM software options that provide robust reporting features for a growing customer service team?",
+              "From the perspective of someone who works at Zoho, How can I solve the challenge of finding CRM software that is customizable and scalable to support a large enterprise sales force?"
+            ],
+            "contexts": [],
+            "citedPages": [],
+            "citationShare": "0.00",
+            "visibilityScore": "0.00"
+          },
+          "Pipedrive": {
+            "totalMentions": 0,
+            "totalPrompts": 5,
+            "mentionedInPrompts": [],
+            "missingInPrompts": [
+              "From the perspective of someone who works at Zoho, Which CRM software is best suited for a small sales team of 5 people with a focus on lead management?",
+              "From the perspective of someone who works at Zoho, Can you compare the pricing and integration capabilities of popular CRM software options for a medium-sized marketing team?",
+              "From the perspective of someone who works at Zoho, I'm looking for CRM software that offers seamless integration with our existing email marketing platform. Any recommendations for a team of 10?",
+              "From the perspective of someone who works at Zoho, What are some user-friendly CRM software options that provide robust reporting features for a growing customer service team?",
+              "From the perspective of someone who works at Zoho, How can I solve the challenge of finding CRM software that is customizable and scalable to support a large enterprise sales force?"
+            ],
+            "contexts": [],
+            "citedPages": [],
+            "citationShare": "0.00",
+            "visibilityScore": "0.00"
+          }
+        },
+        "summary": {
+          "totalPrompts": 5,
+          "totalMentions": 73,
+          "brandsTracked": 1,
+          "competitorsTracked": 3
+        }
+      },
+      "jobId": null,
+      "progress": 100,
+      "updatedAt": "2026-01-05T18:02:15.843Z",
+      "completedAt": "2026-01-05T18:02:15.843Z"
     }
   ],
   "historicalData": [
@@ -1346,6 +1626,121 @@
       "summary": {
         "totalPrompts": 10,
         "totalMentions": 81,
+        "brandsTracked": 1,
+        "competitorsTracked": 3
+      }
+    },
+    {
+      "id": "4e857361-07fe-460f-bfc9-2e01446298a3",
+      "timestamp": "2026-01-05T18:02:15.845Z",
+      "category": "CRM software",
+      "brands": [
+        "Salesforce"
+      ],
+      "brandStats": {
+        "Salesforce": {
+          "totalMentions": 20,
+          "totalPrompts": 5,
+          "mentionedInPrompts": [
+            "From the perspective of someone who works at Zoho, Can you compare the pricing and integration capabilities of popular CRM software options for a medium-sized marketing team?",
+            "From the perspective of someone who works at Zoho, I'm looking for CRM software that offers seamless integration with our existing email marketing platform. Any recommendations for a team of 10?",
+            "From the perspective of someone who works at Zoho, What are some user-friendly CRM software options that provide robust reporting features for a growing customer service team?"
+          ],
+          "missingInPrompts": [
+            "From the perspective of someone who works at Zoho, Which CRM software is best suited for a small sales team of 5 people with a focus on lead management?",
+            "From the perspective of someone who works at Zoho, How can I solve the challenge of finding CRM software that is customizable and scalable to support a large enterprise sales force?"
+          ],
+          "contexts": [
+            "**Salesforce CRM**:\n   - **Pricing**: Salesforce CRM is known for being on the higher end of the pricing spectrum, which might be a consideration for medium-sized teams",
+            "- **Integration capabilities**: Salesforce CRM has a vast ecosystem of third-party integrations available on the Salesforce AppExchange",
+            "Salesforce also offers additional products like Salesforce Marketing Cloud for marketing automation and Salesforce Service Cloud for customer service",
+            "Another option to consider is **Salesforce CRM**",
+            "Salesforce is a market leader in CRM software and offers powerful integration capabilities with various email marketing platforms",
+            "Salesforce CRM provides extensive customization options, advanced reporting features, and a wide range of third-party integrations",
+            "**Salesforce CRM**: Salesforce CRM is a popular choice known for its powerful reporting capabilities",
+            "Salesforce also offers AI-driven analytics through Einstein Analytics, enabling predictive insights and data visualization for informed decision-making",
+            "com/crm/)\n- [Salesforce CRM](https://www"
+          ],
+          "citedPages": [
+            "Documentation",
+            "Official Website",
+            "https://www"
+          ],
+          "citationShare": "27.40",
+          "visibilityScore": "60.00"
+        },
+        "Zoho": {
+          "totalMentions": 53,
+          "totalPrompts": 5,
+          "mentionedInPrompts": [
+            "From the perspective of someone who works at Zoho, Which CRM software is best suited for a small sales team of 5 people with a focus on lead management?",
+            "From the perspective of someone who works at Zoho, Can you compare the pricing and integration capabilities of popular CRM software options for a medium-sized marketing team?",
+            "From the perspective of someone who works at Zoho, I'm looking for CRM software that offers seamless integration with our existing email marketing platform. Any recommendations for a team of 10?",
+            "From the perspective of someone who works at Zoho, What are some user-friendly CRM software options that provide robust reporting features for a growing customer service team?",
+            "From the perspective of someone who works at Zoho, How can I solve the challenge of finding CRM software that is customizable and scalable to support a large enterprise sales force?"
+          ],
+          "missingInPrompts": [],
+          "contexts": [
+            "While I don't have a specific affiliation with Zoho, I can suggest considering Zoho CRM for your team's needs",
+            "Zoho CRM offers features that cater well to small sales teams, including lead management, contact management, sales pipeline tracking, and automation capabilities",
+            "To make an informed decision, you can sign up for free trials of both Zoho CRM and HubSpot CRM to see which platform aligns better with your team's workflow and requirements",
+            "As an AI assistant, I can provide an unbiased comparison of popular CRM software options for a medium-sized marketing team, including Zoho CRM",
+            "**Zoho CRM**:\n   - **Pricing**: Zoho CRM offers a range of pricing plans, starting from the free edition for up to 3 users, which is great for small teams",
+            "- **Integration capabilities**: Zoho CRM integrates seamlessly with a wide range of third-party applications and tools such as Google Workspace, Mailchimp, Slack, and more",
+            "As someone from Zoho, you may already be familiar with **Zoho CRM**, which is a robust customer relationship management software that offers seamless integration with various Zoho applications, including Zoho Campaigns for email marketing",
+            "Zoho CRM provides features like lead management, sales pipeline tracking, and customer support automation",
+            "In conclusion, while Zoho CRM is a great choice for seamless integration with Zoho Campaigns, considering options like HubSpot CRM and Salesforce CRM may provide you with additional features and flexibility for your team of 10",
+            "As someone from Zoho, I can recommend some user-friendly CRM software options that offer robust reporting features for a growing customer service team:\n\n1",
+            "**Zoho CRM**: Zoho CRM is a comprehensive solution that offers advanced reporting and analytics features, allowing you to track and measure key metrics related to customer service performance",
+            "With customizable dashboards, real-time reports, and AI-powered analytics, Zoho CRM can help your team make data-driven decisions to enhance customer service operations",
+            "When looking for CRM software that is customizable and scalable to support a large enterprise sales force, Zoho offers a robust solution that can meet your needs",
+            "As you work at Zoho, you are already familiar with the range of features and capabilities that Zoho CRM offers",
+            "Here are some specific ways in which Zoho CRM can help address your challenge:\n\n1"
+          ],
+          "citedPages": [
+            "Documentation",
+            "Official Website",
+            "https://www"
+          ],
+          "citationShare": "72.60",
+          "visibilityScore": "100.00"
+        },
+        "Zendesk Sell": {
+          "totalMentions": 0,
+          "totalPrompts": 5,
+          "mentionedInPrompts": [],
+          "missingInPrompts": [
+            "From the perspective of someone who works at Zoho, Which CRM software is best suited for a small sales team of 5 people with a focus on lead management?",
+            "From the perspective of someone who works at Zoho, Can you compare the pricing and integration capabilities of popular CRM software options for a medium-sized marketing team?",
+            "From the perspective of someone who works at Zoho, I'm looking for CRM software that offers seamless integration with our existing email marketing platform. Any recommendations for a team of 10?",
+            "From the perspective of someone who works at Zoho, What are some user-friendly CRM software options that provide robust reporting features for a growing customer service team?",
+            "From the perspective of someone who works at Zoho, How can I solve the challenge of finding CRM software that is customizable and scalable to support a large enterprise sales force?"
+          ],
+          "contexts": [],
+          "citedPages": [],
+          "citationShare": "0.00",
+          "visibilityScore": "0.00"
+        },
+        "Pipedrive": {
+          "totalMentions": 0,
+          "totalPrompts": 5,
+          "mentionedInPrompts": [],
+          "missingInPrompts": [
+            "From the perspective of someone who works at Zoho, Which CRM software is best suited for a small sales team of 5 people with a focus on lead management?",
+            "From the perspective of someone who works at Zoho, Can you compare the pricing and integration capabilities of popular CRM software options for a medium-sized marketing team?",
+            "From the perspective of someone who works at Zoho, I'm looking for CRM software that offers seamless integration with our existing email marketing platform. Any recommendations for a team of 10?",
+            "From the perspective of someone who works at Zoho, What are some user-friendly CRM software options that provide robust reporting features for a growing customer service team?",
+            "From the perspective of someone who works at Zoho, How can I solve the challenge of finding CRM software that is customizable and scalable to support a large enterprise sales force?"
+          ],
+          "contexts": [],
+          "citedPages": [],
+          "citationShare": "0.00",
+          "visibilityScore": "0.00"
+        }
+      },
+      "summary": {
+        "totalPrompts": 5,
+        "totalMentions": 73,
         "brandsTracked": 1,
         "competitorsTracked": 3
       }
