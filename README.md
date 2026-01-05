@@ -33,6 +33,14 @@ A comprehensive tool to monitor how AI models like ChatGPT mention your brand ac
 - ⚡ **Real-time Updates** - Dashboard updates as tracking progresses
 - 🎨 **Modern UI** - Beautiful, intuitive interface with smooth animations
 
+### 🚀 Production Features (NEW!)
+- ⚙️ **Queue-Based Execution** - Bull + Redis for scalable async processing
+- 📅 **Daily Scheduled Tracking** - Automated tracking with cron jobs
+- 📊 **Historical Trends** - Track visibility changes over time (7/30/90 days)
+- 💾 **Persistent Storage** - LowDB for session and historical data
+- 🔄 **Background Workers** - Process jobs independently with retry logic
+- 📈 **Trend Analysis** - Visualize visibility trends with charts
+
 ---
 
 ## 🚀 Quick Start
@@ -41,6 +49,7 @@ A comprehensive tool to monitor how AI models like ChatGPT mention your brand ac
 - Node.js 16.x or higher
 - npm or yarn
 - OpenAI API key
+- Redis (optional, but recommended for production)
 
 ### Installation
 
@@ -66,7 +75,13 @@ OPENAI_API_KEY=your_openai_api_key_here
 PORT=5000
 NODE_ENV=development
 FRONTEND_URL=http://localhost:3000
+
+# Optional: Redis for production queue
+REDIS_HOST=127.0.0.1
+REDIS_PORT=6379
 ```
+
+**Note:** Redis is optional. Without it, the queue uses in-memory storage (fine for development).
 
 4. **Start the application**
 
@@ -95,6 +110,14 @@ http://localhost:3000
 ---
 
 ## 📖 How to Use
+
+### Quick Options
+
+1. **One-Time Tracking** - Run immediate tracking session
+2. **Scheduled Tracking** - Set up automated daily/weekly tracking
+3. **View Trends** - Analyze historical visibility data
+
+---
 
 ### Step 1: Setup Your Tracking
 
@@ -137,6 +160,22 @@ The dashboard shows:
 - Top cited pages
 - Example contexts where brand was mentioned
 
+**Trends Tab (NEW!):**
+- Historical visibility trends over 7/30/90 days
+- Line charts showing score changes
+- Citation share evolution
+- Mention frequency tracking
+
+### Step 4: Schedule Automated Tracking (Optional)
+
+1. Click **"Scheduled Tracking"** on homepage
+2. Create a new schedule:
+   - Choose daily or weekly frequency
+   - Set time (e.g., 9:00 AM)
+   - Configure brands to track
+3. View and manage all schedules
+4. Data accumulates automatically for trend analysis
+
 ---
 
 ## 🏗️ Architecture
@@ -159,6 +198,10 @@ backend/
 **Key Endpoints:**
 - `POST /api/tracking/start` - Start new tracking session
 - `GET /api/tracking/results/:sessionId` - Get session results
+- `GET /api/tracking/trends` - Get historical trend data
+- `POST /api/scheduler/schedule/daily` - Schedule daily tracking
+- `POST /api/scheduler/schedule/weekly` - Schedule weekly tracking
+- `GET /api/scheduler/schedules` - Get all schedules
 - `POST /api/prompts/generate` - Generate category prompts
 - `POST /api/prompts/query` - Query AI with tracking
 
@@ -182,6 +225,8 @@ frontend/
 - `Dashboard` - Results visualization with tabs
 - `PromptsView` - Prompt analysis view
 - `CitationsView` - Citation details view
+- `Trends` - Historical trend charts (NEW!)
+- `Scheduler` - Schedule management UI (NEW!)
 
 ---
 
@@ -201,6 +246,24 @@ FRONTEND_URL=http://localhost:3000  # Frontend URL for CORS
 ```env
 REACT_APP_API_URL=http://localhost:5000/api
 ```
+
+### Queue & Scheduler Configuration
+
+**Redis (Production):**
+```bash
+# Install Redis
+brew install redis  # macOS
+sudo apt install redis  # Ubuntu
+
+# Start Redis
+redis-server
+
+# Or use Redis Cloud
+REDIS_HOST=your-redis-cloud-host
+REDIS_PORT=6379
+```
+
+**Without Redis:** System works with in-memory queue (development only).
 
 ### OpenAI Configuration
 
@@ -466,6 +529,10 @@ Response:
 | Competitor mode | ✅ | Mode selector in setup |
 | Modern UI | ✅ | Gradient design, animations |
 | Production ready | ✅ | Error handling, loading states |
+| **Queue-based execution** | ✅ | Bull + Redis async processing |
+| **Daily scheduling** | ✅ | Cron-based automation |
+| **Historical trends** | ✅ | 90-day trend tracking |
+| **Background workers** | ✅ | Scalable job processing |
 
 ---
 
@@ -511,19 +578,32 @@ If you have questions or issues:
 
 ---
 
-## 🚀 Future Enhancements
+## 🚀 Production Features Included
 
-Potential improvements for v2:
-- [ ] Database integration (MongoDB/PostgreSQL)
-- [ ] User authentication
-- [ ] Historical tracking over time
+Already implemented:
+- ✅ Queue-based execution (Bull + Redis)
+- ✅ Background workers with retry logic
+- ✅ Historical tracking over time (90 days)
+- ✅ Scheduled tracking (daily/weekly)
+- ✅ Persistent data storage (LowDB)
+- ✅ Trend analysis with charts
+- ✅ Job monitoring and progress tracking
+
+## 🎯 Future Enhancements
+
+Potential improvements for v3:
+- [ ] Database migration (MongoDB/PostgreSQL)
+- [ ] User authentication & multi-tenancy
 - [ ] Export reports (PDF/CSV)
-- [ ] Multiple AI model support (Claude, Gemini)
+- [ ] Multiple AI model support (Claude, Gemini, Perplexity)
 - [ ] Webhook notifications
-- [ ] Scheduled tracking
+- [ ] Email alerts for visibility changes
 - [ ] Team collaboration features
 - [ ] Custom prompt templates
 - [ ] Advanced filtering and search
+- [ ] API rate limiting and quotas
+- [ ] Dedicated worker processes
+- [ ] Bull dashboard for queue monitoring
 
 ---
 

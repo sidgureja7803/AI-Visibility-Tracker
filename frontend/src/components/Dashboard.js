@@ -7,8 +7,9 @@ import {
 } from 'recharts';
 import { 
   TrendingUp, Award, MessageSquare, Link2, ArrowLeft, 
-  RefreshCw, Eye, Target, Users 
+  RefreshCw, Eye, Target, Users, Activity, Calendar 
 } from 'lucide-react';
+import Trends from './Trends';
 import './Dashboard.css';
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
@@ -207,6 +208,13 @@ function Dashboard() {
           <Link2 size={18} />
           Citations
         </button>
+        <button 
+          className={`tab ${activeTab === 'trends' ? 'active' : ''}`}
+          onClick={() => setActiveTab('trends')}
+        >
+          <Activity size={18} />
+          Trends
+        </button>
       </div>
 
       {/* Tab Content */}
@@ -305,6 +313,14 @@ function Dashboard() {
 
       {activeTab === 'citations' && (
         <CitationsView brandStats={brandStats} brands={brands} />
+      )}
+
+      {activeTab === 'trends' && (
+        <div className="tab-content">
+          {brands.map(brand => (
+            <Trends key={brand} category={category} brand={brand} />
+          ))}
+        </div>
       )}
     </div>
   );

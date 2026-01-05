@@ -1,7 +1,6 @@
 const aiService = require('../services/aiService');
-
-// In-memory storage (replace with database in production)
-const sessions = new Map();
+const trackingQueue = require('../queue/trackingQueue');
+const storageService = require('../services/storageService');
 
 const trackingController = {
   async startTracking(req, res) {
@@ -22,19 +21,26 @@ const trackingController = {
         competitors: competitors || [],
         mode: mode || 'normal',
         createdAt: new Date().toISOString(),
-        status: 'processing',
-        results: null
+        status: 'queued',
+        results: null,
+        jobId: null
       };
 
-      sessions.set(sessionId, session);
+      storageService.saveSession(session);
 
-      // Start processing in background
-      processTracking(sessionId, category, brands, competitors, mode)
-        .catch(err => {
-          console.error('Tracking error:', err);
-          session.status = 'error';
-          session.error = err.message;
-        });
+      // Add job to queue
+      const job = await trackingQueue.add({
+        sessionId,
+        category,
+        brands,
+        competitors,
+        mode
+      });
+
+      storageService.updateSession(sessionId, {
+        jobId: job.id,
+        status: 'processing'
+      });
 
       res.json({
         sessionId,
@@ -51,13 +57,48 @@ const trackingController = {
   async getResults(req, res) {
     try {
       const { sessionId } = req.params;
-      const session = sessions.get(sessionId);
+      const session = storageService.getSession(sessionId);
 
       if (!session) {
         return res.status(404).json({ error: 'Session not found' });
       }
 
-      res.json(session);
+      // Check job status if still processing
+      if (session.status === 'processing' && session.jobId) {
+        const job = await trackingQueue.getJob(session.jobId);
+        if (job) {
+          const state = await job.getState();
+          const progress = job.progress();
+
+          if (state === 'completed') {
+            const result = job.returnvalue;
+            storageService.updateSession(sessionId, {
+              status: 'completed',
+              results: result.results,
+              completedAt: result.completedAt
+            });
+
+            // Save to historical data
+            storageService.saveHistoricalData({
+              category: result.category,
+              brands: result.brands,
+              results: result.results
+            });
+          } else if (state === 'failed') {
+            storageService.updateSession(sessionId, {
+              status: 'error',
+              error: job.failedReason
+            });
+          } else {
+            storageService.updateSession(sessionId, {
+              progress: progress
+            });
+          }
+        }
+      }
+
+      const updatedSession = storageService.getSession(sessionId);
+      res.json(updatedSession);
 
     } catch (error) {
       console.error('Get results error:', error);
@@ -67,128 +108,44 @@ const trackingController = {
 
   async getSessions(req, res) {
     try {
-      const allSessions = Array.from(sessions.values())
-        .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-
+      const allSessions = storageService.getAllSessions();
       res.json(allSessions);
 
     } catch (error) {
       console.error('Get sessions error:', error);
       res.status(500).json({ error: error.message });
     }
+  },
+
+  async getTrends(req, res) {
+    try {
+      const { category, brand, days } = req.query;
+
+      if (!category || !brand) {
+        return res.status(400).json({
+          error: 'Category and brand are required'
+        });
+      }
+
+      const trendData = storageService.getTrendData(
+        category,
+        brand,
+        parseInt(days) || 30
+      );
+
+      res.json({
+        category,
+        brand,
+        days: parseInt(days) || 30,
+        trends: trendData
+      });
+
+    } catch (error) {
+      console.error('Get trends error:', error);
+      res.status(500).json({ error: error.message });
+    }
   }
 };
-
-async function processTracking(sessionId, category, brands, competitors, mode) {
-  const session = sessions.get(sessionId);
-  
-  try {
-    // Generate relevant prompts for the category
-    const prompts = await aiService.generatePrompts(category);
-    
-    // Query AI for each prompt and track brand mentions
-    const promptResults = [];
-    
-    for (const prompt of prompts) {
-      const result = await aiService.queryWithTracking(
-        prompt, 
-        brands, 
-        competitors,
-        mode
-      );
-      promptResults.push(result);
-      
-      // Add small delay to avoid rate limiting
-      await new Promise(resolve => setTimeout(resolve, 1000));
-    }
-
-    // Calculate metrics
-    const results = calculateMetrics(promptResults, brands, competitors);
-    
-    session.status = 'completed';
-    session.results = results;
-    session.completedAt = new Date().toISOString();
-
-  } catch (error) {
-    session.status = 'error';
-    session.error = error.message;
-    throw error;
-  }
-}
-
-function calculateMetrics(promptResults, brands, competitors) {
-  const allBrands = [...brands, ...(competitors || [])];
-  const brandStats = {};
-
-  // Initialize stats for all brands
-  allBrands.forEach(brand => {
-    brandStats[brand] = {
-      totalMentions: 0,
-      totalPrompts: promptResults.length,
-      mentionedInPrompts: [],
-      missingInPrompts: [],
-      contexts: [],
-      citedPages: [],
-      citationShare: 0,
-      visibilityScore: 0
-    };
-  });
-
-  // Process each prompt result
-  promptResults.forEach(result => {
-    result.mentions.forEach(mention => {
-      const stats = brandStats[mention.brand];
-      if (stats) {
-        stats.totalMentions += mention.count;
-        stats.mentionedInPrompts.push(result.prompt);
-        stats.contexts.push(...mention.contexts);
-        
-        if (mention.citations) {
-          stats.citedPages.push(...mention.citations);
-        }
-      }
-    });
-
-    // Track missing brands
-    const mentionedBrands = result.mentions.map(m => m.brand);
-    allBrands.forEach(brand => {
-      if (!mentionedBrands.includes(brand)) {
-        brandStats[brand].missingInPrompts.push(result.prompt);
-      }
-    });
-  });
-
-  // Calculate derived metrics
-  const totalMentions = Object.values(brandStats).reduce(
-    (sum, stats) => sum + stats.totalMentions, 
-    0
-  );
-
-  Object.keys(brandStats).forEach(brand => {
-    const stats = brandStats[brand];
-    stats.citationShare = totalMentions > 0 
-      ? ((stats.totalMentions / totalMentions) * 100).toFixed(2)
-      : 0;
-    
-    stats.visibilityScore = (
-      (stats.mentionedInPrompts.length / stats.totalPrompts) * 100
-    ).toFixed(2);
-
-    // Get unique cited pages
-    stats.citedPages = [...new Set(stats.citedPages)];
-  });
-
-  return {
-    promptResults,
-    brandStats,
-    summary: {
-      totalPrompts: promptResults.length,
-      totalMentions,
-      brandsTracked: brands.length,
-      competitorsTracked: (competitors || []).length
-    }
-  };
-}
 
 module.exports = trackingController;
 

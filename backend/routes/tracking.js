@@ -11,5 +11,8 @@ router.get('/results/:sessionId', trackingController.getResults);
 // Get all sessions
 router.get('/sessions', trackingController.getSessions);
 
+// Get trend data
+router.get('/trends', trackingController.getTrends);
+
 module.exports = router;
 

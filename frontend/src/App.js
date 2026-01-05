@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Setup from './components/Setup';
 import Dashboard from './components/Dashboard';
+import Scheduler from './components/Scheduler';
 import './App.css';
 
 function App() {
@@ -18,6 +19,10 @@ function App() {
           <Route 
             path="/dashboard/:sessionId" 
             element={<Dashboard />} 
+          />
+          <Route 
+            path="/scheduler" 
+            element={<Scheduler />} 
           />
           <Route 
             path="*" 

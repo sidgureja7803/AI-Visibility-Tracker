@@ -1,0 +1,59 @@
+.trends-container {
+  margin-top: 2rem;
+}
+
+.days-selector {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.days-selector .btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.trends-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.trend-stat {
+  background: var(--gray-lighter);
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.chart-container {
+  margin-bottom: 3rem;
+}
+
+.chart-container h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 1.5rem;
+}
+
+.no-data {
+  text-align: center;
+  padding: 3rem;
+  color: var(--gray);
+}
+
+.no-data p {
+  font-size: 1.125rem;
+}
+
+@media (max-width: 768px) {
+  .days-selector {
+    flex-direction: column;
+  }
+
+  .chart-container {
+    margin-bottom: 2rem;
+  }
+}
+
