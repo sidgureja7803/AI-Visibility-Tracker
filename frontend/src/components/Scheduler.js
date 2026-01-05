@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { Calendar, Clock, Trash2, Plus } from 'lucide-react';
+import { Calendar, Clock, Trash2, Plus, ArrowLeft } from 'lucide-react';
 import './Scheduler.css';
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 function Scheduler() {
+  const navigate = useNavigate();
   const [schedules, setSchedules] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({
@@ -84,10 +86,15 @@ function Scheduler() {
     <div className="scheduler-container">
       <div className="card">
         <div className="card-header">
-          <h2 className="card-title">
-            <Calendar size={24} />
-            Scheduled Tracking
-          </h2>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <button className="btn btn-outline" onClick={() => navigate('/')}>
+              <ArrowLeft size={20} />
+            </button>
+            <h2 className="card-title">
+              <Calendar size={24} />
+              Scheduled Tracking
+            </h2>
+          </div>
           <button className="btn btn-primary" onClick={() => setShowForm(!showForm)}>
             <Plus size={20} />
             New Schedule

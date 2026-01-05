@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Landing from './components/Landing';
 import Setup from './components/Setup';
 import Dashboard from './components/Dashboard';
 import Scheduler from './components/Scheduler';
@@ -14,6 +15,10 @@ function App() {
         <Routes>
           <Route 
             path="/" 
+            element={<Landing />} 
+          />
+          <Route 
+            path="/setup" 
             element={<Setup onSessionCreated={setSessionId} />} 
           />
           <Route 

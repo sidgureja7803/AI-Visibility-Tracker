@@ -118,10 +118,15 @@ function Dashboard() {
     <div className="dashboard-container">
       {/* Header */}
       <div className="dashboard-header">
-        <button className="btn btn-outline" onClick={() => navigate('/')}>
-          <ArrowLeft size={20} />
-          New Session
-        </button>
+        <div style={{ display: 'flex', gap: '0.5rem' }}>
+          <button className="btn btn-outline" onClick={() => navigate('/')}>
+            <ArrowLeft size={20} />
+            Home
+          </button>
+          <button className="btn btn-outline" onClick={() => navigate('/setup')}>
+            New Session
+          </button>
+        </div>
         <div className="header-info">
           <h1>AI Visibility Dashboard</h1>
           <div className="header-meta">

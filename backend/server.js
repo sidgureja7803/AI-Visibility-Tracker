@@ -8,7 +8,7 @@ const schedulerRoutes = require('./routes/scheduler');
 const schedulerService = require('./services/schedulerService');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 
 // Middleware
 app.use(cors({

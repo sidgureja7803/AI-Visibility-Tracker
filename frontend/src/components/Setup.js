@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
-import { Target, TrendingUp, Users, Sparkles, Calendar } from 'lucide-react';
+import { Target, TrendingUp, Users, Sparkles, Calendar, ArrowLeft } from 'lucide-react';
 import './Setup.css';
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
@@ -52,6 +52,16 @@ function Setup({ onSessionCreated }) {
   return (
     <div className="setup-container">
       <div className="setup-hero">
+        <div className="hero-actions-top">
+          <Link to="/" className="btn btn-outline">
+            <ArrowLeft size={20} />
+            Back to Home
+          </Link>
+          <Link to="/scheduler" className="btn btn-outline">
+            <Calendar size={20} />
+            Scheduled Tracking
+          </Link>
+        </div>
         <div className="hero-icon">
           <Sparkles size={48} />
         </div>
@@ -59,10 +69,6 @@ function Setup({ onSessionCreated }) {
         <p className="hero-subtitle">
           Track how AI models mention your brand across different prompts and categories
         </p>
-        <Link to="/scheduler" className="btn btn-outline" style={{ marginTop: '1rem' }}>
-          <Calendar size={20} />
-          Scheduled Tracking
-        </Link>
       </div>
 
       <div className="setup-card">
