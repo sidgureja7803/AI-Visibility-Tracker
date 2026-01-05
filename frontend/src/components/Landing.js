@@ -79,7 +79,7 @@ function Landing() {
         <div className="hero-content">
           <div className="hero-badge">
             <Sparkles size={16} />
-            <span>Powered by WriteSonic & OpenAI GPT-4</span>
+            <span>Powered by OpenAI GPT-3.5-turbo • Results in ~2 minutes</span>
           </div>
 
           <h1 className="hero-title">
@@ -271,7 +271,7 @@ function Landing() {
             </button>
           </div>
           <p className="cta-note">
-            No credit card required • Powered by OpenAI GPT-4
+            No credit card required • Fast results with GPT-3.5-turbo
           </p>
         </div>
       </div>

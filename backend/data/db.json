@@ -35,8 +35,1321 @@
       "status": "queued",
       "results": null,
       "jobId": null
+    },
+    {
+      "id": "1cdef3ad-7c4a-4c2c-b64a-9a860c106789",
+      "category": "CRM Software",
+      "brands": [
+        "Salesforce"
+      ],
+      "competitors": [
+        "Zoho",
+        "Oracle CRM",
+        "Zendesk Sell"
+      ],
+      "mode": "competitor",
+      "createdAt": "2026-01-05T16:39:54.329Z",
+      "status": "completed",
+      "results": {
+        "promptResults": [
+          {
+            "prompt": "From the perspective of someone who works at Zoho, Hey, can you help me find a CRM software suitable for a small marketing team of five?",
+            "answer": "Absolutely, I can help you with that! As an AI, I don't work at any particular organization, but I can provide you with an unbiased review of several CRM software options suitable for a small marketing team.\n\n1. **Zoho CRM**: Zoho CRM is an excellent choice for small teams, especially if you're already using other Zoho products. It offers sales force automation, marketing automation, customer support, and inventory management all in a single platform. The pricing is also quite competitive, particularly for small teams. It starts at $14 per user per month when billed annually. (https://www.zoho.com/crm/)\n\n2. **HubSpot CRM**: HubSpot's CRM is another excellent choice, especially for marketing teams. It's free for an unlimited number of users, and it integrates seamlessly with HubSpot's other marketing tools. It also offers a visual dashboard with a real-time view of the entire sales funnel. However, for more advanced features, you may need to upgrade to a paid plan. (https://www.hubspot.com/products/crm)\n\n3. **Salesforce Essentials**: Salesforce is one of the most robust CRM platforms on the market, and their Essentials package is tailored for small businesses. It offers sales and customer support in one app, and integrates with popular solutions like Google Workspace, Mailchimp, and QuickBooks. Pricing starts at $25 per user per month, billed annually. (https://www.salesforce.com/products/salesforce-essentials/overview/)\n\n4. **Freshsales**: Freshsales is another great CRM for small teams. It offers AI-based lead scoring, built-in phone and email, activity capturing, and more. Pricing starts at $12 per user per month, billed annually. (https://www.freshworks.com/crm/sales/)\n\nIn conclusion, all of these CRM software solutions are excellent choices for a small marketing team. The best choice for you will depend on your specific needs, budget, and the other software tools you use. I recommend signing up for a free trial of each and seeing which one fits your team the best.",
+            "mentions": [
+              {
+                "brand": "Zoho",
+                "count": 4,
+                "contexts": [
+                  "**Zoho CRM**: Zoho CRM is an excellent choice for small teams, especially if you're already using other Zoho products",
+                  "zoho"
+                ],
+                "citations": [
+                  "Documentation",
+                  "Official Website"
+                ],
+                "position": 214
+              },
+              {
+                "brand": "Salesforce",
+                "count": 4,
+                "contexts": [
+                  "**Salesforce Essentials**: Salesforce is one of the most robust CRM platforms on the market, and their Essentials package is tailored for small businesses",
+                  "salesforce",
+                  "com/products/salesforce-essentials/overview/)\n\n4"
+                ],
+                "citations": [
+                  "Documentation",
+                  "Official Website"
+                ],
+                "position": 1024
+              }
+            ],
+            "timestamp": "2026-01-05T16:40:20.314Z",
+            "mode": "competitor"
+          },
+          {
+            "prompt": "From the perspective of someone who works at Zoho, Which CRM platforms are best for integrating with my existing email marketing tools?",
+            "answer": "As an AI, I don't work at Zoho but I can provide an unbiased analysis of CRM platforms that integrate well with various email marketing tools.\n\n1. **Zoho CRM**: Since you're already familiar with Zoho, you should consider its CRM system. Zoho CRM integrates seamlessly with Zoho Campaigns, an email marketing tool, as well as with external email marketing platforms like Mailchimp. More details can be found here: [Zoho CRM Integration](https://www.zoho.com/crm/integration/)\n\n2. **Salesforce CRM**: Salesforce offers an excellent CRM with robust integration capabilities. It has its own email marketing tool, Salesforce Marketing Cloud, but also offers integrations with other popular platforms like Mailchimp, Constant Contact, and AWeber. More details can be found here: [Salesforce CRM Integration](https://www.salesforce.com/products/platform/integration/)\n\n3. **HubSpot CRM**: HubSpot CRM integrates seamlessly with HubSpot's own email marketing services, but also offers integrations with Mailchimp, Constant Contact, and SendinBlue. More details can be found here: [HubSpot CRM Integration](https://www.hubspot.com/integrations)\n\n4. **Pipedrive**: Pipedrive integrates with a wide range of email marketing tools, including Mailchimp, Constant Contact, GetResponse, and AWeber. More details can be found here: [Pipedrive Integration](https://www.pipedrive.com/en/marketplace)\n\nThe best CRM for you will depend on your specific needs and the email marketing tools you're currently using. Each of these CRM platforms offers a slightly different set of features and integrations, so you should consider which one aligns best with your existing workflow and marketing strategy.",
+            "mentions": [
+              {
+                "brand": "Zoho",
+                "count": 7,
+                "contexts": [
+                  "As an AI, I don't work at Zoho but I can provide an unbiased analysis of CRM platforms that integrate well with various email marketing tools",
+                  "**Zoho CRM**: Since you're already familiar with Zoho, you should consider its CRM system",
+                  "Zoho CRM integrates seamlessly with Zoho Campaigns, an email marketing tool, as well as with external email marketing platforms like Mailchimp"
+                ],
+                "citations": [
+                  "https://www"
+                ],
+                "position": 26
+              },
+              {
+                "brand": "Salesforce",
+                "count": 5,
+                "contexts": [
+                  "**Salesforce CRM**: Salesforce offers an excellent CRM with robust integration capabilities",
+                  "It has its own email marketing tool, Salesforce Marketing Cloud, but also offers integrations with other popular platforms like Mailchimp, Constant Contact, and AWeber",
+                  "More details can be found here: [Salesforce CRM Integration](https://www"
+                ],
+                "citations": [
+                  "https://www"
+                ],
+                "position": 482
+              }
+            ],
+            "timestamp": "2026-01-05T16:40:33.911Z",
+            "mode": "competitor"
+          },
+          {
+            "prompt": "From the perspective of someone who works at Zoho, Can you compare Salesforce and Hubspot in terms of their CRM functionalities?",
+            "answer": "While I don't work at Zoho, I can certainly provide you with an unbiased comparison of Salesforce, Hubspot, and Zoho CRM functionalities.\n\n1. Salesforce CRM: Salesforce is a comprehensive solution that offers a wide range of features such as contact and opportunity management, collaboration tools, workflow automation, and analytics. It also offers a robust AppExchange marketplace for third-party integrations. However, the complexity and pricing are often a concern for small businesses. Salesforce's extensive features and customizability may require a steep learning curve and the need for dedicated administrators. More details can be found at www.salesforce.com.\n\n2. Hubspot CRM: Hubspot provides a free CRM that is easy to use and suitable for small to medium businesses. It offers features like contact and deal management, email tracking, and built-in integrations with Hubspot's marketing, customer service, and sales hubs. However, to access advanced features like automation, reporting, and custom support, you need to purchase their paid hubs. More details can be found at www.hubspot.com.\n\n3. Zoho CRM: Zoho offers a balanced CRM with robust features that are customizable and user-friendly. It provides contact and deal management, social media integration, analytics, and process automation. Zoho also offers a wide range of other business applications that integrate seamlessly with their CRM. Pricing is competitive and offers value for small to large businesses. However, some users report that the interface could be more intuitive and the mobile app could be improved. More details can be found at www.zoho.com/crm.\n\nIn terms of CRM functionalities, Salesforce is the most feature-rich but can be overwhelming and expensive for small businesses. Hubspot provides a good starting point with its free CRM, but advanced features come at a significant cost. Zoho CRM strikes a balance between extensive features, customizability, and pricing, making it a viable option for businesses of all sizes.\n\nHowever, the best CRM depends on your specific business needs, budget, and the resources you have for managing the CRM. It would be beneficial to take advantage of the free trials or demos each of these platforms offer before making a decision.",
+            "mentions": [
+              {
+                "brand": "Zoho",
+                "count": 7,
+                "contexts": [
+                  "While I don't work at Zoho, I can certainly provide you with an unbiased comparison of Salesforce, Hubspot, and Zoho CRM functionalities",
+                  "Zoho CRM: Zoho offers a balanced CRM with robust features that are customizable and user-friendly",
+                  "Zoho also offers a wide range of other business applications that integrate seamlessly with their CRM"
+                ],
+                "citations": [
+                  "Documentation",
+                  "Official Website"
+                ],
+                "position": 22
+              },
+              {
+                "brand": "Salesforce",
+                "count": 6,
+                "contexts": [
+                  "While I don't work at Zoho, I can certainly provide you with an unbiased comparison of Salesforce, Hubspot, and Zoho CRM functionalities",
+                  "Salesforce CRM: Salesforce is a comprehensive solution that offers a wide range of features such as contact and opportunity management, collaboration tools, workflow automation, and analytics",
+                  "Salesforce's extensive features and customizability may require a steep learning curve and the need for dedicated administrators"
+                ],
+                "citations": [
+                  "Documentation",
+                  "Official Website"
+                ],
+                "position": 87
+              }
+            ],
+            "timestamp": "2026-01-05T16:40:45.256Z",
+            "mode": "competitor"
+          },
+          {
+            "prompt": "From the perspective of someone who works at Zoho, I'm looking for a CRM system with advanced analytics features. Any recommendations?",
+            "answer": "While working at Zoho, you have direct access to Zoho CRM, which is a robust CRM system equipped with advanced analytics features. However, understanding that it is essential to consider various options, I will also recommend Salesforce CRM and HubSpot CRM as potential candidates for you to compare with Zoho CRM.\n\n1. Zoho CRM: Zoho's CRM provides advanced analytics capabilities through Zoho Analytics. This feature allows you to create visual reports and dashboards, predictive sales analytics, and KPI tracking. You can also perform cohort analysis and compare data over time. More information can be found on their website (www.zoho.com/crm).\n\n2. Salesforce CRM: Known for its extensive features, Salesforce CRM offers advanced analytics through Salesforce Einstein Analytics (www.salesforce.com/products/einstein/features). It uses artificial intelligence to automatically discover relevant patterns based on your data. It gives you predictive insights and recommendations, which can help improve your decision-making process.\n\n3. HubSpot CRM: HubSpot CRM provides an analytics dashboard that allows you to monitor your sales pipeline and measure performance against quotas. It also offers contact analytics, company analytics, deal analytics, ticket analytics, and more. Furthermore, with HubSpot's Marketing Hub, you can analyze your marketing efforts as well (www.hubspot.com/products/crm).\n\nIn summary, all three options - Zoho CRM, Salesforce CRM, and HubSpot CRM - provide advanced analytics capabilities. Your choice may depend on the specific requirements of your business, your budget, and your preference for certain interfaces or workflows. While Zoho CRM might offer the advantage of integration with your existing Zoho systems, Salesforce and HubSpot could provide different features or user experiences that may be more suited to your needs.",
+            "mentions": [
+              {
+                "brand": "Zoho",
+                "count": 10,
+                "contexts": [
+                  "While working at Zoho, you have direct access to Zoho CRM, which is a robust CRM system equipped with advanced analytics features",
+                  "However, understanding that it is essential to consider various options, I will also recommend Salesforce CRM and HubSpot CRM as potential candidates for you to compare with Zoho CRM",
+                  "Zoho CRM: Zoho's CRM provides advanced analytics capabilities through Zoho Analytics"
+                ],
+                "citations": [
+                  "Documentation",
+                  "Official Website"
+                ],
+                "position": 17
+              },
+              {
+                "brand": "Salesforce",
+                "count": 7,
+                "contexts": [
+                  "However, understanding that it is essential to consider various options, I will also recommend Salesforce CRM and HubSpot CRM as potential candidates for you to compare with Zoho CRM",
+                  "Salesforce CRM: Known for its extensive features, Salesforce CRM offers advanced analytics through Salesforce Einstein Analytics (www",
+                  "salesforce"
+                ],
+                "citations": [
+                  "Documentation",
+                  "Official Website"
+                ],
+                "position": 226
+              }
+            ],
+            "timestamp": "2026-01-05T16:41:03.775Z",
+            "mode": "competitor"
+          },
+          {
+            "prompt": "From the perspective of someone who works at Zoho, What are the most user-friendly CRM software systems for someone not very tech-savvy?",
+            "answer": "As an AI assistant, I don't have personal work experience, but I can provide an unbiased analysis of user-friendly CRM software systems suitable for someone not very tech-savvy. \n\n1. **Zoho CRM**: Being a Zoho product, it is designed with the user in mind. It offers a clean and intuitive interface that makes it easy for non-tech savvy users to navigate. It also has a robust array of features including contact management, social media management, and analytics. Zoho CRM offers a free version and various affordable plans depending on your needs. More details can be found at their website (www.zoho.com/crm/).\n\n2. **HubSpot CRM**: Known for its user-friendly interface and ease of use, HubSpot CRM is a great choice for beginners. It provides all the basic CRM features and integrates seamlessly with other HubSpot products. Plus, it has a free version that's quite comprehensive, making it a cost-effective choice for small businesses. Learn more at www.hubspot.com/products/crm.\n\n3. **Salesforce CRM**: Salesforce is one of the leading CRM platforms. It offers a range of features and has a relatively user-friendly interface. However, it might be a bit overwhelming for a complete beginner due to the breadth of its functionalities. It's also on the pricier side, but its capabilities justify the cost. For more information, visit www.salesforce.com/products/crm/.\n\n4. **Insightly CRM**: Insightly is another CRM known for its ease of use. It offers a visually appealing and intuitive interface. It’s a great option if you’re looking for project management features in addition to standard CRM functionalities. For more details, check their website at www.insightly.com.\n\n5. **Pipedrive CRM**: Designed with sales teams in mind, Pipedrive offers a highly visual and easy-to-use interface. It focuses on pipeline management features, helping users manage and track sales processes effortlessly. Visit www.pipedrive.com for more information.\n\nRemember to take advantage of the free trials that these CRM platforms offer to see which one suits your needs the best.",
+            "mentions": [
+              {
+                "brand": "Zoho",
+                "count": 4,
+                "contexts": [
+                  "**Zoho CRM**: Being a Zoho product, it is designed with the user in mind",
+                  "Zoho CRM offers a free version and various affordable plans depending on your needs",
+                  "zoho"
+                ],
+                "citations": [
+                  "Documentation",
+                  "Official Website"
+                ],
+                "position": 185
+              },
+              {
+                "brand": "Salesforce",
+                "count": 3,
+                "contexts": [
+                  "**Salesforce CRM**: Salesforce is one of the leading CRM platforms",
+                  "salesforce"
+                ],
+                "citations": [
+                  "Documentation",
+                  "Official Website"
+                ],
+                "position": 991
+              }
+            ],
+            "timestamp": "2026-01-05T16:41:30.189Z",
+            "mode": "competitor"
+          },
+          {
+            "prompt": "From the perspective of someone who works at Zoho, I'm on a tight budget but need a reliable CRM for my startup. What are some cost-effective options?",
+            "answer": "As an AI, I don't work for any particular company, but I can certainly provide an unbiased recommendation for cost-effective CRM (Customer Relationship Management) options suitable for a startup. \n\n1. **Zoho CRM:** Zoho CRM offers a free version for up to three users which includes leads, documents, and mobile app usage. If you need more advanced features, their Standard plan starts at $14 per user per month. Zoho CRM is very user-friendly and offers features like sales force automation, marketing automation, customer support, inventory management, and a customer portal. You can try it here: www.zoho.com/crm\n\n2. **HubSpot CRM:** HubSpot offers a free CRM that includes contact and deal management, email scheduling, team email, live chat, and conversational bots. For more advanced features such as marketing automation, you can upgrade to their Starter plan which costs $50 per month. You can explore it here: www.hubspot.com/products/crm\n\n3. **Insightly:** Insightly offers a CRM with project management features. It's free for up to two users and includes leads, contacts, project management, and mobile app usage. Their Plus plan starts at $29 per user per month. Check it out here: www.insightly.com\n\n4. **Apptivo:** Apptivo offers a free CRM for up to three users. It includes leads, opportunities, customers, contacts, and some other basic features. The Premium plan starts at $8 per user per month. You can find it here: www.apptivo.com\n\nAll these platforms have their strengths and weaknesses, and the best one for you will depend on your specific needs. Always consider factors like the size of your team, your desired features, and your growth plans when choosing a CRM.",
+            "mentions": [
+              {
+                "brand": "Zoho",
+                "count": 4,
+                "contexts": [
+                  "**Zoho CRM:** Zoho CRM offers a free version for up to three users which includes leads, documents, and mobile app usage",
+                  "Zoho CRM is very user-friendly and offers features like sales force automation, marketing automation, customer support, inventory management, and a customer portal",
+                  "zoho"
+                ],
+                "citations": [
+                  "Documentation",
+                  "Official Website"
+                ],
+                "position": 203
+              }
+            ],
+            "timestamp": "2026-01-05T16:41:47.192Z",
+            "mode": "competitor"
+          },
+          {
+            "prompt": "From the perspective of someone who works at Zoho, Could you assist in finding a CRM software that provides 24/7 customer support?",
+            "answer": "Certainly, it's crucial to have a CRM (Customer Relationship Management) software that offers 24/7 support. This ensures any issues that arise can be addressed promptly, minimizing any potential disruption to your business.\n\n1. Zoho CRM: As an AI assistant, I'm impartial, but since you mentioned Zoho, it's worth noting that Zoho CRM does provide 24/5 support to all customers and 24/7 support on all weekdays to customers with Professional and Enterprise Editions. Zoho CRM is a robust tool, offering features such as sales force automation, marketing automation, customer support, inventory management, and order management. [Zoho CRM link]\n\n2. Salesforce CRM: Salesforce is another heavy hitter in the CRM world, and they offer 24/7 support to their premium customers. They have a comprehensive CRM solution that includes sales, service, marketing, commerce, and more. Salesforce's CRM is known for its scalability, making it a good option for businesses of all sizes. [Salesforce CRM link]\n\n3. HubSpot CRM: HubSpot provides 24/7 support to their premium customers. Their CRM is user-friendly, and it integrates well with other HubSpot products, making it an excellent choice for businesses already using or considering other HubSpot services. [HubSpot CRM link]\n\n4. Freshworks CRM: Freshworks offers 24/5 phone, email, and chat support to all customers, and 24/7 phone support to customers with Estate and Forest plans. Freshworks CRM comes with AI-based lead scoring, phone, email, activity capture and more. [Freshworks CRM link]\n\nAll four CRM software providers are excellent, but the best for you would depend on your specific needs and budget. If 24/7 support on all days is an absolute necessity, you might want to consider Salesforce or HubSpot, as Zoho and Freshworks only offer 24/7 support on weekdays or to certain plan tiers. However, if you are comfortable with 24/5 support or 24/7 support on weekdays, Zoho and Freshworks could be good options. They all have different strengths, so consider your business's specific needs when making your decision.",
+            "mentions": [
+              {
+                "brand": "Zoho",
+                "count": 7,
+                "contexts": [
+                  "Zoho CRM: As an AI assistant, I'm impartial, but since you mentioned Zoho, it's worth noting that Zoho CRM does provide 24/5 support to all customers and 24/7 support on all weekdays to customers with Professional and Enterprise Editions",
+                  "Zoho CRM is a robust tool, offering features such as sales force automation, marketing automation, customer support, inventory management, and order management",
+                  "[Zoho CRM link]\n\n2"
+                ],
+                "citations": [
+                  "Documentation",
+                  "Official Website"
+                ],
+                "position": 228
+              },
+              {
+                "brand": "Salesforce",
+                "count": 5,
+                "contexts": [
+                  "Salesforce CRM: Salesforce is another heavy hitter in the CRM world, and they offer 24/7 support to their premium customers",
+                  "Salesforce's CRM is known for its scalability, making it a good option for businesses of all sizes",
+                  "[Salesforce CRM link]\n\n3"
+                ],
+                "citations": [
+                  "Documentation",
+                  "Official Website"
+                ],
+                "position": 648
+              }
+            ],
+            "timestamp": "2026-01-05T16:42:07.884Z",
+            "mode": "competitor"
+          },
+          {
+            "prompt": "From the perspective of someone who works at Zoho, Which CRM software provides the best customization options for sales pipeline management?",
+            "answer": "As an AI, I don't work at any particular company, but I can provide an unbiased perspective based on general data and user reviews. When it comes to CRM software with the best customization options for sales pipeline management, three of the top contenders are often Zoho CRM, Salesforce, and HubSpot CRM.\n\n1. Zoho CRM\nZoho CRM offers high customization, allowing you to create custom fields, functions, and workflows. Its Blueprint feature provides a visual representation of your sales process and allows you to build and automate custom sales processes. Additionally, Zoho's dashboards can be customized to display real-time data, making it easier to monitor the sales pipeline and make informed decisions. More about Zoho CRM's customization capabilities can be found at [www.zoho.com/crm].\n\n2. Salesforce\nSalesforce, another strong player, offers deep customization options. You can modify practically every aspect of the sales process, from lead generation to final sale. Its robust AppExchange marketplace offers numerous third-party apps for further customization. However, this extensive customization often comes with complexity and may require more technical knowledge or resources. More about Salesforce can be found at [www.salesforce.com].\n\n3. HubSpot CRM\nHubSpot CRM also provides customization options. You can create custom deal stages, fields, and sales processes. However, it's often noted for its user-friendliness rather than depth of customization. While it may not offer as much flexibility as Zoho CRM or Salesforce, it's often deemed easier to use and implement. You can find more about HubSpot CRM at [www.hubspot.com/products/crm].\n\nOverall, Zoho CRM, Salesforce, and HubSpot all provide customization options for sales pipeline management. The best choice depends on your specific needs and resources. If you're looking for a balance between customization and user-friendliness, Zoho CRM might be a good choice. If you're willing to invest more time and resources for a highly customizable solution, Salesforce could be the best option. If you prioritize ease of use over depth of customization, consider HubSpot CRM.",
+            "mentions": [
+              {
+                "brand": "Zoho",
+                "count": 9,
+                "contexts": [
+                  "When it comes to CRM software with the best customization options for sales pipeline management, three of the top contenders are often Zoho CRM, Salesforce, and HubSpot CRM",
+                  "Zoho CRM\nZoho CRM offers high customization, allowing you to create custom fields, functions, and workflows",
+                  "Additionally, Zoho's dashboards can be customized to display real-time data, making it easier to monitor the sales pipeline and make informed decisions"
+                ],
+                "citations": [
+                  "Documentation",
+                  "Official Website"
+                ],
+                "position": 267
+              },
+              {
+                "brand": "Salesforce",
+                "count": 8,
+                "contexts": [
+                  "When it comes to CRM software with the best customization options for sales pipeline management, three of the top contenders are often Zoho CRM, Salesforce, and HubSpot CRM",
+                  "Salesforce\nSalesforce, another strong player, offers deep customization options",
+                  "More about Salesforce can be found at [www"
+                ],
+                "citations": [
+                  "Documentation",
+                  "Official Website"
+                ],
+                "position": 277
+              }
+            ],
+            "timestamp": "2026-01-05T16:42:25.995Z",
+            "mode": "competitor"
+          },
+          {
+            "prompt": "From the perspective of someone who works at Zoho, I'm curious to know the CRM software that integrates seamlessly with Slack?",
+            "answer": "There are many CRM software options that integrate seamlessly with Slack. However, since you mentioned you work at Zoho, I'll focus on Zoho CRM and a couple of other popular options for comparison.\n\n1. **Zoho CRM:** As a Zoho employee, you'll be glad to know that Zoho CRM integrates well with Slack. This integration allows you to receive instant notifications about various updates such as new leads, deals, or tasks in your Slack channels. Users can also create leads, contacts, and tasks in Zoho CRM directly from Slack. Here is the link to the Zoho CRM and Slack integration guide: [Zoho CRM Slack Integration URL]\n\n2. **Salesforce:** Salesforce is another popular CRM software that integrates with Slack. Salesforce's integration allows for real-time collaboration, instant deal updates, and the ability to search Salesforce records directly from Slack. However, Salesforce might be a more complex and expensive option compared to Zoho CRM, so it might not be the best fit for all businesses. Here is the link for Salesforce's integration with Slack: [Salesforce Slack Integration URL]\n\n3. **HubSpot:** HubSpot's CRM also integrates with Slack. It allows you to get notifications about your CRM activities directly in your Slack channels. You can also create tasks, send HubSpot form submissions, and associate Slack messages with CRM contacts. HubSpot's CRM is often praised for its user-friendly interface, but it might lack some advanced features provided by Zoho CRM. Here's the link to HubSpot's Slack integration: [HubSpot Slack Integration URL]\n\nGiven your familiarity with Zoho, I would recommend Zoho CRM as it provides a robust set of features while integrating seamlessly with Slack. However, Salesforce and HubSpot are also good options to explore if you need different features or if you're considering switching to a different CRM platform.",
+            "mentions": [
+              {
+                "brand": "Zoho",
+                "count": 12,
+                "contexts": [
+                  "However, since you mentioned you work at Zoho, I'll focus on Zoho CRM and a couple of other popular options for comparison",
+                  "**Zoho CRM:** As a Zoho employee, you'll be glad to know that Zoho CRM integrates well with Slack",
+                  "Users can also create leads, contacts, and tasks in Zoho CRM directly from Slack"
+                ],
+                "citations": [
+                  "Documentation",
+                  "Official Website"
+                ],
+                "position": 115
+              },
+              {
+                "brand": "Salesforce",
+                "count": 8,
+                "contexts": [
+                  "**Salesforce:** Salesforce is another popular CRM software that integrates with Slack",
+                  "Salesforce's integration allows for real-time collaboration, instant deal updates, and the ability to search Salesforce records directly from Slack",
+                  "However, Salesforce might be a more complex and expensive option compared to Zoho CRM, so it might not be the best fit for all businesses"
+                ],
+                "citations": [
+                  "Documentation",
+                  "Official Website"
+                ],
+                "position": 626
+              }
+            ],
+            "timestamp": "2026-01-05T16:42:41.568Z",
+            "mode": "competitor"
+          },
+          {
+            "prompt": "From the perspective of someone who works at Zoho, Which CRM software solutions are cloud-based and provide mobile accessibility?",
+            "answer": "As an AI assistant, I don't work for any company, but I can provide an unbiased comparison of cloud-based CRM software solutions that offer mobile accessibility.\n\n1. **Zoho CRM**: As you're interested in Zoho, it's worth mentioning that Zoho CRM is a cloud-based solution that offers mobile access via dedicated apps for iOS and Android. The software has robust features including sales force automation, customer support, and marketing automation. For more information, visit: www.zoho.com/crm/\n\n2. **Salesforce Sales Cloud**: Salesforce is another major player in the CRM industry. It provides a cloud-based CRM solution with mobile access through its Salesforce app. Salesforce offers comprehensive features such as contact and opportunity management, collaboration tools, and analytics. Visit: www.salesforce.com/products/sales-cloud/overview/\n\n3. **HubSpot CRM**: This is a free cloud-based CRM tool that offers mobile accessibility. It provides features like contact management, email tracking, and meeting scheduling. It's user-friendly and can be a good choice for small businesses. More details can be found at: www.hubspot.com/products/crm\n\n4. **Microsoft Dynamics 365 Sales**: This CRM solution from Microsoft is cloud-based and provides mobile access. It offers comprehensive features like sales insights, forecasting, and predictive modeling. Visit: www.dynamics.microsoft.com/en-us/sales/overview/\n\n5. **Pipedrive**: Pipedrive is a cloud-based sales-focused CRM that provides mobile apps. It offers features like deal management, scheduling, and email tracking. For more information, visit: www.pipedrive.com/\n\nThese are just a few examples of the many cloud-based CRM solutions available. The best choice depends on your specific needs and budget.",
+            "mentions": [
+              {
+                "brand": "Zoho",
+                "count": 4,
+                "contexts": [
+                  "**Zoho CRM**: As you're interested in Zoho, it's worth mentioning that Zoho CRM is a cloud-based solution that offers mobile access via dedicated apps for iOS and Android",
+                  "zoho"
+                ],
+                "citations": [
+                  "Documentation",
+                  "Official Website"
+                ],
+                "position": 168
+              },
+              {
+                "brand": "Salesforce",
+                "count": 5,
+                "contexts": [
+                  "**Salesforce Sales Cloud**: Salesforce is another major player in the CRM industry",
+                  "It provides a cloud-based CRM solution with mobile access through its Salesforce app",
+                  "Salesforce offers comprehensive features such as contact and opportunity management, collaboration tools, and analytics"
+                ],
+                "citations": [
+                  "Documentation",
+                  "Official Website"
+                ],
+                "position": 502
+              }
+            ],
+            "timestamp": "2026-01-05T16:42:56.992Z",
+            "mode": "competitor"
+          }
+        ],
+        "brandStats": {
+          "Salesforce": {
+            "totalMentions": 51,
+            "totalPrompts": 10,
+            "mentionedInPrompts": [
+              "From the perspective of someone who works at Zoho, Hey, can you help me find a CRM software suitable for a small marketing team of five?",
+              "From the perspective of someone who works at Zoho, Which CRM platforms are best for integrating with my existing email marketing tools?",
+              "From the perspective of someone who works at Zoho, Can you compare Salesforce and Hubspot in terms of their CRM functionalities?",
+              "From the perspective of someone who works at Zoho, I'm looking for a CRM system with advanced analytics features. Any recommendations?",
+              "From the perspective of someone who works at Zoho, What are the most user-friendly CRM software systems for someone not very tech-savvy?",
+              "From the perspective of someone who works at Zoho, Could you assist in finding a CRM software that provides 24/7 customer support?",
+              "From the perspective of someone who works at Zoho, Which CRM software provides the best customization options for sales pipeline management?",
+              "From the perspective of someone who works at Zoho, I'm curious to know the CRM software that integrates seamlessly with Slack?",
+              "From the perspective of someone who works at Zoho, Which CRM software solutions are cloud-based and provide mobile accessibility?"
+            ],
+            "missingInPrompts": [
+              "From the perspective of someone who works at Zoho, I'm on a tight budget but need a reliable CRM for my startup. What are some cost-effective options?"
+            ],
+            "contexts": [
+              "**Salesforce Essentials**: Salesforce is one of the most robust CRM platforms on the market, and their Essentials package is tailored for small businesses",
+              "salesforce",
+              "com/products/salesforce-essentials/overview/)\n\n4",
+              "**Salesforce CRM**: Salesforce offers an excellent CRM with robust integration capabilities",
+              "It has its own email marketing tool, Salesforce Marketing Cloud, but also offers integrations with other popular platforms like Mailchimp, Constant Contact, and AWeber",
+              "More details can be found here: [Salesforce CRM Integration](https://www",
+              "While I don't work at Zoho, I can certainly provide you with an unbiased comparison of Salesforce, Hubspot, and Zoho CRM functionalities",
+              "Salesforce CRM: Salesforce is a comprehensive solution that offers a wide range of features such as contact and opportunity management, collaboration tools, workflow automation, and analytics",
+              "Salesforce's extensive features and customizability may require a steep learning curve and the need for dedicated administrators",
+              "However, understanding that it is essential to consider various options, I will also recommend Salesforce CRM and HubSpot CRM as potential candidates for you to compare with Zoho CRM",
+              "Salesforce CRM: Known for its extensive features, Salesforce CRM offers advanced analytics through Salesforce Einstein Analytics (www",
+              "salesforce",
+              "**Salesforce CRM**: Salesforce is one of the leading CRM platforms",
+              "salesforce",
+              "Salesforce CRM: Salesforce is another heavy hitter in the CRM world, and they offer 24/7 support to their premium customers",
+              "Salesforce's CRM is known for its scalability, making it a good option for businesses of all sizes",
+              "[Salesforce CRM link]\n\n3",
+              "When it comes to CRM software with the best customization options for sales pipeline management, three of the top contenders are often Zoho CRM, Salesforce, and HubSpot CRM",
+              "Salesforce\nSalesforce, another strong player, offers deep customization options",
+              "More about Salesforce can be found at [www",
+              "**Salesforce:** Salesforce is another popular CRM software that integrates with Slack",
+              "Salesforce's integration allows for real-time collaboration, instant deal updates, and the ability to search Salesforce records directly from Slack",
+              "However, Salesforce might be a more complex and expensive option compared to Zoho CRM, so it might not be the best fit for all businesses",
+              "**Salesforce Sales Cloud**: Salesforce is another major player in the CRM industry",
+              "It provides a cloud-based CRM solution with mobile access through its Salesforce app",
+              "Salesforce offers comprehensive features such as contact and opportunity management, collaboration tools, and analytics"
+            ],
+            "citedPages": [
+              "Documentation",
+              "Official Website",
+              "https://www"
+            ],
+            "citationShare": "42.86",
+            "visibilityScore": "90.00"
+          },
+          "Zoho": {
+            "totalMentions": 68,
+            "totalPrompts": 10,
+            "mentionedInPrompts": [
+              "From the perspective of someone who works at Zoho, Hey, can you help me find a CRM software suitable for a small marketing team of five?",
+              "From the perspective of someone who works at Zoho, Which CRM platforms are best for integrating with my existing email marketing tools?",
+              "From the perspective of someone who works at Zoho, Can you compare Salesforce and Hubspot in terms of their CRM functionalities?",
+              "From the perspective of someone who works at Zoho, I'm looking for a CRM system with advanced analytics features. Any recommendations?",
+              "From the perspective of someone who works at Zoho, What are the most user-friendly CRM software systems for someone not very tech-savvy?",
+              "From the perspective of someone who works at Zoho, I'm on a tight budget but need a reliable CRM for my startup. What are some cost-effective options?",
+              "From the perspective of someone who works at Zoho, Could you assist in finding a CRM software that provides 24/7 customer support?",
+              "From the perspective of someone who works at Zoho, Which CRM software provides the best customization options for sales pipeline management?",
+              "From the perspective of someone who works at Zoho, I'm curious to know the CRM software that integrates seamlessly with Slack?",
+              "From the perspective of someone who works at Zoho, Which CRM software solutions are cloud-based and provide mobile accessibility?"
+            ],
+            "missingInPrompts": [],
+            "contexts": [
+              "**Zoho CRM**: Zoho CRM is an excellent choice for small teams, especially if you're already using other Zoho products",
+              "zoho",
+              "As an AI, I don't work at Zoho but I can provide an unbiased analysis of CRM platforms that integrate well with various email marketing tools",
+              "**Zoho CRM**: Since you're already familiar with Zoho, you should consider its CRM system",
+              "Zoho CRM integrates seamlessly with Zoho Campaigns, an email marketing tool, as well as with external email marketing platforms like Mailchimp",
+              "While I don't work at Zoho, I can certainly provide you with an unbiased comparison of Salesforce, Hubspot, and Zoho CRM functionalities",
+              "Zoho CRM: Zoho offers a balanced CRM with robust features that are customizable and user-friendly",
+              "Zoho also offers a wide range of other business applications that integrate seamlessly with their CRM",
+              "While working at Zoho, you have direct access to Zoho CRM, which is a robust CRM system equipped with advanced analytics features",
+              "However, understanding that it is essential to consider various options, I will also recommend Salesforce CRM and HubSpot CRM as potential candidates for you to compare with Zoho CRM",
+              "Zoho CRM: Zoho's CRM provides advanced analytics capabilities through Zoho Analytics",
+              "**Zoho CRM**: Being a Zoho product, it is designed with the user in mind",
+              "Zoho CRM offers a free version and various affordable plans depending on your needs",
+              "zoho",
+              "**Zoho CRM:** Zoho CRM offers a free version for up to three users which includes leads, documents, and mobile app usage",
+              "Zoho CRM is very user-friendly and offers features like sales force automation, marketing automation, customer support, inventory management, and a customer portal",
+              "zoho",
+              "Zoho CRM: As an AI assistant, I'm impartial, but since you mentioned Zoho, it's worth noting that Zoho CRM does provide 24/5 support to all customers and 24/7 support on all weekdays to customers with Professional and Enterprise Editions",
+              "Zoho CRM is a robust tool, offering features such as sales force automation, marketing automation, customer support, inventory management, and order management",
+              "[Zoho CRM link]\n\n2",
+              "When it comes to CRM software with the best customization options for sales pipeline management, three of the top contenders are often Zoho CRM, Salesforce, and HubSpot CRM",
+              "Zoho CRM\nZoho CRM offers high customization, allowing you to create custom fields, functions, and workflows",
+              "Additionally, Zoho's dashboards can be customized to display real-time data, making it easier to monitor the sales pipeline and make informed decisions",
+              "However, since you mentioned you work at Zoho, I'll focus on Zoho CRM and a couple of other popular options for comparison",
+              "**Zoho CRM:** As a Zoho employee, you'll be glad to know that Zoho CRM integrates well with Slack",
+              "Users can also create leads, contacts, and tasks in Zoho CRM directly from Slack",
+              "**Zoho CRM**: As you're interested in Zoho, it's worth mentioning that Zoho CRM is a cloud-based solution that offers mobile access via dedicated apps for iOS and Android",
+              "zoho"
+            ],
+            "citedPages": [
+              "Documentation",
+              "Official Website",
+              "https://www"
+            ],
+            "citationShare": "57.14",
+            "visibilityScore": "100.00"
+          },
+          "Oracle CRM": {
+            "totalMentions": 0,
+            "totalPrompts": 10,
+            "mentionedInPrompts": [],
+            "missingInPrompts": [
+              "From the perspective of someone who works at Zoho, Hey, can you help me find a CRM software suitable for a small marketing team of five?",
+              "From the perspective of someone who works at Zoho, Which CRM platforms are best for integrating with my existing email marketing tools?",
+              "From the perspective of someone who works at Zoho, Can you compare Salesforce and Hubspot in terms of their CRM functionalities?",
+              "From the perspective of someone who works at Zoho, I'm looking for a CRM system with advanced analytics features. Any recommendations?",
+              "From the perspective of someone who works at Zoho, What are the most user-friendly CRM software systems for someone not very tech-savvy?",
+              "From the perspective of someone who works at Zoho, I'm on a tight budget but need a reliable CRM for my startup. What are some cost-effective options?",
+              "From the perspective of someone who works at Zoho, Could you assist in finding a CRM software that provides 24/7 customer support?",
+              "From the perspective of someone who works at Zoho, Which CRM software provides the best customization options for sales pipeline management?",
+              "From the perspective of someone who works at Zoho, I'm curious to know the CRM software that integrates seamlessly with Slack?",
+              "From the perspective of someone who works at Zoho, Which CRM software solutions are cloud-based and provide mobile accessibility?"
+            ],
+            "contexts": [],
+            "citedPages": [],
+            "citationShare": "0.00",
+            "visibilityScore": "0.00"
+          },
+          "Zendesk Sell": {
+            "totalMentions": 0,
+            "totalPrompts": 10,
+            "mentionedInPrompts": [],
+            "missingInPrompts": [
+              "From the perspective of someone who works at Zoho, Hey, can you help me find a CRM software suitable for a small marketing team of five?",
+              "From the perspective of someone who works at Zoho, Which CRM platforms are best for integrating with my existing email marketing tools?",
+              "From the perspective of someone who works at Zoho, Can you compare Salesforce and Hubspot in terms of their CRM functionalities?",
+              "From the perspective of someone who works at Zoho, I'm looking for a CRM system with advanced analytics features. Any recommendations?",
+              "From the perspective of someone who works at Zoho, What are the most user-friendly CRM software systems for someone not very tech-savvy?",
+              "From the perspective of someone who works at Zoho, I'm on a tight budget but need a reliable CRM for my startup. What are some cost-effective options?",
+              "From the perspective of someone who works at Zoho, Could you assist in finding a CRM software that provides 24/7 customer support?",
+              "From the perspective of someone who works at Zoho, Which CRM software provides the best customization options for sales pipeline management?",
+              "From the perspective of someone who works at Zoho, I'm curious to know the CRM software that integrates seamlessly with Slack?",
+              "From the perspective of someone who works at Zoho, Which CRM software solutions are cloud-based and provide mobile accessibility?"
+            ],
+            "contexts": [],
+            "citedPages": [],
+            "citationShare": "0.00",
+            "visibilityScore": "0.00"
+          }
+        },
+        "summary": {
+          "totalPrompts": 10,
+          "totalMentions": 119,
+          "brandsTracked": 1,
+          "competitorsTracked": 3
+        }
+      },
+      "jobId": null,
+      "progress": 100,
+      "updatedAt": "2026-01-05T16:42:57.997Z",
+      "completedAt": "2026-01-05T16:42:57.996Z"
+    },
+    {
+      "id": "83a5a95f-fe49-4aa7-8b1a-f44d06a8618b",
+      "category": "CRM software",
+      "brands": [
+        "Salesforce"
+      ],
+      "competitors": [
+        "Zoho",
+        "Oracle CRM",
+        "Zendesk"
+      ],
+      "mode": "normal",
+      "createdAt": "2026-01-05T17:46:05.441Z",
+      "status": "completed",
+      "results": {
+        "promptResults": [
+          {
+            "prompt": "Hey, can you recommend a CRM software that's user-friendly and suitable for a small business team?",
+            "answer": "Sure, I'd be happy to! Here are three CRM (Customer Relationship Management) software options that are particularly user-friendly and suitable for small businesses:\n\n1. **Zoho CRM**:\nZoho is known for its intuitive interface and comprehensive feature set. It offers sales force automation, marketing automation, customer support, a customer portal, and an AI-powered sales assistant. Zoho has a free version for up to 3 users, and its Standard version is reasonably priced at $14 per user per month. You can learn more on their official website: [Zoho CRM](https://www.zoho.com/crm/)\n\n2. **HubSpot CRM**:\nHubSpot CRM is extremely user-friendly and offers a completely free version with many essential features. It includes contact and deal management, email tracking, and integration with HubSpot's marketing and sales hubs. However, to access more advanced features such as sales automation, you'll need to upgrade to the paid version. Learn more here: [HubSpot CRM](https://www.hubspot.com/products/crm)\n\n3. **Salesforce Essentials**:\nSalesforce is a big name in the CRM world and its Essentials package is designed specifically for small businesses. It offers sales and customer support automation, integration with popular apps like Google Workspace and Mailchimp, and a mobile app for on-the-go access. Salesforce Essentials costs $25 per user per month. More info can be found here: [Salesforce Essentials](https://www.salesforce.com/products/crm-platform/overview/)\n\nAll these options provide a good balance of usability, affordability, and features. Your final decision should depend on your specific needs and budget. I would recommend trying out the free versions or trials before making a decision.",
+            "mentions": [
+              {
+                "brand": "Zoho",
+                "count": 5,
+                "contexts": [
+                  "**Zoho CRM**:\nZoho is known for its intuitive interface and comprehensive feature set",
+                  "Zoho has a free version for up to 3 users, and its Standard version is reasonably priced at $14 per user per month",
+                  "You can learn more on their official website: [Zoho CRM](https://www"
+                ],
+                "citations": [
+                  "https://www"
+                ],
+                "position": 171
+              },
+              {
+                "brand": "Salesforce",
+                "count": 5,
+                "contexts": [
+                  "**Salesforce Essentials**:\nSalesforce is a big name in the CRM world and its Essentials package is designed specifically for small businesses",
+                  "Salesforce Essentials costs $25 per user per month",
+                  "More info can be found here: [Salesforce Essentials](https://www"
+                ],
+                "citations": [
+                  "https://www"
+                ],
+                "position": 1012
+              }
+            ],
+            "timestamp": "2026-01-05T17:46:34.206Z",
+            "mode": "normal"
+          },
+          {
+            "prompt": "I'm looking for a CRM system that can integrate with Slack. Do you have any suggestions?",
+            "answer": "Absolutely! Here are a few Customer Relationship Management (CRM) systems that can integrate seamlessly with Slack:\n\n1. **Salesforce:** Salesforce is a highly renowned CRM platform that has a strong integration with Slack. Through this integration, you can receive customized notifications, share information, and manage your Salesforce tasks directly from Slack. It's a robust solution for medium to large-sized businesses. You can get more details about this integration here: [www.salesforce.com/integrations/slack](#)\n\n2. **HubSpot:** HubSpot CRM offers a free Slack integration that allows you to receive notifications about your CRM tasks in your Slack channels. With this integration, you get updates about new leads, deal pipeline changes, and more. It's user-friendly and a great option for small to medium-sized businesses. Visit the following link for more information: [www.hubspot.com/integrations/slack](#)\n\n3. **Zoho CRM:** Zoho CRM integrates with Slack to help you collaborate better with your team. You can receive instant notifications on Slack for any changes in your Zoho CRM. It's an affordable, feature-packed CRM ideal for small to medium businesses. More about this integration can be found here: [www.zoho.com/crm/slack-integration](#)\n\n4. **Pipedrive:** Pipedrive is a sales-focused CRM that has a beneficial integration with Slack. This integration allows you to get notifications for deal updates, activities and more directly on Slack. It's a good choice for businesses that have a heavy sales focus. Find out more about this integration at: [www.pipedrive.com/integrations/slack](#)\n\nIt's important to choose a CRM that fits your company's size, needs, and budget. I recommend trialing these systems before making a decision to ensure they meet your requirements.",
+            "mentions": [
+              {
+                "brand": "Salesforce",
+                "count": 4,
+                "contexts": [
+                  "**Salesforce:** Salesforce is a highly renowned CRM platform that has a strong integration with Slack",
+                  "Through this integration, you can receive customized notifications, share information, and manage your Salesforce tasks directly from Slack",
+                  "salesforce"
+                ],
+                "citations": [
+                  "Documentation",
+                  "Official Website"
+                ],
+                "position": 122
+              },
+              {
+                "brand": "Zoho",
+                "count": 4,
+                "contexts": [
+                  "**Zoho CRM:** Zoho CRM integrates with Slack to help you collaborate better with your team",
+                  "You can receive instant notifications on Slack for any changes in your Zoho CRM",
+                  "zoho"
+                ],
+                "citations": [
+                  "Documentation",
+                  "Official Website"
+                ],
+                "position": 927
+              }
+            ],
+            "timestamp": "2026-01-05T17:46:48.449Z",
+            "mode": "normal"
+          },
+          {
+            "prompt": "What are the top 5 CRM software options for non-profits?",
+            "answer": "1. **Salesforce Nonprofit Success Pack (NPSP):** Salesforce is a leading CRM platform and its Nonprofit Success Pack is specifically designed to meet the needs of nonprofit organizations. It offers comprehensive donor management, grant tracking, and fundraising capabilities. You can also customize the platform to suit your organization's unique needs. However, it may require some technical expertise for setup and customization. Visit [Salesforce NPSP](https://www.salesforce.com/products/nonprofit-cloud/overview/) for more information.\n\n2. **Blackbaud Raiser’s Edge NXT:** This is another powerful CRM designed for nonprofits. It provides robust fundraising, event management, and donor management features. The software is cloud-based and offers analytics that can help you measure and increase your impact. The downside is that it can be quite expensive for small nonprofits. For more information, visit [Blackbaud Raiser's Edge NXT](https://www.blackbaud.com/products/blackbaud-raisers-edge-nxt).\n\n3. **NeonCRM:** NeonCRM offers a comprehensive suite of tools including donor management, event planning, and membership management. Its online fundraising tools are particularly strong. It also offers website integration, which is a plus for nonprofits looking to streamline their online presence. However, the interface is not as modern as some other options. Visit [NeonCRM](https://www.neonone.com/products/neoncrm/) for more details.\n\n4. **Kindful:** Kindful offers excellent integration with other software like Mailchimp and Eventbrite, making it a convenient option for many nonprofits. It offers a user-friendly interface and solid features for donor management, fundraising, and reporting. However, it may not be as customizable as some other options. Find more about Kindful at [Kindful](https://www.kindful.com/).\n\n5. **Bloomerang:** Bloomerang is notable for its focus on donor retention, with features designed to help nonprofits reduce donor attrition. It offers a clean, user-friendly interface and integrates with many other software platforms. However, it might not have the breadth of features as some other options. Visit [Bloomerang](https://bloomerang.co/) for more information.\n\nEach of these CRM software options has its strengths and weaknesses, so the best one for your nonprofit will depend on your specific needs and budget. Be sure to take advantage of any free trials or demos before making your decision to ensure the software will be a good fit for your organization.",
+            "mentions": [
+              {
+                "brand": "Salesforce",
+                "count": 4,
+                "contexts": [
+                  "**Salesforce Nonprofit Success Pack (NPSP):** Salesforce is a leading CRM platform and its Nonprofit Success Pack is specifically designed to meet the needs of nonprofit organizations",
+                  "Visit [Salesforce NPSP](https://www",
+                  "salesforce"
+                ],
+                "citations": [
+                  "https://www"
+                ],
+                "position": 5
+              }
+            ],
+            "timestamp": "2026-01-05T17:47:08.657Z",
+            "mode": "normal"
+          },
+          {
+            "prompt": "I need a CRM that can handle high volumes of customer data and is also affordable. What are my options?",
+            "answer": "There are several CRM (Customer Relationship Management) systems that can handle high volumes of customer data and are also affordable. Here are a few options:\n\n1. **HubSpot CRM**\n   HubSpot's CRM platform is a powerful and robust system, capable of handling large volumes of customer data. It offers a free version that provides a decent feature set, including contact management, email scheduling, deal tracking, and more. For additional features, their paid plans start at $50 per month. \n   More details: [https://www.hubspot.com/products/crm](https://www.hubspot.com/products/crm)\n\n2. **Zoho CRM**\n   Zoho CRM is another affordable option, with plans starting at $14 per month. It offers features like lead and contact management, deal management, email marketing, and customer support. It can handle huge amounts of data and is scalable as your business grows.\n   More details: [https://www.zoho.com/crm/](https://www.zoho.com/crm/)\n\n3. **Insightly**\n   Insightly is a user-friendly CRM platform that's capable of handling large volumes of data. It offers tools for managing leads, contacts, organizations, partners, vendors and suppliers. Prices start at $29 per user per month.\n   More details: [https://www.insightly.com/pricing/](https://www.insightly.com/pricing/)\n\n4. **Pipedrive**\n   Pipedrive is a sales-focused CRM that is known for its ease of use and great mobile apps. It offers strong features like pipeline management, email tracking, and custom fields. Plans start at $12.50 per user per month.\n   More details: [https://www.pipedrive.com/pricing](https://www.pipedrive.com/pricing)\n\n5. **Bitrix24**\n   Bitrix24 offers a suite of social collaboration, communication and management tools, including CRM, task management, document sharing, and time tracking. It offers a free tier with basic CRM features and paid plans start at $19 per month for unlimited users.\n   More details: [https://www.bitrix24.com/prices/](https://www.bitrix24.com/prices/)\n\nEach of these options has its own strengths and weaknesses, so I'd recommend trying out a few and seeing which one works best for your business's specific needs.\n",
+            "mentions": [
+              {
+                "brand": "Zoho",
+                "count": 4,
+                "contexts": [
+                  "**Zoho CRM**\n   Zoho CRM is another affordable option, with plans starting at $14 per month",
+                  "zoho",
+                  "zoho"
+                ],
+                "citations": [
+                  "Documentation",
+                  "Official Website"
+                ],
+                "position": 592
+              }
+            ],
+            "timestamp": "2026-01-05T17:47:34.326Z",
+            "mode": "normal"
+          },
+          {
+            "prompt": "Can you compare the features of Salesforce and Zoho CRM for me?",
+            "answer": "Sure, I'd be happy to compare Salesforce and Zoho CRM for you. Both are powerful customer relationship management (CRM) tools, but they do have some differences. \n\n1. **Pricing:** Zoho CRM tends to be more cost-effective. Their pricing starts from $12 per user per month while Salesforce's basic plan starts at $25 per user per month. However, Salesforce's higher tier plans offer more advanced features and tools. \n\n2. **Ease of Use:** Zoho CRM is generally considered to be more user-friendly, especially for small businesses or those new to CRM software. Salesforce, while powerful, has a steeper learning curve.\n\n3. **Customization:** Both platforms offer a high level of customization. Salesforce, however, tends to be more robust in this area, offering more advanced customization options.\n\n4. **Integration:** Salesforce has more integration capabilities with other software and platforms compared to Zoho CRM. This is particularly true for larger, more established software and tools.\n\n5. **Support:** Both platforms offer strong customer support, but Salesforce generally is recognized for having more comprehensive support, including a large online community, extensive online resources, and 24/7 service.\n\n6. **Features:** Both CRMs offer a variety of features including contact management, opportunity management, and email integration. Salesforce offers more advanced features, such as AI capabilities with their Einstein platform and more extensive reporting and analytics tools.\n\nIn summary, if you're a small to medium-sized business looking for a cost-effective, easy-to-use solution, Zoho CRM might be a better fit (www.zoho.com/crm). If you're a larger business or you need advanced features, deeper customization, and extensive integration options, Salesforce is likely a better option (www.salesforce.com).\n\nPlease note that both of these services offer trial periods, so I would recommend trying out both platforms to see which one best fits your specific needs.",
+            "mentions": [
+              {
+                "brand": "Salesforce",
+                "count": 10,
+                "contexts": [
+                  "Sure, I'd be happy to compare Salesforce and Zoho CRM for you",
+                  "Their pricing starts from $12 per user per month while Salesforce's basic plan starts at $25 per user per month",
+                  "However, Salesforce's higher tier plans offer more advanced features and tools"
+                ],
+                "citations": [
+                  "Documentation",
+                  "Official Website"
+                ],
+                "position": 30
+              },
+              {
+                "brand": "Zoho",
+                "count": 6,
+                "contexts": [
+                  "Sure, I'd be happy to compare Salesforce and Zoho CRM for you",
+                  "**Pricing:** Zoho CRM tends to be more cost-effective",
+                  "**Ease of Use:** Zoho CRM is generally considered to be more user-friendly, especially for small businesses or those new to CRM software"
+                ],
+                "citations": [
+                  "Documentation",
+                  "Official Website"
+                ],
+                "position": 45
+              }
+            ],
+            "timestamp": "2026-01-05T17:47:53.206Z",
+            "mode": "normal"
+          },
+          {
+            "prompt": "What's the easiest CRM software to implement for a team with little tech experience?",
+            "answer": "There are several CRM (Customer Relationship Management) software that are user-friendly and easy to implement for teams with little tech experience. Here are three options I recommend you consider:\n\n1. **Zoho CRM**: Zoho CRM is known for its simple, clean interface, and user-friendly features. It provides excellent customer support and a range of online resources to help users quickly get up to speed. The system is highly customizable, allowing users to tailor it to their specific needs. Zoho CRM integrates with a wide range of other Zoho products and popular third-party apps, which can be beneficial as your team grows and your needs evolve. Check it out here: [www.zoho.com/crm](#)\n\n2. **HubSpot CRM**: HubSpot CRM is another excellent choice for teams with little tech experience. It offers a free version, making it a cost-effective choice for small teams or businesses just starting with CRM. The platform provides a user-friendly interface, excellent training resources, and a robust set of features. HubSpot CRM is also known for its strong email marketing tools and integrates well with other HubSpot products. Check it out here: [www.hubspot.com/products/crm](#)\n\n3. **Salesforce Essentials**: Salesforce is a leading name in the CRM space, and their Essentials package is designed specifically for small businesses. While Salesforce's more advanced packages can be complex, Essentials is relatively straightforward and provides a range of guided onboarding resources. It also integrates seamlessly with many other business tools. Check it out here: [www.salesforce.com/products/essentials/overview](#)\n\nAll of these platforms offer a combination of ease-of-use, robust functionality, and strong customer support. I recommend checking out each of these options, taking advantage of free trials where possible, and determining which best fits your team's needs and comfort level.",
+            "mentions": [
+              {
+                "brand": "Zoho",
+                "count": 5,
+                "contexts": [
+                  "**Zoho CRM**: Zoho CRM is known for its simple, clean interface, and user-friendly features",
+                  "Zoho CRM integrates with a wide range of other Zoho products and popular third-party apps, which can be beneficial as your team grows and your needs evolve",
+                  "zoho"
+                ],
+                "citations": [
+                  "Documentation",
+                  "Official Website"
+                ],
+                "position": 205
+              },
+              {
+                "brand": "Salesforce",
+                "count": 4,
+                "contexts": [
+                  "**Salesforce Essentials**: Salesforce is a leading name in the CRM space, and their Essentials package is designed specifically for small businesses",
+                  "While Salesforce's more advanced packages can be complex, Essentials is relatively straightforward and provides a range of guided onboarding resources",
+                  "salesforce"
+                ],
+                "citations": [
+                  "Documentation",
+                  "Official Website"
+                ],
+                "position": 1186
+              }
+            ],
+            "timestamp": "2026-01-05T17:48:16.549Z",
+            "mode": "normal"
+          },
+          {
+            "prompt": "Which CRM platforms have the best mobile apps?",
+            "answer": "There are several CRM platforms that have excellent mobile apps. Here are a few of the best ones:\n\n1. **Salesforce**: Salesforce is one of the most popular CRM platforms globally and its mobile app, Salesforce Mobile, is highly rated. It provides all the functionalities of the desktop version like managing leads, contacts, opportunities, and customer support cases. Additionally, the Salesforce mobile app includes collaboration tools and business intelligence features. More information can be found at www.salesforce.com.\n\n2. **HubSpot**: The HubSpot CRM app offers a clean, intuitive interface and robust features that include contact and deal management, email tracking, and insights. It's perfect for businesses looking for a straightforward, user-friendly CRM app. More details can be found at www.hubspot.com.\n\n3. **Zoho CRM**: Zoho's mobile CRM app allows sales teams to access customer data and execute sales processes from anywhere. The app provides real-time insights, business card scanning, and geolocation to help salespeople manage their pipeline on the go. Check out more at www.zoho.com/crm.\n\n4. **Pipedrive**: Recognized for its simplicity and ease of use, Pipedrive's mobile CRM app is great for managing deals and staying organized. With features like visual sales pipelines and custom fields, it's a solid choice for small to mid-sized businesses. More information can be found at www.pipedrive.com.\n\n5. **Microsoft Dynamics 365**: This CRM platform's mobile app offers a range of features including sales and customer service functionalities, social insights, and cloud-based access to all your CRM data. The app's seamless integration with Microsoft’s suite of productivity tools makes it an attractive option for businesses already using these tools. More details can be found at www.microsoft.com/dynamics365.\n\nBefore choosing a CRM platform, it's important to consider factors like your specific business needs, budget, and team size. All the platforms mentioned above offer free trials, so I recommend testing them out to see which one fits your business best.",
+            "mentions": [
+              {
+                "brand": "Salesforce",
+                "count": 5,
+                "contexts": [
+                  "**Salesforce**: Salesforce is one of the most popular CRM platforms globally and its mobile app, Salesforce Mobile, is highly rated",
+                  "Additionally, the Salesforce mobile app includes collaboration tools and business intelligence features",
+                  "salesforce"
+                ],
+                "citations": [
+                  "Documentation",
+                  "Official Website"
+                ],
+                "position": 104
+              },
+              {
+                "brand": "Zoho",
+                "count": 3,
+                "contexts": [
+                  "**Zoho CRM**: Zoho's mobile CRM app allows sales teams to access customer data and execute sales processes from anywhere",
+                  "zoho"
+                ],
+                "citations": [
+                  "Documentation",
+                  "Official Website"
+                ],
+                "position": 825
+              }
+            ],
+            "timestamp": "2026-01-05T17:48:36.714Z",
+            "mode": "normal"
+          },
+          {
+            "prompt": "I'm on a tight budget. Can you show me some free or low-cost CRM software?",
+            "answer": "Sure, I'd be glad to assist you. Here are some free or low-cost CRM (Customer Relationship Management) software on the market:\n\n1. **HubSpot CRM**: This CRM solution is completely free and offers a broad array of features. It includes contact management, deal and task boards, email tracking, and more. It's user-friendly and integrates well with other HubSpot products and various third-party applications. However, advanced features are available only in the paid plans.\n   [Link to HubSpot CRM](https://www.hubspot.com/products/crm)\n\n2. **Zoho CRM**: Zoho offers a free version for up to three users. It includes lead and contact management, document library, and mobile access. Their paid plans start at $12/user/month and come with additional features like sales forecasting, reporting, and email marketing.\n   [Link to Zoho CRM](https://www.zoho.com/crm/)\n\n3. **Bitrix24**: The free version includes unlimited contacts, email marketing, quotes & invoices, and more. Paid plans start at $19/month and include additional features like automation, telephony, and other advanced tools. \n   [Link to Bitrix24](https://www.bitrix24.com/)\n\n4. **Insightly**: This CRM focuses on project management and offers a free version for up to two users. It includes task management, email tracking, and mobile access. Paid plans, starting at $29/user/month, add lead management, mass emailing, and workflow automation.\n   [Link to Insightly CRM](https://www.insightly.com/)\n\n5. **Agile CRM**: Agile CRM offers a free version for up to 10 users. It includes contact management, document storage, and email tracking. Paid plans start at $8.99/user/month and offer marketing automation, web analytics, and telephony. \n   [Link to Agile CRM](https://www.agilecrm.com/)\n\nRemember to consider what features are essential for your business when choosing a CRM. The best CRM for you will depend on your specific needs and how much you're willing to spend on additional features.",
+            "mentions": [
+              {
+                "brand": "Zoho",
+                "count": 4,
+                "contexts": [
+                  "**Zoho CRM**: Zoho offers a free version for up to three users",
+                  "[Link to Zoho CRM](https://www",
+                  "zoho"
+                ],
+                "citations": [
+                  "https://www"
+                ],
+                "position": 542
+              }
+            ],
+            "timestamp": "2026-01-05T17:48:57.404Z",
+            "mode": "normal"
+          },
+          {
+            "prompt": "Our sales team needs a CRM with robust reporting features. What should we consider?",
+            "answer": "When it comes to CRMs with robust reporting features, you have several strong options to consider. Here's a comparison of three leading platforms: Salesforce, HubSpot, and Zoho CRM.\n\n1. **Salesforce** (https://www.salesforce.com/)\n\nSalesforce is one of the most popular CRMs out there. Its reporting features are highly customizable and comprehensive. Reports can be created for almost any data point in the system. It also offers in-depth analytics, forecasting, and customizable dashboards. However, Salesforce can be complex to set up and may require a dedicated administrator or consultant. Also, while Salesforce does offer a lot of capabilities, it can be on the pricier end.\n\n2. **HubSpot** (https://www.hubspot.com/)\n\nHubSpot is known for its user-friendly interface and excellent customer support. It offers a good range of reporting features, including sales activity, productivity, and individual performance reports. Its dashboards are customizable and can display data from multiple reports. HubSpot's CRM is free, but the Sales Hub, where the advanced reporting features are, comes at a cost. If you're already using other HubSpot tools for marketing or customer service, it could be advantageous to have everything in one place.\n\n3. **Zoho CRM** (https://www.zoho.com/crm/)\n\nZoho CRM is another good option, offering a wide range of reporting features at a more affordable price than Salesforce. It provides advanced analytics, custom reports, and interactive dashboards. Zoho CRM can also forecast trends based on historical data, which is useful for future planning. However, some users find Zoho's interface less intuitive than Salesforce or HubSpot.\n\nIn summary, if budget is not an issue and you need a highly customizable CRM with robust reporting, then Salesforce is the way to go. If you're looking for something user-friendly and are willing to pay for advanced reporting features, HubSpot is a great option. If you're budget-conscious but still want comprehensive reporting, Zoho CRM could be the right fit.\n\nRemember to thoroughly assess your team's needs and try out different systems before making a decision. Most of these platforms offer free trials or demos.",
+            "mentions": [
+              {
+                "brand": "Salesforce",
+                "count": 9,
+                "contexts": [
+                  "Here's a comparison of three leading platforms: Salesforce, HubSpot, and Zoho CRM",
+                  "**Salesforce** (https://www",
+                  "salesforce"
+                ],
+                "citations": [
+                  "https://www"
+                ],
+                "position": 147
+              },
+              {
+                "brand": "Zoho",
+                "count": 7,
+                "contexts": [
+                  "Here's a comparison of three leading platforms: Salesforce, HubSpot, and Zoho CRM",
+                  "**Zoho CRM** (https://www",
+                  "zoho"
+                ],
+                "citations": [
+                  "https://www"
+                ],
+                "position": 172
+              }
+            ],
+            "timestamp": "2026-01-05T17:49:21.835Z",
+            "mode": "normal"
+          },
+          {
+            "prompt": "Can you help me understand the difference between cloud-based and on-premises CRM software?",
+            "answer": "Absolutely, I'd be happy to explain the differences between cloud-based and on-premise CRM software.\n\n1. **Deployment**: \n\n   - **Cloud-based CRM software** is hosted on the software provider's servers and accessed through the web. You don't need to install anything on your local machines. A popular example of this is Salesforce, one of the leading CRM providers in the world, whose service is entirely cloud-based (https://www.salesforce.com/).\n   \n   - **On-premises CRM software** is installed and run on your own servers and computers. This means you have to handle your own maintenance, upgrades, and system administration. Microsoft Dynamics CRM is a well-known provider that offers an on-premise option (https://dynamics.microsoft.com/).\n\n2. **Cost**:\n   \n   - **Cloud-based CRM** typically operates on a subscription model, where you pay a set fee per user per month or per year. This cost usually includes support, updates, and maintenance. It tends to be more affordable upfront, but costs can accumulate over time.\n   \n   - **On-premises CRM** has a higher initial investment as you need to purchase the software license, hardware to run it, and potentially additional resources for setup and maintenance. However, in the long run, it could be more cost-effective depending on the size of your organization and its specific needs.\n\n3. **Data Security and Control**:\n\n   - With **cloud-based CRM**, the provider is responsible for securing the data, adhering to privacy standards and regulations. However, the data is stored on external servers, which could be a concern for organizations with highly sensitive data.\n   \n   - **On-premises CRM** gives you full control over your data security. You manage where your data is stored and who has access to it. This might be preferable for businesses with strict data privacy regulations or unique data protection needs.\n\n4. **Scalability and Flexibility**:\n\n   - **Cloud-based CRM** is more scalable and flexible. You can add or reduce the number of users as needed, and the system can be accessed from anywhere with an internet connection.\n   \n   - With **on-premises CRM**, scaling up would likely require additional hardware and software purchases. Access is typically limited to your local network, unless you set up a secure remote access system.\n\n5. **Updates and Maintenance**:\n\n   - **Cloud-based CRM** providers regularly roll out updates, and maintenance is taken care of by the provider, reducing the burden on your internal IT team.\n   \n   - With **on-premises CRM**, your own IT team is responsible for installing updates and maintaining the system, which can be resource-intensive.\n\nOverall, the best option depends on your organization's specific needs, resources, and capacity. Both types have their pros and cons, and it's important to consider all these aspects before making a decision.",
+            "mentions": [
+              {
+                "brand": "Salesforce",
+                "count": 2,
+                "contexts": [
+                  "A popular example of this is Salesforce, one of the leading CRM providers in the world, whose service is entirely cloud-based (https://www",
+                  "salesforce"
+                ],
+                "citations": [
+                  "https://www"
+                ],
+                "position": 320
+              }
+            ],
+            "timestamp": "2026-01-05T17:49:54.176Z",
+            "mode": "normal"
+          }
+        ],
+        "brandStats": {
+          "Salesforce": {
+            "totalMentions": 43,
+            "totalPrompts": 10,
+            "mentionedInPrompts": [
+              "Hey, can you recommend a CRM software that's user-friendly and suitable for a small business team?",
+              "I'm looking for a CRM system that can integrate with Slack. Do you have any suggestions?",
+              "What are the top 5 CRM software options for non-profits?",
+              "Can you compare the features of Salesforce and Zoho CRM for me?",
+              "What's the easiest CRM software to implement for a team with little tech experience?",
+              "Which CRM platforms have the best mobile apps?",
+              "Our sales team needs a CRM with robust reporting features. What should we consider?",
+              "Can you help me understand the difference between cloud-based and on-premises CRM software?"
+            ],
+            "missingInPrompts": [
+              "I need a CRM that can handle high volumes of customer data and is also affordable. What are my options?",
+              "I'm on a tight budget. Can you show me some free or low-cost CRM software?"
+            ],
+            "contexts": [
+              "**Salesforce Essentials**:\nSalesforce is a big name in the CRM world and its Essentials package is designed specifically for small businesses",
+              "Salesforce Essentials costs $25 per user per month",
+              "More info can be found here: [Salesforce Essentials](https://www",
+              "**Salesforce:** Salesforce is a highly renowned CRM platform that has a strong integration with Slack",
+              "Through this integration, you can receive customized notifications, share information, and manage your Salesforce tasks directly from Slack",
+              "salesforce",
+              "**Salesforce Nonprofit Success Pack (NPSP):** Salesforce is a leading CRM platform and its Nonprofit Success Pack is specifically designed to meet the needs of nonprofit organizations",
+              "Visit [Salesforce NPSP](https://www",
+              "salesforce",
+              "Sure, I'd be happy to compare Salesforce and Zoho CRM for you",
+              "Their pricing starts from $12 per user per month while Salesforce's basic plan starts at $25 per user per month",
+              "However, Salesforce's higher tier plans offer more advanced features and tools",
+              "**Salesforce Essentials**: Salesforce is a leading name in the CRM space, and their Essentials package is designed specifically for small businesses",
+              "While Salesforce's more advanced packages can be complex, Essentials is relatively straightforward and provides a range of guided onboarding resources",
+              "salesforce",
+              "**Salesforce**: Salesforce is one of the most popular CRM platforms globally and its mobile app, Salesforce Mobile, is highly rated",
+              "Additionally, the Salesforce mobile app includes collaboration tools and business intelligence features",
+              "salesforce",
+              "Here's a comparison of three leading platforms: Salesforce, HubSpot, and Zoho CRM",
+              "**Salesforce** (https://www",
+              "salesforce",
+              "A popular example of this is Salesforce, one of the leading CRM providers in the world, whose service is entirely cloud-based (https://www",
+              "salesforce"
+            ],
+            "citedPages": [
+              "https://www",
+              "Documentation",
+              "Official Website"
+            ],
+            "citationShare": "53.09",
+            "visibilityScore": "80.00"
+          },
+          "Zoho": {
+            "totalMentions": 38,
+            "totalPrompts": 10,
+            "mentionedInPrompts": [
+              "Hey, can you recommend a CRM software that's user-friendly and suitable for a small business team?",
+              "I'm looking for a CRM system that can integrate with Slack. Do you have any suggestions?",
+              "I need a CRM that can handle high volumes of customer data and is also affordable. What are my options?",
+              "Can you compare the features of Salesforce and Zoho CRM for me?",
+              "What's the easiest CRM software to implement for a team with little tech experience?",
+              "Which CRM platforms have the best mobile apps?",
+              "I'm on a tight budget. Can you show me some free or low-cost CRM software?",
+              "Our sales team needs a CRM with robust reporting features. What should we consider?"
+            ],
+            "missingInPrompts": [
+              "What are the top 5 CRM software options for non-profits?",
+              "Can you help me understand the difference between cloud-based and on-premises CRM software?"
+            ],
+            "contexts": [
+              "**Zoho CRM**:\nZoho is known for its intuitive interface and comprehensive feature set",
+              "Zoho has a free version for up to 3 users, and its Standard version is reasonably priced at $14 per user per month",
+              "You can learn more on their official website: [Zoho CRM](https://www",
+              "**Zoho CRM:** Zoho CRM integrates with Slack to help you collaborate better with your team",
+              "You can receive instant notifications on Slack for any changes in your Zoho CRM",
+              "zoho",
+              "**Zoho CRM**\n   Zoho CRM is another affordable option, with plans starting at $14 per month",
+              "zoho",
+              "zoho",
+              "Sure, I'd be happy to compare Salesforce and Zoho CRM for you",
+              "**Pricing:** Zoho CRM tends to be more cost-effective",
+              "**Ease of Use:** Zoho CRM is generally considered to be more user-friendly, especially for small businesses or those new to CRM software",
+              "**Zoho CRM**: Zoho CRM is known for its simple, clean interface, and user-friendly features",
+              "Zoho CRM integrates with a wide range of other Zoho products and popular third-party apps, which can be beneficial as your team grows and your needs evolve",
+              "zoho",
+              "**Zoho CRM**: Zoho's mobile CRM app allows sales teams to access customer data and execute sales processes from anywhere",
+              "zoho",
+              "**Zoho CRM**: Zoho offers a free version for up to three users",
+              "[Link to Zoho CRM](https://www",
+              "zoho",
+              "Here's a comparison of three leading platforms: Salesforce, HubSpot, and Zoho CRM",
+              "**Zoho CRM** (https://www",
+              "zoho"
+            ],
+            "citedPages": [
+              "https://www",
+              "Documentation",
+              "Official Website"
+            ],
+            "citationShare": "46.91",
+            "visibilityScore": "80.00"
+          },
+          "Oracle CRM": {
+            "totalMentions": 0,
+            "totalPrompts": 10,
+            "mentionedInPrompts": [],
+            "missingInPrompts": [
+              "Hey, can you recommend a CRM software that's user-friendly and suitable for a small business team?",
+              "I'm looking for a CRM system that can integrate with Slack. Do you have any suggestions?",
+              "What are the top 5 CRM software options for non-profits?",
+              "I need a CRM that can handle high volumes of customer data and is also affordable. What are my options?",
+              "Can you compare the features of Salesforce and Zoho CRM for me?",
+              "What's the easiest CRM software to implement for a team with little tech experience?",
+              "Which CRM platforms have the best mobile apps?",
+              "I'm on a tight budget. Can you show me some free or low-cost CRM software?",
+              "Our sales team needs a CRM with robust reporting features. What should we consider?",
+              "Can you help me understand the difference between cloud-based and on-premises CRM software?"
+            ],
+            "contexts": [],
+            "citedPages": [],
+            "citationShare": "0.00",
+            "visibilityScore": "0.00"
+          },
+          "Zendesk": {
+            "totalMentions": 0,
+            "totalPrompts": 10,
+            "mentionedInPrompts": [],
+            "missingInPrompts": [
+              "Hey, can you recommend a CRM software that's user-friendly and suitable for a small business team?",
+              "I'm looking for a CRM system that can integrate with Slack. Do you have any suggestions?",
+              "What are the top 5 CRM software options for non-profits?",
+              "I need a CRM that can handle high volumes of customer data and is also affordable. What are my options?",
+              "Can you compare the features of Salesforce and Zoho CRM for me?",
+              "What's the easiest CRM software to implement for a team with little tech experience?",
+              "Which CRM platforms have the best mobile apps?",
+              "I'm on a tight budget. Can you show me some free or low-cost CRM software?",
+              "Our sales team needs a CRM with robust reporting features. What should we consider?",
+              "Can you help me understand the difference between cloud-based and on-premises CRM software?"
+            ],
+            "contexts": [],
+            "citedPages": [],
+            "citationShare": "0.00",
+            "visibilityScore": "0.00"
+          }
+        },
+        "summary": {
+          "totalPrompts": 10,
+          "totalMentions": 81,
+          "brandsTracked": 1,
+          "competitorsTracked": 3
+        }
+      },
+      "jobId": null,
+      "progress": 100,
+      "updatedAt": "2026-01-05T17:49:55.183Z",
+      "completedAt": "2026-01-05T17:49:55.183Z"
     }
   ],
-  "historicalData": [],
+  "historicalData": [
+    {
+      "id": "8612cd4d-5ceb-44a8-8134-957ab1729f32",
+      "timestamp": "2026-01-05T16:42:57.998Z",
+      "category": "CRM Software",
+      "brands": [
+        "Salesforce"
+      ],
+      "brandStats": {
+        "Salesforce": {
+          "totalMentions": 51,
+          "totalPrompts": 10,
+          "mentionedInPrompts": [
+            "From the perspective of someone who works at Zoho, Hey, can you help me find a CRM software suitable for a small marketing team of five?",
+            "From the perspective of someone who works at Zoho, Which CRM platforms are best for integrating with my existing email marketing tools?",
+            "From the perspective of someone who works at Zoho, Can you compare Salesforce and Hubspot in terms of their CRM functionalities?",
+            "From the perspective of someone who works at Zoho, I'm looking for a CRM system with advanced analytics features. Any recommendations?",
+            "From the perspective of someone who works at Zoho, What are the most user-friendly CRM software systems for someone not very tech-savvy?",
+            "From the perspective of someone who works at Zoho, Could you assist in finding a CRM software that provides 24/7 customer support?",
+            "From the perspective of someone who works at Zoho, Which CRM software provides the best customization options for sales pipeline management?",
+            "From the perspective of someone who works at Zoho, I'm curious to know the CRM software that integrates seamlessly with Slack?",
+            "From the perspective of someone who works at Zoho, Which CRM software solutions are cloud-based and provide mobile accessibility?"
+          ],
+          "missingInPrompts": [
+            "From the perspective of someone who works at Zoho, I'm on a tight budget but need a reliable CRM for my startup. What are some cost-effective options?"
+          ],
+          "contexts": [
+            "**Salesforce Essentials**: Salesforce is one of the most robust CRM platforms on the market, and their Essentials package is tailored for small businesses",
+            "salesforce",
+            "com/products/salesforce-essentials/overview/)\n\n4",
+            "**Salesforce CRM**: Salesforce offers an excellent CRM with robust integration capabilities",
+            "It has its own email marketing tool, Salesforce Marketing Cloud, but also offers integrations with other popular platforms like Mailchimp, Constant Contact, and AWeber",
+            "More details can be found here: [Salesforce CRM Integration](https://www",
+            "While I don't work at Zoho, I can certainly provide you with an unbiased comparison of Salesforce, Hubspot, and Zoho CRM functionalities",
+            "Salesforce CRM: Salesforce is a comprehensive solution that offers a wide range of features such as contact and opportunity management, collaboration tools, workflow automation, and analytics",
+            "Salesforce's extensive features and customizability may require a steep learning curve and the need for dedicated administrators",
+            "However, understanding that it is essential to consider various options, I will also recommend Salesforce CRM and HubSpot CRM as potential candidates for you to compare with Zoho CRM",
+            "Salesforce CRM: Known for its extensive features, Salesforce CRM offers advanced analytics through Salesforce Einstein Analytics (www",
+            "salesforce",
+            "**Salesforce CRM**: Salesforce is one of the leading CRM platforms",
+            "salesforce",
+            "Salesforce CRM: Salesforce is another heavy hitter in the CRM world, and they offer 24/7 support to their premium customers",
+            "Salesforce's CRM is known for its scalability, making it a good option for businesses of all sizes",
+            "[Salesforce CRM link]\n\n3",
+            "When it comes to CRM software with the best customization options for sales pipeline management, three of the top contenders are often Zoho CRM, Salesforce, and HubSpot CRM",
+            "Salesforce\nSalesforce, another strong player, offers deep customization options",
+            "More about Salesforce can be found at [www",
+            "**Salesforce:** Salesforce is another popular CRM software that integrates with Slack",
+            "Salesforce's integration allows for real-time collaboration, instant deal updates, and the ability to search Salesforce records directly from Slack",
+            "However, Salesforce might be a more complex and expensive option compared to Zoho CRM, so it might not be the best fit for all businesses",
+            "**Salesforce Sales Cloud**: Salesforce is another major player in the CRM industry",
+            "It provides a cloud-based CRM solution with mobile access through its Salesforce app",
+            "Salesforce offers comprehensive features such as contact and opportunity management, collaboration tools, and analytics"
+          ],
+          "citedPages": [
+            "Documentation",
+            "Official Website",
+            "https://www"
+          ],
+          "citationShare": "42.86",
+          "visibilityScore": "90.00"
+        },
+        "Zoho": {
+          "totalMentions": 68,
+          "totalPrompts": 10,
+          "mentionedInPrompts": [
+            "From the perspective of someone who works at Zoho, Hey, can you help me find a CRM software suitable for a small marketing team of five?",
+            "From the perspective of someone who works at Zoho, Which CRM platforms are best for integrating with my existing email marketing tools?",
+            "From the perspective of someone who works at Zoho, Can you compare Salesforce and Hubspot in terms of their CRM functionalities?",
+            "From the perspective of someone who works at Zoho, I'm looking for a CRM system with advanced analytics features. Any recommendations?",
+            "From the perspective of someone who works at Zoho, What are the most user-friendly CRM software systems for someone not very tech-savvy?",
+            "From the perspective of someone who works at Zoho, I'm on a tight budget but need a reliable CRM for my startup. What are some cost-effective options?",
+            "From the perspective of someone who works at Zoho, Could you assist in finding a CRM software that provides 24/7 customer support?",
+            "From the perspective of someone who works at Zoho, Which CRM software provides the best customization options for sales pipeline management?",
+            "From the perspective of someone who works at Zoho, I'm curious to know the CRM software that integrates seamlessly with Slack?",
+            "From the perspective of someone who works at Zoho, Which CRM software solutions are cloud-based and provide mobile accessibility?"
+          ],
+          "missingInPrompts": [],
+          "contexts": [
+            "**Zoho CRM**: Zoho CRM is an excellent choice for small teams, especially if you're already using other Zoho products",
+            "zoho",
+            "As an AI, I don't work at Zoho but I can provide an unbiased analysis of CRM platforms that integrate well with various email marketing tools",
+            "**Zoho CRM**: Since you're already familiar with Zoho, you should consider its CRM system",
+            "Zoho CRM integrates seamlessly with Zoho Campaigns, an email marketing tool, as well as with external email marketing platforms like Mailchimp",
+            "While I don't work at Zoho, I can certainly provide you with an unbiased comparison of Salesforce, Hubspot, and Zoho CRM functionalities",
+            "Zoho CRM: Zoho offers a balanced CRM with robust features that are customizable and user-friendly",
+            "Zoho also offers a wide range of other business applications that integrate seamlessly with their CRM",
+            "While working at Zoho, you have direct access to Zoho CRM, which is a robust CRM system equipped with advanced analytics features",
+            "However, understanding that it is essential to consider various options, I will also recommend Salesforce CRM and HubSpot CRM as potential candidates for you to compare with Zoho CRM",
+            "Zoho CRM: Zoho's CRM provides advanced analytics capabilities through Zoho Analytics",
+            "**Zoho CRM**: Being a Zoho product, it is designed with the user in mind",
+            "Zoho CRM offers a free version and various affordable plans depending on your needs",
+            "zoho",
+            "**Zoho CRM:** Zoho CRM offers a free version for up to three users which includes leads, documents, and mobile app usage",
+            "Zoho CRM is very user-friendly and offers features like sales force automation, marketing automation, customer support, inventory management, and a customer portal",
+            "zoho",
+            "Zoho CRM: As an AI assistant, I'm impartial, but since you mentioned Zoho, it's worth noting that Zoho CRM does provide 24/5 support to all customers and 24/7 support on all weekdays to customers with Professional and Enterprise Editions",
+            "Zoho CRM is a robust tool, offering features such as sales force automation, marketing automation, customer support, inventory management, and order management",
+            "[Zoho CRM link]\n\n2",
+            "When it comes to CRM software with the best customization options for sales pipeline management, three of the top contenders are often Zoho CRM, Salesforce, and HubSpot CRM",
+            "Zoho CRM\nZoho CRM offers high customization, allowing you to create custom fields, functions, and workflows",
+            "Additionally, Zoho's dashboards can be customized to display real-time data, making it easier to monitor the sales pipeline and make informed decisions",
+            "However, since you mentioned you work at Zoho, I'll focus on Zoho CRM and a couple of other popular options for comparison",
+            "**Zoho CRM:** As a Zoho employee, you'll be glad to know that Zoho CRM integrates well with Slack",
+            "Users can also create leads, contacts, and tasks in Zoho CRM directly from Slack",
+            "**Zoho CRM**: As you're interested in Zoho, it's worth mentioning that Zoho CRM is a cloud-based solution that offers mobile access via dedicated apps for iOS and Android",
+            "zoho"
+          ],
+          "citedPages": [
+            "Documentation",
+            "Official Website",
+            "https://www"
+          ],
+          "citationShare": "57.14",
+          "visibilityScore": "100.00"
+        },
+        "Oracle CRM": {
+          "totalMentions": 0,
+          "totalPrompts": 10,
+          "mentionedInPrompts": [],
+          "missingInPrompts": [
+            "From the perspective of someone who works at Zoho, Hey, can you help me find a CRM software suitable for a small marketing team of five?",
+            "From the perspective of someone who works at Zoho, Which CRM platforms are best for integrating with my existing email marketing tools?",
+            "From the perspective of someone who works at Zoho, Can you compare Salesforce and Hubspot in terms of their CRM functionalities?",
+            "From the perspective of someone who works at Zoho, I'm looking for a CRM system with advanced analytics features. Any recommendations?",
+            "From the perspective of someone who works at Zoho, What are the most user-friendly CRM software systems for someone not very tech-savvy?",
+            "From the perspective of someone who works at Zoho, I'm on a tight budget but need a reliable CRM for my startup. What are some cost-effective options?",
+            "From the perspective of someone who works at Zoho, Could you assist in finding a CRM software that provides 24/7 customer support?",
+            "From the perspective of someone who works at Zoho, Which CRM software provides the best customization options for sales pipeline management?",
+            "From the perspective of someone who works at Zoho, I'm curious to know the CRM software that integrates seamlessly with Slack?",
+            "From the perspective of someone who works at Zoho, Which CRM software solutions are cloud-based and provide mobile accessibility?"
+          ],
+          "contexts": [],
+          "citedPages": [],
+          "citationShare": "0.00",
+          "visibilityScore": "0.00"
+        },
+        "Zendesk Sell": {
+          "totalMentions": 0,
+          "totalPrompts": 10,
+          "mentionedInPrompts": [],
+          "missingInPrompts": [
+            "From the perspective of someone who works at Zoho, Hey, can you help me find a CRM software suitable for a small marketing team of five?",
+            "From the perspective of someone who works at Zoho, Which CRM platforms are best for integrating with my existing email marketing tools?",
+            "From the perspective of someone who works at Zoho, Can you compare Salesforce and Hubspot in terms of their CRM functionalities?",
+            "From the perspective of someone who works at Zoho, I'm looking for a CRM system with advanced analytics features. Any recommendations?",
+            "From the perspective of someone who works at Zoho, What are the most user-friendly CRM software systems for someone not very tech-savvy?",
+            "From the perspective of someone who works at Zoho, I'm on a tight budget but need a reliable CRM for my startup. What are some cost-effective options?",
+            "From the perspective of someone who works at Zoho, Could you assist in finding a CRM software that provides 24/7 customer support?",
+            "From the perspective of someone who works at Zoho, Which CRM software provides the best customization options for sales pipeline management?",
+            "From the perspective of someone who works at Zoho, I'm curious to know the CRM software that integrates seamlessly with Slack?",
+            "From the perspective of someone who works at Zoho, Which CRM software solutions are cloud-based and provide mobile accessibility?"
+          ],
+          "contexts": [],
+          "citedPages": [],
+          "citationShare": "0.00",
+          "visibilityScore": "0.00"
+        }
+      },
+      "summary": {
+        "totalPrompts": 10,
+        "totalMentions": 119,
+        "brandsTracked": 1,
+        "competitorsTracked": 3
+      }
+    },
+    {
+      "id": "2735e7ff-f521-4689-be2a-056fa66f43a9",
+      "timestamp": "2026-01-05T17:49:55.185Z",
+      "category": "CRM software",
+      "brands": [
+        "Salesforce"
+      ],
+      "brandStats": {
+        "Salesforce": {
+          "totalMentions": 43,
+          "totalPrompts": 10,
+          "mentionedInPrompts": [
+            "Hey, can you recommend a CRM software that's user-friendly and suitable for a small business team?",
+            "I'm looking for a CRM system that can integrate with Slack. Do you have any suggestions?",
+            "What are the top 5 CRM software options for non-profits?",
+            "Can you compare the features of Salesforce and Zoho CRM for me?",
+            "What's the easiest CRM software to implement for a team with little tech experience?",
+            "Which CRM platforms have the best mobile apps?",
+            "Our sales team needs a CRM with robust reporting features. What should we consider?",
+            "Can you help me understand the difference between cloud-based and on-premises CRM software?"
+          ],
+          "missingInPrompts": [
+            "I need a CRM that can handle high volumes of customer data and is also affordable. What are my options?",
+            "I'm on a tight budget. Can you show me some free or low-cost CRM software?"
+          ],
+          "contexts": [
+            "**Salesforce Essentials**:\nSalesforce is a big name in the CRM world and its Essentials package is designed specifically for small businesses",
+            "Salesforce Essentials costs $25 per user per month",
+            "More info can be found here: [Salesforce Essentials](https://www",
+            "**Salesforce:** Salesforce is a highly renowned CRM platform that has a strong integration with Slack",
+            "Through this integration, you can receive customized notifications, share information, and manage your Salesforce tasks directly from Slack",
+            "salesforce",
+            "**Salesforce Nonprofit Success Pack (NPSP):** Salesforce is a leading CRM platform and its Nonprofit Success Pack is specifically designed to meet the needs of nonprofit organizations",
+            "Visit [Salesforce NPSP](https://www",
+            "salesforce",
+            "Sure, I'd be happy to compare Salesforce and Zoho CRM for you",
+            "Their pricing starts from $12 per user per month while Salesforce's basic plan starts at $25 per user per month",
+            "However, Salesforce's higher tier plans offer more advanced features and tools",
+            "**Salesforce Essentials**: Salesforce is a leading name in the CRM space, and their Essentials package is designed specifically for small businesses",
+            "While Salesforce's more advanced packages can be complex, Essentials is relatively straightforward and provides a range of guided onboarding resources",
+            "salesforce",
+            "**Salesforce**: Salesforce is one of the most popular CRM platforms globally and its mobile app, Salesforce Mobile, is highly rated",
+            "Additionally, the Salesforce mobile app includes collaboration tools and business intelligence features",
+            "salesforce",
+            "Here's a comparison of three leading platforms: Salesforce, HubSpot, and Zoho CRM",
+            "**Salesforce** (https://www",
+            "salesforce",
+            "A popular example of this is Salesforce, one of the leading CRM providers in the world, whose service is entirely cloud-based (https://www",
+            "salesforce"
+          ],
+          "citedPages": [
+            "https://www",
+            "Documentation",
+            "Official Website"
+          ],
+          "citationShare": "53.09",
+          "visibilityScore": "80.00"
+        },
+        "Zoho": {
+          "totalMentions": 38,
+          "totalPrompts": 10,
+          "mentionedInPrompts": [
+            "Hey, can you recommend a CRM software that's user-friendly and suitable for a small business team?",
+            "I'm looking for a CRM system that can integrate with Slack. Do you have any suggestions?",
+            "I need a CRM that can handle high volumes of customer data and is also affordable. What are my options?",
+            "Can you compare the features of Salesforce and Zoho CRM for me?",
+            "What's the easiest CRM software to implement for a team with little tech experience?",
+            "Which CRM platforms have the best mobile apps?",
+            "I'm on a tight budget. Can you show me some free or low-cost CRM software?",
+            "Our sales team needs a CRM with robust reporting features. What should we consider?"
+          ],
+          "missingInPrompts": [
+            "What are the top 5 CRM software options for non-profits?",
+            "Can you help me understand the difference between cloud-based and on-premises CRM software?"
+          ],
+          "contexts": [
+            "**Zoho CRM**:\nZoho is known for its intuitive interface and comprehensive feature set",
+            "Zoho has a free version for up to 3 users, and its Standard version is reasonably priced at $14 per user per month",
+            "You can learn more on their official website: [Zoho CRM](https://www",
+            "**Zoho CRM:** Zoho CRM integrates with Slack to help you collaborate better with your team",
+            "You can receive instant notifications on Slack for any changes in your Zoho CRM",
+            "zoho",
+            "**Zoho CRM**\n   Zoho CRM is another affordable option, with plans starting at $14 per month",
+            "zoho",
+            "zoho",
+            "Sure, I'd be happy to compare Salesforce and Zoho CRM for you",
+            "**Pricing:** Zoho CRM tends to be more cost-effective",
+            "**Ease of Use:** Zoho CRM is generally considered to be more user-friendly, especially for small businesses or those new to CRM software",
+            "**Zoho CRM**: Zoho CRM is known for its simple, clean interface, and user-friendly features",
+            "Zoho CRM integrates with a wide range of other Zoho products and popular third-party apps, which can be beneficial as your team grows and your needs evolve",
+            "zoho",
+            "**Zoho CRM**: Zoho's mobile CRM app allows sales teams to access customer data and execute sales processes from anywhere",
+            "zoho",
+            "**Zoho CRM**: Zoho offers a free version for up to three users",
+            "[Link to Zoho CRM](https://www",
+            "zoho",
+            "Here's a comparison of three leading platforms: Salesforce, HubSpot, and Zoho CRM",
+            "**Zoho CRM** (https://www",
+            "zoho"
+          ],
+          "citedPages": [
+            "https://www",
+            "Documentation",
+            "Official Website"
+          ],
+          "citationShare": "46.91",
+          "visibilityScore": "80.00"
+        },
+        "Oracle CRM": {
+          "totalMentions": 0,
+          "totalPrompts": 10,
+          "mentionedInPrompts": [],
+          "missingInPrompts": [
+            "Hey, can you recommend a CRM software that's user-friendly and suitable for a small business team?",
+            "I'm looking for a CRM system that can integrate with Slack. Do you have any suggestions?",
+            "What are the top 5 CRM software options for non-profits?",
+            "I need a CRM that can handle high volumes of customer data and is also affordable. What are my options?",
+            "Can you compare the features of Salesforce and Zoho CRM for me?",
+            "What's the easiest CRM software to implement for a team with little tech experience?",
+            "Which CRM platforms have the best mobile apps?",
+            "I'm on a tight budget. Can you show me some free or low-cost CRM software?",
+            "Our sales team needs a CRM with robust reporting features. What should we consider?",
+            "Can you help me understand the difference between cloud-based and on-premises CRM software?"
+          ],
+          "contexts": [],
+          "citedPages": [],
+          "citationShare": "0.00",
+          "visibilityScore": "0.00"
+        },
+        "Zendesk": {
+          "totalMentions": 0,
+          "totalPrompts": 10,
+          "mentionedInPrompts": [],
+          "missingInPrompts": [
+            "Hey, can you recommend a CRM software that's user-friendly and suitable for a small business team?",
+            "I'm looking for a CRM system that can integrate with Slack. Do you have any suggestions?",
+            "What are the top 5 CRM software options for non-profits?",
+            "I need a CRM that can handle high volumes of customer data and is also affordable. What are my options?",
+            "Can you compare the features of Salesforce and Zoho CRM for me?",
+            "What's the easiest CRM software to implement for a team with little tech experience?",
+            "Which CRM platforms have the best mobile apps?",
+            "I'm on a tight budget. Can you show me some free or low-cost CRM software?",
+            "Our sales team needs a CRM with robust reporting features. What should we consider?",
+            "Can you help me understand the difference between cloud-based and on-premises CRM software?"
+          ],
+          "contexts": [],
+          "citedPages": [],
+          "citationShare": "0.00",
+          "visibilityScore": "0.00"
+        }
+      },
+      "summary": {
+        "totalPrompts": 10,
+        "totalMentions": 81,
+        "brandsTracked": 1,
+        "competitorsTracked": 3
+      }
+    }
+  ],
   "scheduledJobs": []
 }

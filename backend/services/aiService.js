@@ -21,13 +21,13 @@ Return ONLY a JSON array of strings (the prompts), nothing else.`;
 
     try {
       const response = await openai.chat.completions.create({
-        model: 'gpt-4',
+        model: 'gpt-3.5-turbo',
         messages: [
           { role: 'system', content: systemPrompt },
           { role: 'user', content: `Generate ${count} prompts for category: ${category}` }
         ],
         temperature: 0.8,
-        max_tokens: 1500
+        max_tokens: 800
       });
 
       const content = response.choices[0].message.content;
@@ -70,13 +70,13 @@ Include specific URLs or documentation links when mentioning brands (you can use
 
     try {
       const response = await openai.chat.completions.create({
-        model: 'gpt-4',
+        model: 'gpt-3.5-turbo',
         messages: [
           { role: 'system', content: systemPrompt },
           { role: 'user', content: finalPrompt }
         ],
         temperature: 0.7,
-        max_tokens: 1000
+        max_tokens: 600
       });
 
       const answer = response.choices[0].message.content;

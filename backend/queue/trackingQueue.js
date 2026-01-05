@@ -100,8 +100,8 @@ async function processTracking(data, progressCallback) {
     // Update progress
     if (progressCallback) await progressCallback(10);
     
-    // Generate prompts
-    const prompts = await aiService.generatePrompts(category, 10);
+    // Generate prompts (reduced to 5 for faster results)
+    const prompts = await aiService.generatePrompts(category, 5);
     if (progressCallback) await progressCallback(30);
     
     // Query AI for each prompt
@@ -122,8 +122,8 @@ async function processTracking(data, progressCallback) {
       const progress = 30 + Math.floor((i + 1) / totalPrompts * 50);
       if (progressCallback) await progressCallback(progress);
       
-      // Rate limiting
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Rate limiting (reduced for faster processing)
+      await new Promise(resolve => setTimeout(resolve, 300));
     }
     
     if (progressCallback) await progressCallback(90);

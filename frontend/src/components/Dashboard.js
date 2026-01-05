@@ -118,130 +118,129 @@ function Dashboard() {
     <div className="dashboard-container">
       {/* Header */}
       <div className="dashboard-header">
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
-          <button className="btn btn-outline" onClick={() => navigate('/')}>
-            <ArrowLeft size={20} />
-            Home
-          </button>
-          <button className="btn btn-outline" onClick={() => navigate('/setup')}>
-            New Session
-          </button>
-        </div>
-        <div className="header-info">
-          <h1>AI Visibility Dashboard</h1>
-          <div className="header-meta">
-            <span className="meta-item">
-              <Target size={16} />
-              {category}
-            </span>
-            {mode === 'competitor' && (
-              <span className="badge badge-warning">
-                🎭 Competitor Mode
-              </span>
-            )}
-          </div>
-        </div>
-        <button className="btn btn-secondary" onClick={fetchResults}>
-          <RefreshCw size={20} />
-          Refresh
-        </button>
-      </div>
-
-      {/* Key Metrics */}
-      <div className="metrics-grid">
-        <div className="metric-card">
-          <div className="metric-icon" style={{ background: '#dbeafe' }}>
-            <MessageSquare size={24} color="#1e3a8a" />
-          </div>
-          <div className="metric-content">
-            <div className="metric-label">Total Prompts</div>
-            <div className="metric-value">{summary.totalPrompts}</div>
-          </div>
-        </div>
-
-        <div className="metric-card">
-          <div className="metric-icon" style={{ background: '#fef3c7' }}>
-            <TrendingUp size={24} color="#92400e" />
-          </div>
-          <div className="metric-content">
-            <div className="metric-label">Total Mentions</div>
-            <div className="metric-value">{summary.totalMentions}</div>
-          </div>
-        </div>
-
-        <div className="metric-card">
-          <div className="metric-icon" style={{ background: '#d1fae5' }}>
-            <Users size={24} color="#065f46" />
-          </div>
-          <div className="metric-content">
-            <div className="metric-label">Brands Tracked</div>
-            <div className="metric-value">{summary.brandsTracked}</div>
-          </div>
-        </div>
-
-        <div className="metric-card">
-          <div className="metric-icon" style={{ background: '#fce7f3' }}>
-            <Award size={24} color="#831843" />
-          </div>
-          <div className="metric-content">
-            <div className="metric-label">Competitors</div>
-            <div className="metric-value">{summary.competitorsTracked}</div>
-          </div>
-        </div>
-      </div>
-
-      {/* Tabs */}
-      <div className="tabs">
-        <button 
-          className={`tab ${activeTab === 'overview' ? 'active' : ''}`}
-          onClick={() => setActiveTab('overview')}
-        >
-          <Eye size={18} />
-          Overview
-        </button>
-        <button 
-          className={`tab ${activeTab === 'prompts' ? 'active' : ''}`}
-          onClick={() => setActiveTab('prompts')}
-        >
-          <MessageSquare size={18} />
-          Prompts
-        </button>
-        <button 
-          className={`tab ${activeTab === 'citations' ? 'active' : ''}`}
-          onClick={() => setActiveTab('citations')}
-        >
-          <Link2 size={18} />
-          Citations
-        </button>
-        <button 
-          className={`tab ${activeTab === 'trends' ? 'active' : ''}`}
-          onClick={() => setActiveTab('trends')}
-        >
-          <Activity size={18} />
-          Trends
-        </button>
-      </div>
-
-      {/* Tab Content */}
-      {activeTab === 'overview' && (
-        <div className="tab-content">
-          {/* Leaderboard */}
-          <div className="card">
-            <div className="card-header">
-              <h2 className="card-title">
-                <Award size={24} />
-                Brand Leaderboard
-              </h2>
+        <div className="dashboard-nav">
+          <div className="dashboard-nav-left">
+            <div>
+              <h1 className="dashboard-title">AI Visibility Dashboard</h1>
+              <div className="dashboard-subtitle">
+                {category} {mode === 'competitor' && '🎭 Competitor Mode'}
+              </div>
             </div>
+          </div>
+          <div className="dashboard-nav-right">
+            <button className="btn btn-ghost" onClick={() => navigate('/')}>
+              <ArrowLeft size={18} />
+              Home
+            </button>
+            <button className="btn btn-outline" onClick={() => navigate('/setup')}>
+              New Session
+            </button>
+            <button className="btn btn-primary" onClick={fetchResults}>
+              <RefreshCw size={18} />
+              Refresh
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="dashboard-main">
+        {/* Key Metrics */}
+        <div className="dashboard-summary">
+          <div className="summary-card">
+            <div className="summary-card-header">
+              <div className="summary-card-icon">
+                <MessageSquare size={20} />
+              </div>
+              <div className="summary-card-title">Total Prompts</div>
+            </div>
+            <div className="summary-card-value">{summary.totalPrompts}</div>
+            <div className="summary-card-description">AI queries analyzed</div>
+          </div>
+
+          <div className="summary-card">
+            <div className="summary-card-header">
+              <div className="summary-card-icon">
+                <TrendingUp size={20} />
+              </div>
+              <div className="summary-card-title">Total Mentions</div>
+            </div>
+            <div className="summary-card-value">{summary.totalMentions}</div>
+            <div className="summary-card-description">Brand citations found</div>
+          </div>
+
+          <div className="summary-card">
+            <div className="summary-card-header">
+              <div className="summary-card-icon">
+                <Users size={20} />
+              </div>
+              <div className="summary-card-title">Brands Tracked</div>
+            </div>
+            <div className="summary-card-value">{summary.brandsTracked}</div>
+            <div className="summary-card-description">Your brands</div>
+          </div>
+
+          <div className="summary-card">
+            <div className="summary-card-header">
+              <div className="summary-card-icon">
+                <Award size={20} />
+              </div>
+              <div className="summary-card-title">Competitors</div>
+            </div>
+            <div className="summary-card-value">{summary.competitorsTracked}</div>
+            <div className="summary-card-description">Being monitored</div>
+          </div>
+        </div>
+
+        {/* Tabs */}
+        <div className="dashboard-tabs">
+          <button 
+            className={`tab-button ${activeTab === 'overview' ? 'active' : ''}`}
+            onClick={() => setActiveTab('overview')}
+          >
+            <Eye size={18} />
+            Overview
+          </button>
+          <button 
+            className={`tab-button ${activeTab === 'prompts' ? 'active' : ''}`}
+            onClick={() => setActiveTab('prompts')}
+          >
+            <MessageSquare size={18} />
+            Prompts
+          </button>
+          <button 
+            className={`tab-button ${activeTab === 'citations' ? 'active' : ''}`}
+            onClick={() => setActiveTab('citations')}
+          >
+            <Link2 size={18} />
+            Citations
+          </button>
+          <button 
+            className={`tab-button ${activeTab === 'trends' ? 'active' : ''}`}
+            onClick={() => setActiveTab('trends')}
+          >
+            <Activity size={18} />
+            Trends
+          </button>
+        </div>
+
+        {/* Tab Content */}
+        {activeTab === 'overview' && (
+          <div className="tab-content">
+            {/* Leaderboard */}
             <div className="leaderboard">
-              {leaderboardData.map((item, index) => (
-                <div 
-                  key={item.brand} 
-                  className={`leaderboard-item ${item.isUserBrand ? 'highlight' : ''}`}
-                >
-                  <div className="rank">#{index + 1}</div>
-                  <div className="brand-info">
-                    <div className="brand-name">
+              <div className="leaderboard-header">
+                <div className="leaderboard-icon">
+                  <Award size={24} />
+                </div>
+                <h2 className="leaderboard-title">Brand Leaderboard</h2>
+              </div>
+              <div className="leaderboard-items">
+                {leaderboardData.map((item, index) => (
+                  <div key={item.brand} className="leaderboard-item">
+                    <div className="leaderboard-rank">#{index + 1}</div>
+                    <div className="leaderboard-item-info">
+                      <div className="leaderboard-brand">
                       {item.brand}
                       {item.isUserBrand && (
                         <span className="badge badge-primary">Your Brand</span>
@@ -266,49 +265,63 @@ function Dashboard() {
             </div>
           </div>
 
-          {/* Charts */}
-          <div className="charts-grid">
-            <div className="card">
-              <div className="card-header">
-                <h3 className="card-title">Visibility Comparison</h3>
+            {/* Charts */}
+            <div className="charts-grid">
+              <div className="chart-card">
+                <div className="chart-card-header">
+                  <h3 className="chart-card-title">
+                    <div className="chart-card-icon">
+                      <TrendingUp size={20} />
+                    </div>
+                    Visibility Comparison
+                  </h3>
+                </div>
+                <div className="chart-card-body">
+                  <ResponsiveContainer width="100%" height={300}>
+                    <BarChart data={leaderboardData}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="brand" />
+                      <YAxis />
+                      <Tooltip />
+                      <Legend />
+                      <Bar dataKey="visibilityScore" fill="#6366f1" name="Visibility Score %" />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
               </div>
-              <ResponsiveContainer width="100%" height={300}>
-                <BarChart data={leaderboardData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="brand" />
-                  <YAxis />
-                  <Tooltip />
-                  <Legend />
-                  <Bar dataKey="visibilityScore" fill="#6366f1" name="Visibility Score %" />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
 
-            <div className="card">
-              <div className="card-header">
-                <h3 className="card-title">Mention Distribution</h3>
+              <div className="chart-card">
+                <div className="chart-card-header">
+                  <h3 className="chart-card-title">
+                    <div className="chart-card-icon">
+                      <Award size={20} />
+                    </div>
+                    Mention Distribution
+                  </h3>
+                </div>
+                <div className="chart-card-body">
+                  <ResponsiveContainer width="100%" height={300}>
+                    <PieChart>
+                      <Pie
+                        data={mentionDistribution}
+                        cx="50%"
+                        cy="50%"
+                        labelLine={false}
+                        label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                        outerRadius={80}
+                        fill="#8884d8"
+                        dataKey="value"
+                      >
+                        {mentionDistribution.map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                        ))}
+                      </Pie>
+                      <Tooltip />
+                    </PieChart>
+                  </ResponsiveContainer>
+                </div>
               </div>
-              <ResponsiveContainer width="100%" height={300}>
-                <PieChart>
-                  <Pie
-                    data={mentionDistribution}
-                    cx="50%"
-                    cy="50%"
-                    labelLine={false}
-                    label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
-                    outerRadius={80}
-                    fill="#8884d8"
-                    dataKey="value"
-                  >
-                    {mentionDistribution.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                    ))}
-                  </Pie>
-                  <Tooltip />
-                </PieChart>
-              </ResponsiveContainer>
             </div>
-          </div>
         </div>
       )}
 
@@ -327,6 +340,7 @@ function Dashboard() {
           ))}
         </div>
       )}
+      </div>
     </div>
   );
 }
