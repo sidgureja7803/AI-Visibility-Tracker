@@ -1,0 +1,12 @@
+{
+    "ignore": [
+        "data/",
+        "*.json",
+        "node_modules/"
+    ],
+    "watch": [
+        "**/*.js"
+    ],
+    "ext": "js,json",
+    "delay": "1000"
+}

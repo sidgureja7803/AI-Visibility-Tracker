@@ -165,7 +165,7 @@ function Landing() {
             <p className="step-description">
               View comprehensive dashboards with visibility scores, leaderboards, trends, and actionable insights.
             </p>
-          </div>
+            </div>
 
           <div className="step-card">
             <div className="step-number">4</div>
@@ -180,8 +180,8 @@ function Landing() {
       {/* Benefits Section */}
       <div className="benefits-section">
         <div className="benefits-grid">
-          <div className="benefits-content">
-            <h2 className="section-title">Why AI Visibility Matters</h2>
+        <div className="benefits-content">
+          <h2 className="section-title">Why AI Visibility Matters</h2>
             <div className="benefit-item">
               <div className="benefit-icon">
                 <CheckCircle size={24} />
@@ -224,20 +224,20 @@ function Landing() {
                 <p className="benefit-description">
                   Set up scheduled tracking to get regular visibility reports
                 </p>
-              </div>
             </div>
           </div>
+        </div>
 
-          <div className="benefits-visual">
-            <div className="visual-card">
-              <div className="visual-header">
-                <TrendingUp size={24} />
-                <span>Your Brand Visibility</span>
-              </div>
-              <div className="visual-chart">
+        <div className="benefits-visual">
+          <div className="visual-card">
+            <div className="visual-header">
+              <TrendingUp size={24} />
+              <span>Your Brand Visibility</span>
+            </div>
+            <div className="visual-chart">
                 <div className="chart-bar" style={{ height: '60%', background: '#5B7BFF' }}>
-                  <span className="bar-label">You</span>
-                </div>
+                <span className="bar-label">You</span>
+              </div>
                 <div className="chart-bar" style={{ height: '85%', background: '#7a9aff' }}>
                   <span className="bar-label">Leader</span>
                 </div>
@@ -246,7 +246,7 @@ function Landing() {
                 </div>
                 <div className="chart-bar" style={{ height: '30%', background: '#c7d9ff' }}>
                   <span className="bar-label">Comp 3</span>
-                </div>
+              </div>
               </div>
               <div className="visual-footer">
                 Track your position vs competitors

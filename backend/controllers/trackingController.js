@@ -1,77 +1,57 @@
-const aiService = require('../services/aiService');
+const trackingService = require('../services/trackingService');
 const { queue: trackingQueue, processTracking, isUsingQueue } = require('../queue/trackingQueue');
-const storageService = require('../services/storageService');
+
+/**
+ * Tracking Controller - Thin layer for HTTP handling
+ * Delegates all business logic to services
+ * Only handles request/response formatting and error responses
+ */
 
 const trackingController = {
+  /**
+   * Start a new tracking session
+   * POST /api/tracking/start
+   */
   async startTracking(req, res) {
     try {
       const { category, brands, competitors, mode } = req.body;
 
-      if (!category || !brands || brands.length === 0) {
-        return res.status(400).json({ 
-          error: 'Category and at least one brand are required' 
-        });
-      }
-
-      const sessionId = aiService.generateUUID();
-      const session = {
-        id: sessionId,
-        category,
-        brands,
-        competitors: competitors || [],
-        mode: mode || 'normal',
-        createdAt: new Date().toISOString(),
-        status: 'processing',
-        results: null,
-        jobId: null
-      };
-
-      storageService.saveSession(session);
-
-      const trackingData = {
-        sessionId,
+      // Start tracking (service handles validation)
+      const session = await trackingService.startTracking({
         category,
         brands,
         competitors,
         mode
+      });
+
+      const { sessionId } = session;
+
+      // Prepare tracking data
+      const trackingData = {
+        sessionId,
+        category,
+        brands,
+        competitors: competitors || [],
+        mode: mode || 'normal'
       };
 
-      // Use queue if Redis is available, otherwise process directly
+      // Use queue if available, otherwise process directly
       if (isUsingQueue() && trackingQueue) {
+        // Queue mode
         const job = await trackingQueue.add(trackingData);
-        
-        storageService.updateSession(sessionId, {
-          jobId: job.id,
-          status: 'processing'
-        });
+        console.log(`📋 Job ${job.id} queued for session ${sessionId}`);
       } else {
-        // Process directly in background without queue
+        // Direct mode - process in background
         processTracking(trackingData, async (progress) => {
-          storageService.updateSession(sessionId, { progress });
-        }).then((result) => {
-          storageService.updateSession(sessionId, {
-            status: 'completed',
-            results: result.results,
-            completedAt: result.completedAt
-          });
-
-          // Save to historical data
-          storageService.saveHistoricalData({
-            category: result.category,
-            brands: result.brands,
-            results: result.results
-          });
-          
-          console.log(`✅ Direct processing completed for session ${sessionId}`);
-        }).catch((error) => {
-          console.error(`❌ Direct processing failed for session ${sessionId}:`, error);
-          storageService.updateSession(sessionId, {
-            status: 'error',
-            error: error.message
-          });
+          // Progress callback is handled inside processTracking
+        }).then(async (result) => {
+          await trackingService.completeTracking(sessionId, result);
+        }).catch(async (error) => {
+          await trackingService.failTracking(sessionId, error);
         });
       }
 
+      // Return immediate response
       res.json({
         sessionId,
         message: 'Tracking started',
@@ -81,50 +61,43 @@ const trackingController = {
 
     } catch (error) {
       console.error('Start tracking error:', error);
-      res.status(500).json({ error: error.message });
+
+      // Send appropriate error response
+      const statusCode = error.message.includes('required') ||
+        error.message.includes('must be') ||
+        error.message.includes('Maximum') ? 400 : 500;
+
+      res.status(statusCode).json({
+        error: error.message,
+        status: 'error'
+      });
     }
   },
 
+  /**
+   * Get tracking results
+   * GET /api/tracking/results/:sessionId
+   */
   async getResults(req, res) {
     try {
       const { sessionId } = req.params;
-      const session = storageService.getSession(sessionId);
 
-      if (!session) {
-        return res.status(404).json({ error: 'Session not found' });
-      }
+      // Get session from service
+      const session = await trackingService.getTrackingResults(sessionId);
 
-      // Check job status if still processing via queue
+      // If using queue, check job status
       if (session.status === 'processing' && session.jobId && isUsingQueue() && trackingQueue) {
         try {
           const job = await trackingQueue.getJob(session.jobId);
+
           if (job) {
             const state = await job.getState();
-            const progress = job.progress();
 
             if (state === 'completed') {
               const result = job.returnvalue;
-              storageService.updateSession(sessionId, {
-                status: 'completed',
-                results: result.results,
-                completedAt: result.completedAt
-              });
-
-              // Save to historical data
-              storageService.saveHistoricalData({
-                category: result.category,
-                brands: result.brands,
-                results: result.results
-              });
+              await trackingService.completeTracking(sessionId, result);
             } else if (state === 'failed') {
-              storageService.updateSession(sessionId, {
-                status: 'error',
-                error: job.failedReason
-              });
-            } else {
-              storageService.updateSession(sessionId, {
-                progress: progress
-              });
+              await trackingService.failTracking(sessionId, new Error(job.failedReason));
             }
           }
         } catch (queueError) {
@@ -132,55 +105,78 @@ const trackingController = {
         }
       }
 
-      const updatedSession = storageService.getSession(sessionId);
+      // Get updated session
+      const updatedSession = await trackingService.getTrackingResults(sessionId);
+
       res.json(updatedSession);
 
     } catch (error) {
       console.error('Get results error:', error);
-      res.status(500).json({ error: error.message });
+
+      const statusCode = error.message === 'Session not found' ? 404 : 500;
+
+      res.status(statusCode).json({
+        error: error.message,
+        status: 'error'
+      });
     }
   },
 
+  /**
+   * Get all sessions
+   * GET /api/tracking/sessions
+   */
   async getSessions(req, res) {
     try {
-      const allSessions = storageService.getAllSessions();
-      res.json(allSessions);
+      const { limit, offset, status } = req.query;
+
+      const sessions = await trackingService.getAllSessions({
+        limit: limit ? parseInt(limit) : undefined,
+        offset: offset ? parseInt(offset) : 0,
+        status
+      });
+
+      res.json({
+        sessions,
+        count: sessions.length
+      });
 
     } catch (error) {
       console.error('Get sessions error:', error);
-      res.status(500).json({ error: error.message });
+      res.status(500).json({
+        error: error.message,
+        status: 'error'
+      });
     }
   },
 
+  /**
+   * Get trend data
+   * GET /api/tracking/trends
+   */
   async getTrends(req, res) {
     try {
       const { category, brand, days } = req.query;
 
-      if (!category || !brand) {
-        return res.status(400).json({
-          error: 'Category and brand are required'
-        });
-      }
-
-      const trendData = storageService.getTrendData(
+      const trendData = await trackingService.getTrendData({
         category,
         brand,
-        parseInt(days) || 30
-      );
-
-      res.json({
-        category,
-        brand,
-        days: parseInt(days) || 30,
-        trends: trendData
+        days
       });
+
+      res.json(trendData);
 
     } catch (error) {
       console.error('Get trends error:', error);
-      res.status(500).json({ error: error.message });
+
+      const statusCode = error.message.includes('required') ? 400 : 500;
+
+      res.status(statusCode).json({
+        error: error.message,
+        status: 'error'
+      });
     }
   }
 };
 
 module.exports = trackingController;
-

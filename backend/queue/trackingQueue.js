@@ -1,5 +1,12 @@
 const Queue = require('bull');
-const aiService = require('../services/aiService');
+const trackingService = require('../services/trackingService');
+const storageRepository = require('../repositories/storageRepository');
+const config = require('../config');
+
+/**
+ * Queue Manager - Handles job queue infrastructure
+ * Delegates business logic to services
+ */
 
 // Create tracking queue with Redis connection error handling
 let trackingQueue = null;
@@ -10,8 +17,8 @@ const checkRedisAvailability = () => {
   return new Promise((resolve) => {
     const net = require('net');
     const client = net.createConnection({
-      port: process.env.REDIS_PORT || 6379,
-      host: process.env.REDIS_HOST || '127.0.0.1'
+      port: config.redis.port,
+      host: config.redis.host
     });
 
     client.on('connect', () => {
@@ -24,59 +31,54 @@ const checkRedisAvailability = () => {
       resolve(false);
     });
 
-    // Timeout after 1 second
+    // Timeout
     setTimeout(() => {
       client.destroy();
       resolve(false);
-    }, 1000);
+    }, config.redis.connectionTimeout);
   });
 };
 
-// Initialize queue only if Redis is available
+// Initialize queue only if Redis is available and enabled
 const initQueue = async () => {
+  if (!config.redis.enabled) {
+    console.log('⚠️  Redis disabled in configuration - Using direct execution mode');
+    return;
+  }
+
   const redisAvailable = await checkRedisAvailability();
-  
+
   if (redisAvailable) {
     try {
       trackingQueue = new Queue('ai-visibility-tracking', {
         redis: {
-          port: process.env.REDIS_PORT || 6379,
-          host: process.env.REDIS_HOST || '127.0.0.1'
+          port: config.redis.port,
+          host: config.redis.host
         },
         defaultJobOptions: {
-          attempts: 3,
+          attempts: config.queue.maxAttempts,
           backoff: {
             type: 'exponential',
-            delay: 2000
+            delay: config.queue.backoffDelay
           },
-          removeOnComplete: false,
-          removeOnFail: false
+          removeOnComplete: config.queue.removeOnComplete,
+          removeOnFail: config.queue.removeOnFail
         }
       });
 
       useQueue = true;
       console.log('✅ Redis connected - Queue mode enabled');
-      
+
       // Set up event handlers
-      if (trackingQueue) {
-        trackingQueue.on('completed', (job, result) => {
-          console.log(`✅ Job ${job.id} completed for session ${result.sessionId}`);
-        });
+      setupQueueHandlers();
 
-        trackingQueue.on('failed', (job, err) => {
-          console.error(`❌ Job ${job.id} failed:`, err.message);
+      // Set up job processor
+      trackingQueue.process(async (job) => {
+        return processTracking(job.data, (progress) => {
+          job.progress(progress);
         });
+      });
 
-        trackingQueue.on('progress', (job, progress) => {
-          console.log(`📊 Job ${job.id} progress: ${progress}%`);
-        });
-        
-        // Process jobs
-        trackingQueue.process(async (job) => {
-          return processTracking(job.data, (progress) => job.progress(progress));
-        });
-      }
-      
     } catch (error) {
       console.log('⚠️  Redis initialization failed - Using direct execution mode');
       trackingQueue = null;
@@ -89,139 +91,89 @@ const initQueue = async () => {
   }
 };
 
-// Initialize asynchronously
-initQueue();
+/**
+ * Setup queue event handlers
+ */
+function setupQueueHandlers() {
+  if (!trackingQueue) return;
 
-// Core processing function (used by both queue and direct execution)
-async function processTracking(data, progressCallback) {
-  const { sessionId, category, brands, competitors, mode } = data;
-  
-  try {
-    // Update progress
-    if (progressCallback) await progressCallback(10);
-    
-    // Generate prompts (reduced to 5 for faster results)
-    const prompts = await aiService.generatePrompts(category, 5);
-    if (progressCallback) await progressCallback(30);
-    
-    // Query AI for each prompt
-    const promptResults = [];
-    const totalPrompts = prompts.length;
-    
-    for (let i = 0; i < prompts.length; i++) {
-      const prompt = prompts[i];
-      const result = await aiService.queryWithTracking(
-        prompt,
-        brands,
-        competitors || [],
-        mode || 'normal'
-      );
-      promptResults.push(result);
-      
-      // Update progress
-      const progress = 30 + Math.floor((i + 1) / totalPrompts * 50);
-      if (progressCallback) await progressCallback(progress);
-      
-      // Rate limiting (reduced for faster processing)
-      await new Promise(resolve => setTimeout(resolve, 300));
+  trackingQueue.on('completed', async (job, result) => {
+    console.log(`✅ Job ${job.id} completed for session ${result.sessionId}`);
+
+    try {
+      await trackingService.completeTracking(result.sessionId, result);
+
+      // Update session with job completion
+      await storageRepository.updateSession(result.sessionId, {
+        jobId: job.id,
+        status: 'completed'
+      });
+    } catch (error) {
+      console.error(`Error updating completed job ${job.id}:`, error);
     }
-    
-    if (progressCallback) await progressCallback(90);
-    
-    // Calculate metrics
-    const results = calculateMetrics(promptResults, brands, competitors);
-    
-    if (progressCallback) await progressCallback(100);
-    
-    return {
-      sessionId,
-      category,
-      brands,
-      competitors,
-      mode,
-      results,
-      completedAt: new Date().toISOString()
-    };
-    
+  });
+
+  trackingQueue.on('failed', async (job, err) => {
+    console.error(`❌ Job ${job.id} failed:`, err.message);
+
+    try {
+      const sessionId = job.data.sessionId;
+      await trackingService.failTracking(sessionId, err);
+    } catch (error) {
+      console.error(`Error updating failed job ${job.id}:`, error);
+    }
+  });
+
+  trackingQueue.on('progress', (job, progress) => {
+    console.log(`📊 Job ${job.id} progress: ${progress}%`);
+  });
+
+  trackingQueue.on('error', (error) => {
+    console.error('Queue error:', error);
+  });
+}
+
+/**
+ * Core processing function (used by both queue and direct execution)
+ * Delegates to trackingService for business logic
+ */
+async function processTracking(data, progressCallback) {
+  const { sessionId } = data;
+
+  try {
+    // Delegate to service layer
+    const result = await trackingService.executeTracking(data, progressCallback);
+    return result;
+
   } catch (error) {
     console.error('Processing error:', error);
     throw error;
   }
 }
 
-function calculateMetrics(promptResults, brands, competitors) {
-  const allBrands = [...brands, ...(competitors || [])];
-  const brandStats = {};
-
-  // Initialize stats
-  allBrands.forEach(brand => {
-    brandStats[brand] = {
-      totalMentions: 0,
-      totalPrompts: promptResults.length,
-      mentionedInPrompts: [],
-      missingInPrompts: [],
-      contexts: [],
-      citedPages: [],
-      citationShare: 0,
-      visibilityScore: 0
-    };
-  });
-
-  // Process results
-  promptResults.forEach(result => {
-    result.mentions.forEach(mention => {
-      const stats = brandStats[mention.brand];
-      if (stats) {
-        stats.totalMentions += mention.count;
-        stats.mentionedInPrompts.push(result.prompt);
-        stats.contexts.push(...mention.contexts);
-        if (mention.citations) {
-          stats.citedPages.push(...mention.citations);
-        }
-      }
-    });
-
-    // Track missing brands
-    const mentionedBrands = result.mentions.map(m => m.brand);
-    allBrands.forEach(brand => {
-      if (!mentionedBrands.includes(brand)) {
-        brandStats[brand].missingInPrompts.push(result.prompt);
-      }
-    });
-  });
-
-  // Calculate derived metrics
-  const totalMentions = Object.values(brandStats).reduce(
-    (sum, stats) => sum + stats.totalMentions,
-    0
-  );
-
-  Object.keys(brandStats).forEach(brand => {
-    const stats = brandStats[brand];
-    stats.citationShare = totalMentions > 0
-      ? ((stats.totalMentions / totalMentions) * 100).toFixed(2)
-      : 0;
-    stats.visibilityScore = (
-      (stats.mentionedInPrompts.length / stats.totalPrompts) * 100
-    ).toFixed(2);
-    stats.citedPages = [...new Set(stats.citedPages)];
-  });
-
-  return {
-    promptResults,
-    brandStats,
-    summary: {
-      totalPrompts: promptResults.length,
-      totalMentions,
-      brandsTracked: brands.length,
-      competitorsTracked: (competitors || []).length
-    }
-  };
-}
+// Initialize asynchronously
+initQueue();
 
 module.exports = {
   queue: trackingQueue,
   processTracking,
-  isUsingQueue: () => useQueue && trackingQueue !== null
+  isUsingQueue: () => useQueue && trackingQueue !== null,
+  getQueueStats: async () => {
+    if (!trackingQueue) return null;
+
+    try {
+      const [waiting, active, completed, failed] = await Promise.all([
+        trackingQueue.getWaitingCount(),
+        trackingQueue.getActiveCount(),
+        trackingQueue.getCompletedCount(),
+        trackingQueue.getFailedCount()
+      ]);
+
+      return { waiting, active, completed, failed };
+    } catch (error) {
+      console.error('Error getting queue stats:', error);
+      return null;
+    }
+  }
 };
 

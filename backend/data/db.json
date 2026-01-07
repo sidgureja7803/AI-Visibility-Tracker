@@ -1304,6 +1304,23 @@
       "progress": 100,
       "updatedAt": "2026-01-05T18:02:15.843Z",
       "completedAt": "2026-01-05T18:02:15.843Z"
+    },
+    {
+      "id": "1f434419-f8e2-476d-b23f-25e110b26b7d",
+      "category": "Marketing tools",
+      "brands": [
+        "Writesonic"
+      ],
+      "competitors": [
+        "Jasper"
+      ],
+      "mode": "normal",
+      "createdAt": "2026-01-07T05:10:52.598Z",
+      "status": "processing",
+      "results": null,
+      "jobId": null,
+      "progress": 60,
+      "updatedAt": "2026-01-07T05:11:08.092Z"
     }
   ],
   "historicalData": [

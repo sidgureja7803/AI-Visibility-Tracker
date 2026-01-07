@@ -68,13 +68,13 @@ function Setup({ onSessionCreated }) {
           <div className="setup-nav-right">
             <Link to="/" className="btn btn-ghost">
               <ArrowLeft size={18} />
-              Back to Home
-            </Link>
-            <Link to="/scheduler" className="btn btn-outline">
+            Back to Home
+          </Link>
+          <Link to="/scheduler" className="btn btn-outline">
               <Calendar size={18} />
-              Scheduled Tracking
-            </Link>
-          </div>
+            Scheduled Tracking
+          </Link>
+        </div>
         </div>
       </div>
 
@@ -97,64 +97,64 @@ function Setup({ onSessionCreated }) {
 
         {/* Form Card */}
         <div className="setup-card">
-          {error && (
-            <div className="error">
-              {error}
-            </div>
-          )}
+        {error && (
+          <div className="error">
+            {error}
+          </div>
+        )}
 
           <form onSubmit={handleSubmit} className="setup-form">
-            <div className="input-group">
-              <label>
+          <div className="input-group">
+            <label>
                 <Target size={18} />
-                Category
-              </label>
-              <input
-                type="text"
-                value={formData.category}
-                onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                placeholder="e.g., CRM software, project management tools"
-                required
-              />
-              <small>What category of products/services are you tracking?</small>
-            </div>
+              Category
+            </label>
+            <input
+              type="text"
+              value={formData.category}
+              onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+              placeholder="e.g., CRM software, project management tools"
+              required
+            />
+            <small>What category of products/services are you tracking?</small>
+          </div>
 
-            <div className="input-group">
-              <label>
+          <div className="input-group">
+            <label>
                 <TrendingUp size={18} />
-                Your Brands
-              </label>
-              <textarea
-                value={formData.brands}
-                onChange={(e) => setFormData({ ...formData, brands: e.target.value })}
-                placeholder="e.g., Salesforce, HubSpot, Pipedrive"
-                rows="3"
-                required
-              />
-              <small>Enter brand names separated by commas</small>
-            </div>
+              Your Brands
+            </label>
+            <textarea
+              value={formData.brands}
+              onChange={(e) => setFormData({ ...formData, brands: e.target.value })}
+              placeholder="e.g., Salesforce, HubSpot, Pipedrive"
+              rows="3"
+              required
+            />
+            <small>Enter brand names separated by commas</small>
+          </div>
 
-            <div className="input-group">
-              <label>
+          <div className="input-group">
+            <label>
                 <Users size={18} />
-                Competitor Brands (Optional)
-              </label>
-              <textarea
-                value={formData.competitors}
-                onChange={(e) => setFormData({ ...formData, competitors: e.target.value })}
-                placeholder="e.g., Zoho, Monday.com, Notion"
-                rows="3"
-              />
-              <small>Track competitors to compare visibility</small>
-            </div>
+              Competitor Brands (Optional)
+            </label>
+            <textarea
+              value={formData.competitors}
+              onChange={(e) => setFormData({ ...formData, competitors: e.target.value })}
+              placeholder="e.g., Zoho, Monday.com, Notion"
+              rows="3"
+            />
+            <small>Track competitors to compare visibility</small>
+          </div>
 
-            <div className="input-group">
-              <label>Tracking Mode</label>
-              <div className="mode-selector">
-                <div 
-                  className={`mode-option ${formData.mode === 'normal' ? 'active' : ''}`}
-                  onClick={() => setFormData({ ...formData, mode: 'normal' })}
-                >
+          <div className="input-group">
+            <label>Tracking Mode</label>
+            <div className="mode-selector">
+              <div 
+                className={`mode-option ${formData.mode === 'normal' ? 'active' : ''}`}
+                onClick={() => setFormData({ ...formData, mode: 'normal' })}
+              >
                   <div className="mode-option-header">
                     <span className="mode-icon">🎯</span>
                     <span className="mode-option-title">Normal Mode</span>
@@ -167,10 +167,10 @@ function Setup({ onSessionCreated }) {
                   </div>
                 </div>
 
-                <div 
-                  className={`mode-option ${formData.mode === 'competitor' ? 'active' : ''}`}
-                  onClick={() => setFormData({ ...formData, mode: 'competitor' })}
-                >
+              <div 
+                className={`mode-option ${formData.mode === 'competitor' ? 'active' : ''}`}
+                onClick={() => setFormData({ ...formData, mode: 'competitor' })}
+              >
                   <div className="mode-option-header">
                     <span className="mode-icon">🎭</span>
                     <span className="mode-option-title">Competitor Mode</span>
@@ -180,30 +180,30 @@ function Setup({ onSessionCreated }) {
                   </p>
                   <div className="mode-check">
                     <Check size={14} />
-                  </div>
                 </div>
               </div>
             </div>
+          </div>
 
-            <button 
-              type="submit" 
+          <button 
+            type="submit" 
               className="submit-button"
-              disabled={loading}
-            >
-              {loading ? (
-                <>
-                  <div className="spinner-small"></div>
-                  Processing...
-                </>
-              ) : (
-                <>
-                  <Sparkles size={20} />
-                  Start Tracking
-                </>
-              )}
-            </button>
-          </form>
-        </div>
+            disabled={loading}
+          >
+            {loading ? (
+              <>
+                <div className="spinner-small"></div>
+                Processing...
+              </>
+            ) : (
+              <>
+                <Sparkles size={20} />
+                Start Tracking
+              </>
+            )}
+          </button>
+        </form>
+      </div>
 
         {/* Footer Info */}
         <div className="setup-footer">
@@ -212,7 +212,7 @@ function Setup({ onSessionCreated }) {
               After tracking completes, you'll see detailed metrics including visibility scores, 
               competitive analysis, prompt breakdowns, and citation tracking—all in one comprehensive dashboard.
             </p>
-          </div>
+        </div>
         </div>
       </div>
     </div>

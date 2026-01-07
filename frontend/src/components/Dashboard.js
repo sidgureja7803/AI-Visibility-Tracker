@@ -130,11 +130,11 @@ function Dashboard() {
           <div className="dashboard-nav-right">
             <button className="btn btn-ghost" onClick={() => navigate('/')}>
               <ArrowLeft size={18} />
-              Home
-            </button>
-            <button className="btn btn-outline" onClick={() => navigate('/setup')}>
-              New Session
-            </button>
+            Home
+          </button>
+          <button className="btn btn-outline" onClick={() => navigate('/setup')}>
+            New Session
+          </button>
             <button className="btn btn-primary" onClick={fetchResults}>
               <RefreshCw size={18} />
               Refresh
@@ -145,7 +145,7 @@ function Dashboard() {
 
       {/* Main Content */}
       <div className="dashboard-main">
-        {/* Key Metrics */}
+      {/* Key Metrics */}
         <div className="dashboard-summary">
           <div className="summary-card">
             <div className="summary-card-header">
@@ -153,7 +153,7 @@ function Dashboard() {
                 <MessageSquare size={20} />
               </div>
               <div className="summary-card-title">Total Prompts</div>
-            </div>
+          </div>
             <div className="summary-card-value">{summary.totalPrompts}</div>
             <div className="summary-card-description">AI queries analyzed</div>
           </div>
@@ -162,9 +162,9 @@ function Dashboard() {
             <div className="summary-card-header">
               <div className="summary-card-icon">
                 <TrendingUp size={20} />
-              </div>
+        </div>
               <div className="summary-card-title">Total Mentions</div>
-            </div>
+          </div>
             <div className="summary-card-value">{summary.totalMentions}</div>
             <div className="summary-card-description">Brand citations found</div>
           </div>
@@ -173,9 +173,9 @@ function Dashboard() {
             <div className="summary-card-header">
               <div className="summary-card-icon">
                 <Users size={20} />
-              </div>
+        </div>
               <div className="summary-card-title">Brands Tracked</div>
-            </div>
+          </div>
             <div className="summary-card-value">{summary.brandsTracked}</div>
             <div className="summary-card-description">Your brands</div>
           </div>
@@ -184,50 +184,50 @@ function Dashboard() {
             <div className="summary-card-header">
               <div className="summary-card-icon">
                 <Award size={20} />
-              </div>
+        </div>
               <div className="summary-card-title">Competitors</div>
-            </div>
+          </div>
             <div className="summary-card-value">{summary.competitorsTracked}</div>
             <div className="summary-card-description">Being monitored</div>
-          </div>
         </div>
+      </div>
 
-        {/* Tabs */}
+      {/* Tabs */}
         <div className="dashboard-tabs">
-          <button 
+        <button 
             className={`tab-button ${activeTab === 'overview' ? 'active' : ''}`}
-            onClick={() => setActiveTab('overview')}
-          >
-            <Eye size={18} />
-            Overview
-          </button>
-          <button 
+          onClick={() => setActiveTab('overview')}
+        >
+          <Eye size={18} />
+          Overview
+        </button>
+        <button 
             className={`tab-button ${activeTab === 'prompts' ? 'active' : ''}`}
-            onClick={() => setActiveTab('prompts')}
-          >
-            <MessageSquare size={18} />
-            Prompts
-          </button>
-          <button 
+          onClick={() => setActiveTab('prompts')}
+        >
+          <MessageSquare size={18} />
+          Prompts
+        </button>
+        <button 
             className={`tab-button ${activeTab === 'citations' ? 'active' : ''}`}
-            onClick={() => setActiveTab('citations')}
-          >
-            <Link2 size={18} />
-            Citations
-          </button>
-          <button 
+          onClick={() => setActiveTab('citations')}
+        >
+          <Link2 size={18} />
+          Citations
+        </button>
+        <button 
             className={`tab-button ${activeTab === 'trends' ? 'active' : ''}`}
-            onClick={() => setActiveTab('trends')}
-          >
-            <Activity size={18} />
-            Trends
-          </button>
-        </div>
+          onClick={() => setActiveTab('trends')}
+        >
+          <Activity size={18} />
+          Trends
+        </button>
+      </div>
 
-        {/* Tab Content */}
-        {activeTab === 'overview' && (
-          <div className="tab-content">
-            {/* Leaderboard */}
+      {/* Tab Content */}
+      {activeTab === 'overview' && (
+        <div className="tab-content">
+          {/* Leaderboard */}
             <div className="leaderboard">
               <div className="leaderboard-header">
                 <div className="leaderboard-icon">
@@ -236,7 +236,7 @@ function Dashboard() {
                 <h2 className="leaderboard-title">Brand Leaderboard</h2>
               </div>
               <div className="leaderboard-items">
-                {leaderboardData.map((item, index) => (
+              {leaderboardData.map((item, index) => (
                   <div key={item.brand} className="leaderboard-item">
                     <div className="leaderboard-rank">#{index + 1}</div>
                     <div className="leaderboard-item-info">
@@ -265,8 +265,8 @@ function Dashboard() {
             </div>
           </div>
 
-            {/* Charts */}
-            <div className="charts-grid">
+          {/* Charts */}
+          <div className="charts-grid">
               <div className="chart-card">
                 <div className="chart-card-header">
                   <h3 className="chart-card-title">
@@ -275,19 +275,19 @@ function Dashboard() {
                     </div>
                     Visibility Comparison
                   </h3>
-                </div>
+              </div>
                 <div className="chart-card-body">
-                  <ResponsiveContainer width="100%" height={300}>
-                    <BarChart data={leaderboardData}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="brand" />
-                      <YAxis />
-                      <Tooltip />
-                      <Legend />
-                      <Bar dataKey="visibilityScore" fill="#6366f1" name="Visibility Score %" />
-                    </BarChart>
-                  </ResponsiveContainer>
-                </div>
+              <ResponsiveContainer width="100%" height={300}>
+                <BarChart data={leaderboardData}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="brand" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Bar dataKey="visibilityScore" fill="#6366f1" name="Visibility Score %" />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
               </div>
 
               <div className="chart-card">
@@ -300,28 +300,28 @@ function Dashboard() {
                   </h3>
                 </div>
                 <div className="chart-card-body">
-                  <ResponsiveContainer width="100%" height={300}>
-                    <PieChart>
-                      <Pie
-                        data={mentionDistribution}
-                        cx="50%"
-                        cy="50%"
-                        labelLine={false}
-                        label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
-                        outerRadius={80}
-                        fill="#8884d8"
-                        dataKey="value"
-                      >
-                        {mentionDistribution.map((entry, index) => (
-                          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                        ))}
-                      </Pie>
-                      <Tooltip />
-                    </PieChart>
-                  </ResponsiveContainer>
+              <ResponsiveContainer width="100%" height={300}>
+                <PieChart>
+                  <Pie
+                    data={mentionDistribution}
+                    cx="50%"
+                    cy="50%"
+                    labelLine={false}
+                    label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                    outerRadius={80}
+                    fill="#8884d8"
+                    dataKey="value"
+                  >
+                    {mentionDistribution.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                    ))}
+                  </Pie>
+                  <Tooltip />
+                </PieChart>
+              </ResponsiveContainer>
                 </div>
-              </div>
             </div>
+          </div>
         </div>
       )}
 
