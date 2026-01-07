@@ -1,33 +1,26 @@
-const low = require('lowdb');
-const FileSync = require('lowdb/adapters/FileSync');
-const path = require('path');
-const config = require('../config');
-
 /**
- * Storage Repository - Pure data access layer
- * No business logic, only CRUD operations
- * Uses async/await pattern for better error handling
+ * In-Memory Storage Repository
+ * 
+ * NO JSON FILES! NO DISK I/O! NO BLOCKING!
+ * 
+ * All data stored in JavaScript Maps/Arrays in RAM:
+ * - Fast (no disk I/O)
+ * - Safe (single-threaded JavaScript)
+ * - Simple (no file management)
+ * - Scales better for temporary tracking sessions
+ * 
+ * Note: Data is lost on server restart (which is fine for tracking sessions)
+ * If you need persistence, use PostgreSQL or MongoDB instead
  */
 
 class StorageRepository {
     constructor() {
-        // Initialize database with error handling
-        try {
-            const adapter = new FileSync(path.join(__dirname, '../data/db.json'));
-            this.db = low(adapter);
+        // In-memory storage using Maps for O(1) lookup
+        this.sessions = new Map();
+        this.historicalData = [];
+        this.scheduledJobs = new Map();
 
-            // Set defaults
-            this.db.defaults({
-                sessions: [],
-                historicalData: [],
-                scheduledJobs: []
-            }).write();
-
-            console.log('✅ Storage initialized');
-        } catch (error) {
-            console.error('❌ Failed to initialize storage:', error);
-            throw error;
-        }
+        console.log('✅ In-memory storage initialized (no JSON files!)');
     }
 
     // ============================================
@@ -36,123 +29,81 @@ class StorageRepository {
 
     /**
      * Create a new session
-     * @param {Object} session - Session data
-     * @returns {Promise<Object>} Created session
      */
     async createSession(session) {
-        try {
-            const newSession = {
-                ...session,
-                createdAt: session.createdAt || new Date().toISOString(),
-                updatedAt: new Date().toISOString()
-            };
+        const newSession = {
+            ...session,
+            createdAt: session.createdAt || new Date().toISOString(),
+            updatedAt: new Date().toISOString()
+        };
 
-            await this.db.get('sessions')
-                .push(newSession)
-                .write();
-
-            return newSession;
-        } catch (error) {
-            console.error('Error creating session:', error);
-            throw new Error(`Failed to create session: ${error.message}`);
-        }
+        this.sessions.set(newSession.id, newSession);
+        return newSession;
     }
 
     /**
      * Get session by ID
-     * @param {string} sessionId - Session ID
-     * @returns {Promise<Object|null>} Session or null if not found
      */
     async getSessionById(sessionId) {
-        try {
-            const session = await this.db.get('sessions')
-                .find({ id: sessionId })
-                .value();
-
-            return session || null;
-        } catch (error) {
-            console.error('Error getting session:', error);
-            throw new Error(`Failed to get session: ${error.message}`);
-        }
+        return this.sessions.get(sessionId) || null;
     }
 
     /**
      * Update session
-     * @param {string} sessionId - Session ID
-     * @param {Object} updates - Updates to apply
-     * @returns {Promise<Object|null>} Updated session or null
      */
     async updateSession(sessionId, updates) {
-        try {
-            const session = await this.getSessionById(sessionId);
+        const session = this.sessions.get(sessionId);
 
-            if (!session) {
-                return null;
-            }
-
-            await this.db.get('sessions')
-                .find({ id: sessionId })
-                .assign({
-                    ...updates,
-                    updatedAt: new Date().toISOString()
-                })
-                .write();
-
-            return await this.getSessionById(sessionId);
-        } catch (error) {
-            console.error('Error updating session:', error);
-            throw new Error(`Failed to update session: ${error.message}`);
+        if (!session) {
+            return null;
         }
+
+        const updatedSession = {
+            ...session,
+            ...updates,
+            updatedAt: new Date().toISOString()
+        };
+
+        this.sessions.set(sessionId, updatedSession);
+        return updatedSession;
     }
 
     /**
      * Get all sessions
-     * @param {Object} options - Query options
-     * @returns {Promise<Array>} Array of sessions
      */
     async getAllSessions(options = {}) {
-        try {
-            const { limit, offset = 0, status } = options;
+        const { limit, offset = 0, status } = options;
 
-            let query = this.db.get('sessions');
+        // Convert Map to Array
+        let sessions = Array.from(this.sessions.values());
 
-            if (status) {
-                query = query.filter({ status });
-            }
-
-            query = query.orderBy(['createdAt'], ['desc']);
-
-            if (offset > 0) {
-                query = query.slice(offset);
-            }
-
-            if (limit) {
-                query = query.slice(0, limit);
-            }
-
-            return query.value();
-        } catch (error) {
-            console.error('Error getting sessions:', error);
-            throw new Error(`Failed to get sessions: ${error.message}`);
+        // Filter by status if provided
+        if (status) {
+            sessions = sessions.filter(s => s.status === status);
         }
+
+        // Sort by creation date (newest first)
+        sessions.sort((a, b) =>
+            new Date(b.createdAt) - new Date(a.createdAt)
+        );
+
+        // Apply offset and limit
+        if (offset > 0) {
+            sessions = sessions.slice(offset);
+        }
+
+        if (limit) {
+            sessions = sessions.slice(0, limit);
+        }
+
+        return sessions;
     }
 
     /**
      * Delete session
-     * @param {string} sessionId - Session ID
-     * @returns {Promise<boolean>} True if deleted
      */
     async deleteSession(sessionId) {
-        try {
-            const removed = await this.db.get('sessions')
-                .remove({ id: sessionId })
-                .write();
-
-            return removed.length > 0;
-        } catch (error) {
-            console.error('Error deleting session:', error);
-            throw new Error(`Failed to delete session: ${error.message}`);
-        }
+        return this.sessions.delete(sessionId);
     }
 
     // ============================================
@@ -161,106 +112,99 @@ class StorageRepository {
 
     /**
      * Save historical tracking data
-     * @param {Object} data - Historical data
-     * @returns {Promise<Object>} Saved data
      */
     async saveHistoricalData(data) {
-        try {
-            const historicalEntry = {
-                id: this.generateUUID(),
-                timestamp: new Date().toISOString(),
-                category: data.category,
-                brands: data.brands,
-                brandStats: data.brandStats,
-                summary: data.summary
-            };
+        const historicalEntry = {
+            id: this.generateUUID(),
+            timestamp: new Date().toISOString(),
+            category: data.category,
+            brands: data.brands,
+            brandStats: data.brandStats,
+            summary: data.summary
+        };
 
-            await this.db.get('historicalData')
-                .push(historicalEntry)
-                .write();
+        this.historicalData.push(historicalEntry);
 
-            // Cleanup old data if enabled
-            if (config.storage.autocleanupEnabled) {
-                await this.cleanupOldHistoricalData();
-            }
+        // Auto-cleanup: Keep only last 90 days in memory
+        const ninetyDaysAgo = new Date();
+        ninetyDaysAgo.setDate(ninetyDaysAgo.getDate() - 90);
 
-            return historicalEntry;
-        } catch (error) {
-            console.error('Error saving historical data:', error);
-            throw new Error(`Failed to save historical data: ${error.message}`);
-        }
+        this.historicalData = this.historicalData.filter(
+            item => new Date(item.timestamp) >= ninetyDaysAgo
+        );
+
+        return historicalEntry;
     }
 
     /**
      * Get historical data with filters
-     * @param {Object} filters - Filter criteria
-     * @returns {Promise<Array>} Historical data
      */
     async getHistoricalData(filters = {}) {
-        try {
-            const { category, brands, startDate, endDate, days } = filters;
+        const { category, brands, startDate, endDate, days } = filters;
 
-            let query = this.db.get('historicalData');
+        let filtered = [...this.historicalData];
 
-            if (category) {
-                query = query.filter({ category });
-            }
-
-            if (brands && Array.isArray(brands)) {
-                query = query.filter(item =>
-                    brands.every(brand => item.brands.includes(brand))
-                );
-            }
-
-            if (days) {
-                const cutoffDate = new Date();
-                cutoffDate.setDate(cutoffDate.getDate() - days);
-                query = query.filter(item =>
-                    new Date(item.timestamp) >= cutoffDate
-                );
-            } else {
-                if (startDate) {
-                    query = query.filter(item =>
-                        new Date(item.timestamp) >= new Date(startDate)
-                    );
-                }
-
-                if (endDate) {
-                    query = query.filter(item =>
-                        new Date(item.timestamp) <= new Date(endDate)
-                    );
-                }
-            }
-
-            return query.orderBy(['timestamp'], ['asc']).value();
-        } catch (error) {
-            console.error('Error getting historical data:', error);
-            throw new Error(`Failed to get historical data: ${error.message}`);
+        // Filter by category
+        if (category) {
+            filtered = filtered.filter(item => item.category === category);
         }
+
+        // Filter by brands
+        if (brands && Array.isArray(brands)) {
+            filtered = filtered.filter(item =>
+                brands.every(brand => item.brands.includes(brand))
+            );
+        }
+
+        // Filter by date range
+        if (days) {
+            const cutoffDate = new Date();
+            cutoffDate.setDate(cutoffDate.getDate() - days);
+            filtered = filtered.filter(
+                item => new Date(item.timestamp) >= cutoffDate
+            );
+        } else {
+            if (startDate) {
+                filtered = filtered.filter(
+                    item => new Date(item.timestamp) >= new Date(startDate)
+                );
+            }
+
+            if (endDate) {
+                filtered = filtered.filter(
+                    item => new Date(item.timestamp) <= new Date(endDate)
+                );
+            }
+        }
+
+        // Sort by timestamp
+        filtered.sort((a, b) =>
+            new Date(a.timestamp) - new Date(b.timestamp)
+        );
+
+        return filtered;
     }
 
     /**
      * Cleanup old historical data
-     * @returns {Promise<number>} Number of entries removed
      */
     async cleanupOldHistoricalData() {
-        try {
-            const cutoffDate = new Date();
-            cutoffDate.setDate(cutoffDate.getDate() - config.storage.dataRetentionDays);
+        const cutoffDate = new Date();
+        cutoffDate.setDate(cutoffDate.getDate() - 90);
 
-            const removed = await this.db.get('historicalData')
-                .remove(item => new Date(item.timestamp) < cutoffDate)
-                .write();
+        const originalLength = this.historicalData.length;
 
-            if (removed.length > 0) {
-                console.log(`🧹 Cleaned up ${removed.length} old historical entries`);
-            }
+        this.historicalData = this.historicalData.filter(
+            item => new Date(item.timestamp) >= cutoffDate
+        );
 
-            return removed.length;
-        } catch (error) {
-            console.error('Error cleaning up historical data:', error);
-            return 0;
+        const removed = originalLength - this.historicalData.length;
+
+        if (removed > 0) {
+            console.log(`🧹 Cleaned up ${removed} old historical entries from memory`);
         }
+
+        return removed;
     }
 
     // ============================================
@@ -269,105 +213,73 @@ class StorageRepository {
 
     /**
      * Save scheduled job
-     * @param {Object} jobConfig - Job configuration
-     * @returns {Promise<Object>} Saved job
      */
     async saveScheduledJob(jobConfig) {
-        try {
-            const job = {
-                id: this.generateUUID(),
-                ...jobConfig,
-                createdAt: new Date().toISOString(),
-                updatedAt: new Date().toISOString(),
-                status: 'active'
-            };
+        const job = {
+            id: this.generateUUID(),
+            ...jobConfig,
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
+            status: 'active'
+        };
 
-            await this.db.get('scheduledJobs')
-                .push(job)
-                .write();
-
-            return job;
-        } catch (error) {
-            console.error('Error saving scheduled job:', error);
-            throw new Error(`Failed to save scheduled job: ${error.message}`);
-        }
+        this.scheduledJobs.set(job.id, job);
+        return job;
     }
 
     /**
      * Get all active scheduled jobs
-     * @returns {Promise<Array>} Active jobs
      */
     async getActiveScheduledJobs() {
-        try {
-            return await this.db.get('scheduledJobs')
-                .filter({ status: 'active' })
-                .value();
-        } catch (error) {
-            console.error('Error getting scheduled jobs:', error);
-            throw new Error(`Failed to get scheduled jobs: ${error.message}`);
-        }
+        return Array.from(this.scheduledJobs.values())
+            .filter(job => job.status === 'active');
     }
 
     /**
      * Get scheduled job by ID
-     * @param {string} jobId - Job ID
-     * @returns {Promise<Object|null>} Job or null
      */
     async getScheduledJobById(jobId) {
-        try {
-            const job = await this.db.get('scheduledJobs')
-                .find({ id: jobId })
-                .value();
-
-            return job || null;
-        } catch (error) {
-            console.error('Error getting scheduled job:', error);
-            throw new Error(`Failed to get scheduled job: ${error.message}`);
-        }
+        return this.scheduledJobs.get(jobId) || null;
     }
 
     /**
      * Update scheduled job
-     * @param {string} jobId - Job ID
-     * @param {Object} updates - Updates to apply
-     * @returns {Promise<Object|null>} Updated job or null
      */
     async updateScheduledJob(jobId, updates) {
-        try {
-            const job = await this.getScheduledJobById(jobId);
+        const job = this.scheduledJobs.get(jobId);
 
-            if (!job) {
-                return null;
-            }
-
-            await this.db.get('scheduledJobs')
-                .find({ id: jobId })
-                .assign({
-                    ...updates,
-                    updatedAt: new Date().toISOString()
-                })
-                .write();
-
-            return await this.getScheduledJobById(jobId);
-        } catch (error) {
-            console.error('Error updating scheduled job:', error);
-            throw new Error(`Failed to update scheduled job: ${error.message}`);
+        if (!job) {
+            return null;
         }
+
+        const updatedJob = {
+            ...job,
+            ...updates,
+            updatedAt: new Date().toISOString()
+        };
+
+        this.scheduledJobs.set(jobId, updatedJob);
+        return updatedJob;
     }
 
     /**
      * Delete scheduled job (soft delete)
-     * @param {string} jobId - Job ID
-     * @returns {Promise<boolean>} True if deleted
      */
     async deleteScheduledJob(jobId) {
-        try {
-            const job = await this.updateScheduledJob(jobId, { status: 'deleted' });
-            return job !== null;
-        } catch (error) {
-            console.error('Error deleting scheduled job:', error);
-            throw new Error(`Failed to delete scheduled job: ${error.message}`);
+        const job = this.scheduledJobs.get(jobId);
+
+        if (!job) {
+            return false;
         }
+
+        const updatedJob = {
+            ...job,
+            status: 'deleted',
+            updatedAt: new Date().toISOString()
+        };
+
+        this.scheduledJobs.set(jobId, updatedJob);
+        return true;
     }
 
     // ============================================
@@ -376,7 +288,6 @@ class StorageRepository {
 
     /**
      * Generate UUID
-     * @returns {string} UUID
      */
     generateUUID() {
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
@@ -388,36 +299,44 @@ class StorageRepository {
 
     /**
      * Get database statistics
-     * @returns {Promise<Object>} Database statistics
      */
     async getStats() {
-        try {
-            const sessions = await this.db.get('sessions').value();
-            const historicalData = await this.db.get('historicalData').value();
-            const scheduledJobs = await this.db.get('scheduledJobs').value();
+        const sessions = Array.from(this.sessions.values());
+        const jobs = Array.from(this.scheduledJobs.values());
 
-            return {
-                sessions: {
-                    total: sessions.length,
-                    processing: sessions.filter(s => s.status === 'processing').length,
-                    completed: sessions.filter(s => s.status === 'completed').length,
-                    error: sessions.filter(s => s.status === 'error').length
-                },
-                historicalData: {
-                    total: historicalData.length,
-                    oldest: historicalData[0]?.timestamp,
-                    newest: historicalData[historicalData.length - 1]?.timestamp
-                },
-                scheduledJobs: {
-                    total: scheduledJobs.length,
-                    active: scheduledJobs.filter(j => j.status === 'active').length,
-                    deleted: scheduledJobs.filter(j => j.status === 'deleted').length
-                }
-            };
-        } catch (error) {
-            console.error('Error getting stats:', error);
-            return null;
-        }
+        return {
+            sessions: {
+                total: sessions.length,
+                processing: sessions.filter(s => s.status === 'processing').length,
+                completed: sessions.filter(s => s.status === 'completed').length,
+                error: sessions.filter(s => s.status === 'error').length
+            },
+            historicalData: {
+                total: this.historicalData.length,
+                oldest: this.historicalData[0]?.timestamp,
+                newest: this.historicalData[this.historicalData.length - 1]?.timestamp
+            },
+            scheduledJobs: {
+                total: jobs.length,
+                active: jobs.filter(j => j.status === 'active').length,
+                deleted: jobs.filter(j => j.status === 'deleted').length
+            },
+            storage: {
+                type: 'in-memory',
+                persistent: false,
+                memoryUsage: process.memoryUsage().heapUsed / 1024 / 1024 + ' MB'
+            }
+        };
+    }
+
+    /**
+     * Clear all data (useful for testing)
+     */
+    async clearAll() {
+        this.sessions.clear();
+        this.historicalData = [];
+        this.scheduledJobs.clear();
+        console.log('🧹 All in-memory data cleared');
     }
 }
 
